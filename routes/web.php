@@ -14,5 +14,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('UserPages.layout.dashboard');
+    return view('userPages.layout.dashboard');
+});
+
+Route::get('/layanan-desa', function () {
+    return view('userPages.layout.layanan-desa');
+});
+
+Route::get('/statistik', function(){
+    return view('userPages.layout.statistik');
 });
