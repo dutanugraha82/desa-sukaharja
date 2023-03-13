@@ -11,7 +11,7 @@
           Tentang Desa
         </a>
         <ul class="dropdown-menu">
-          <li><a class="dropdown-item" href="#">Wilayah</a></li>
+          <li><a class="dropdown-item" href="/wilayah">Wilayah</a></li>
           <li><a class="dropdown-item" href="/statistik">Statistik</a></li>
         </ul>
       </li>

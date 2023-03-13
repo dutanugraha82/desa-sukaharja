@@ -24,3 +24,7 @@ Route::get('/layanan-desa', function () {
 Route::get('/statistik', function(){
     return view('userPages.layout.statistik');
 });
+
+Route::get('/wilayah', function(){
+    return view('userPages.layout.wilayah');
+});
