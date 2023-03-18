@@ -4,6 +4,9 @@
 @endsection
 @section('content')
     <div class="container">
+      <h4 class="text-center">Grafik Kependudukan</h4>
+      <hr>
+      <br>
         <div class="card mx-auto" style="max-width: 60rem;">
             <div class="card-header">
                 <h5>Kependudukan</h5>
@@ -48,6 +51,11 @@
                 </div>
             </div>
         </div>
+        <hr>
+        <br>
+        <br>
+        <h4 class="text-center">Grafik Lahan</h4>
+        <hr>
          <div class="card mx-auto mt-4" style="max-width: 60rem;">
             <div class="card-header">
                 <h5>Lahan</h5>

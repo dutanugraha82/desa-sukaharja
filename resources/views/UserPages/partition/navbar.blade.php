@@ -23,25 +23,13 @@
           Pembangunan
         </a>
         <ul class="dropdown-menu">
-          <li><a class="dropdown-item" href="#">Perencanaan</a></li>
-          <li><a class="dropdown-item" href="#">Transparansi</a></li>
+          <li><a class="dropdown-item" href="/perencanaan">Perencanaan</a></li>
+          <li><a class="dropdown-item" href="/transparansi">Transparansi</a></li>
         </ul>
       </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-          Lembaga
-        </a>
-        <ul class="dropdown-menu">
-          <li><a class="dropdown-item" href="#">Badan Permusyawaratan Desa</a></li>
-          <li><a class="dropdown-item" href="#">Pemberdayaan Kesejahteraan Keluarga</a></li>
-          <li><a class="dropdown-item" href="#">Pekerja Sosial Masyarakat</a></li>
-          <li><a class="dropdown-item" href="#">Lembaga Pemberdayaan Masyarakat</a></li>
-          <li><a class="dropdown-item" href="#">Badan Usaha Milik Desa</a></li>
-          <li><a class="dropdown-item" href="#">Pos Layanan Terpadu</a></li>
-          <li><a class="dropdown-item" href="#">Pusat Kesejahteraan Sosial</a></li>
-          <li><a class="dropdown-item" href="#">Linmas Desa</a></li>
-          <li><a class="dropdown-item" href="#">Karang Taruna</a></li>
-        </ul>
+      <li class="nav-item">
+        <a class="nav-link" href="/lembaga">Lembaga</a>
+        
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">

@@ -18,19 +18,19 @@
                 </div>
                 <div class="col-6 col-md-4 text-center mb-3">
                     <i class='bx bxs-user-plus fs-icon'></i>
-                    <p>Daftar Data Diri</p>
+                    <p>Laporan Pendatang</p>
                 </div>
                 <div class="col-6 col-md-4 text-center mb-3">
                     <i class='bx bx-mail-send fs-icon'></i>
                     <p>Saran Untuk Desa</p>
                 </div>
                 <div class="col-6 col-md-4 text-center mb-3">
-                    <i class='bx bx-envelope fs-icon'></i>
-                    <p>Layanan Surat</p>
+                    <i class='bx bx-send fs-icon'></i>
+                    <p>Pengajuan Produk UMKM</p>
                 </div>
                 <div class="col-6 col-md-4 text-center mb-3">
-                    <i class='bx bx-envelope fs-icon'></i>
-                    <p>Layanan Surat</p>
+                    <i class='bx bx-trophy fs-icon'></i>
+                    <p>Prestasi Desa</p>
                 </div>
             </div>
         </div>

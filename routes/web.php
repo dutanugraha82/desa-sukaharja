@@ -28,3 +28,15 @@ Route::get('/statistik', function(){
 Route::get('/wilayah', function(){
     return view('userPages.layout.wilayah');
 });
+
+Route::get('/perencanaan', function(){
+    return view('UserPages.layout.perencanaan');
+});
+
+Route::get('/transparansi', function(){
+    return view('UserPages.layout.transparansi');
+});
+
+Route::get('/lembaga', function(){
+    return view('UserPages.layout.lembaga');
+});
