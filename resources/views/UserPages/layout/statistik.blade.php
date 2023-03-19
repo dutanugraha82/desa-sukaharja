@@ -1,4 +1,4 @@
-@extends('userPages.master')
+@extends('UserPages.master')
 @section('title')
     Statistik
 @endsection

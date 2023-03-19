@@ -19,7 +19,7 @@
     <title>Desa Sukaharja | @yield('title')</title>
   </head>
   <body>
-    @include('userPages.partition.navbar')
+    @include('UserPages.partition.navbar')
 
 <main style="margin-top: 90px;">
     @yield('content')

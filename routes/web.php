@@ -14,19 +14,19 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('userPages.layout.dashboard');
+    return view('UserPages.layout.dashboard');
 });
 
 Route::get('/layanan-desa', function () {
-    return view('userPages.layout.layanan-desa');
+    return view('UserPages.layout.layanan-desa');
 });
 
 Route::get('/statistik', function(){
-    return view('userPages.layout.statistik');
+    return view('UserPages.layout.statistik');
 });
 
 Route::get('/wilayah', function(){
-    return view('userPages.layout.wilayah');
+    return view('UserPages.layout.wilayah');
 });
 
 Route::get('/perencanaan', function(){
