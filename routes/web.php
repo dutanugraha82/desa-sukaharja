@@ -40,3 +40,11 @@ Route::get('/transparansi', function(){
 Route::get('/lembaga', function(){
     return view('UserPages.layout.lembaga');
 });
+
+Route::get('/umkm-masyarakat', function(){
+    return view('UserPages.layout.umkm-masyarakat');
+});
+
+Route::get('/umkm-masyarakat/id', function(){
+    return view('UserPages.layout.umkm-masyarakat-detail');
+});
