@@ -48,3 +48,7 @@ Route::get('/umkm-masyarakat', function(){
 Route::get('/umkm-masyarakat/id', function(){
     return view('UserPages.layout.umkm-masyarakat-detail');
 });
+
+Route::get('/admin', function () {
+    return view('admin.contents.dashboard');
+});
