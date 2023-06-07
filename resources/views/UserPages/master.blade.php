@@ -21,7 +21,7 @@
   <body>
     @include('UserPages.partition.navbar')
 
-<main style="margin-top: 90px;">
+<main style="margin-top: 8rem;">
     @yield('content')
 </main>
 @include('UserPages.partition.footer')

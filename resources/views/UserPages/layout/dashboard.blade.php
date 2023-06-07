@@ -3,8 +3,8 @@
     Dahsboard
 @endsection
 @section('content')
-<div class="container mt-4">
-  <h4 class="text-center">Selamat Datang di Situs Resmi Desa Sukaharja Karawang</h4>
+<div class="container">
+  <h3 class="text-center">Selamat Datang di Situs Resmi Desa Sukaharja Karawang</h3>
   <hr>
   <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-inner">
@@ -127,7 +127,7 @@
     <hr>
     <div class="mt-4">
       <h4 class="my-5 text-center" id="berita-desa">Berita Desa</h4>
-        <div class="row">
+        <div class="row mb-3">
           <div class="col-md-4">
             <div class="card mx-auto shadow-lg" style="width: 18rem;">
               <img src="{{ asset('img/OPT_001 (8).jpeg') }}" class="card-img-top" alt="...">
@@ -159,7 +159,7 @@
             </div>
           </div>
         </div>
-        <a class="mt-3" href="#">
+        <a href="#">
           <p class="text-center text-md-end">Lihat Selengkapnya</p>
         </a>
     </div>

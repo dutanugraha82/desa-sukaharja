@@ -35,7 +35,7 @@
                         <p>RW</p>
                     </div>
                     <div class="col-4 col-md-3 text-center">
-                        <span class="fs-1" id="count4">90</span>
+                        <span class="fs-1" id="count4"></span>
                         <p>RT</p>
                     </div>
                 </div>
@@ -74,8 +74,8 @@
  counter("count1m", 1000, 1500, 3000);
  counter("count1d", 1000, 1500, 3000);
  counter("count2", 0, 7, 3000);
- counter("count3", 0, 10, 3000);
- counter("count4", 0, 90, 3000);
+ counter("count3", 0, 14, 3000);
+ counter("count4", 0, 47, 3000);
 });
 </script>
 @endpush

@@ -10,7 +10,7 @@
     <hr class="sidebar-divider my-0">
 
     <!-- Nav Item - Dashboard -->
-    <li class="nav-item ">
+    <li class="nav-item">
         <a class="nav-link" href="#">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span></a>
@@ -19,7 +19,7 @@
     <!-- Divider -->
     <hr class="sidebar-divider">
     <!-- Nav Item - Dashboard -->
-    <li class="nav-item ">
+    <li class="nav-item">
         <a class="nav-link" href="#">
             <i class="fas fa-newspaper"></i>
             <span>Berita</span></a>
@@ -29,7 +29,7 @@
     <hr class="sidebar-divider">
     
     <!-- Nav Item - Dashboard -->
-    <li class="nav-item ">
+    <li class="nav-item">
         <a class="nav-link" href="#">
             <i class="fas fa-shopping-bag"></i>
             <span>UMKM</span></a>
@@ -38,7 +38,7 @@
     <hr class="sidebar-divider">
     
     <!-- Nav Item - Dashboard -->
-    <li class="nav-item ">
+    <li class="nav-item">
         <a class="nav-link" href="#">
             <i class="fas fa-users"></i>
             <span>Warga</span></a>
@@ -46,7 +46,7 @@
 
     <!-- Divider -->
     <hr class="sidebar-divider">
-    <li class="nav-item ">
+    <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
             aria-expanded="true" aria-controls="collapseTwo">
             <i class="fas fa-envelope"></i>
@@ -62,6 +62,14 @@
             </div>
         </div>
     </li>
+    <hr class="sidebar-divider">
+
+    <li class="nav-item">
+        <a class="nav-link" href="#">
+            <i class="fas fa-caret-square-down"></i>
+            <span>Saran dan Masukan</span></a>
+    </li>
+
     <hr class="sidebar-divider">
 
 
