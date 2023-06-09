@@ -41,7 +41,7 @@
                             <select name="kartu_keluarga_id" class="form-control" id="kk" required>
                                 <option value="">Pilih No KK</option>
                                 @foreach ($data as $item)
-                                <option value="{{ $item->id }}">{{ $item->no_kk }}</option>
+                                <option value="{{ $item->id }}">{{ Crypt::decrypt($item->no_kk )}}</option>
                                 @endforeach
                             </select>
                         </div>

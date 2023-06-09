@@ -2,11 +2,15 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
-use App\Models\KartuKeluarga;
-use App\Models\Profiles;
+use Carbon\Carbon;
 use App\Models\User;
+use App\Models\Profiles;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use App\Models\KartuKeluarga;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Crypt;
 
 class ProfileController extends Controller
 {
@@ -20,6 +24,7 @@ class ProfileController extends Controller
     }
 
     public function store(Request $request){
+        $tanggalLahir = Carbon::parse($request->tanggalLahir)->format('dmY');
         $request->validate([
             'nama' => 'required',
             'nik' => 'required|unique:profiles',
@@ -38,7 +43,7 @@ class ProfileController extends Controller
         Profiles::create([
         'kartu_keluarga_id' => $request->kartu_keluarga_id,
         'nama' => $request->nama,
-        'nik' => $request->nik,
+        'nik' => Crypt::encrypt($request->nik),
         'jk' => $request->jk,
         'tempat_lahir' => $request->tempatLahir,
         'tanggal_lahir' => $request->tanggalLahir,
@@ -47,10 +52,15 @@ class ProfileController extends Controller
         'jenis_pekerjaan' => $request->jenisPekerjaan,
         'status_perkawinan' => $request->status_perkawinan,
         'status_hubungan_dalam_keluarga' => $request->status_hubungan_dalam_keluarga,
-        'nama_ayah' => $request->nama_ayah,
-        'nama_ibu' => $request->nama_ibu,
+        'nama_ayah' => Crypt::encrypt($request->nama_ayah),
+        'nama_ibu' => Crypt::encrypt($request->nama_ibu),
         ]);
         
+        User::create([
+            'username' => $request->nik,
+            'password' => Hash::make($tanggalLahir),
+            'role' => 'warga',
+        ]);
         return redirect('/admin');
     }
 }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\KartuKeluarga;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Crypt;
 
 class KartuKeluargaController extends Controller
 {
@@ -32,9 +33,9 @@ class KartuKeluargaController extends Controller
                 ]);
 
                     KartuKeluarga::create([
-                        'no_kk' => $request->no_kk,
+                        'no_kk' => Crypt::encrypt($request->no_kk),
                         'nama_kepala_keluarga' => $request->kepalaKeluarga,
-                        'alamat' => $request->alamat,
+                        'alamat' => Crypt::encrypt($request->alamat),
                         'rt' => $request->rt,
                         'rw' => $request->rw,
                         'desa' => $request->desa,

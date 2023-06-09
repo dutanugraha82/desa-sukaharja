@@ -48,7 +48,7 @@
                         <iframe class="d-md-block mx-md-auto overflow-scroll" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15862.250198285246!2d107.28303517407777!3d-6.321044926806237!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e6977d5bd5bec8d%3A0xafd7f683b9fbbf79!2sSukaharja%2C%20Telukjambe%20Timur%2C%20Karawang%2C%20West%20Java!5e0!3m2!1sen!2sid!4v1678723213178!5m2!1sen!2sid"  frameborder="0" width="100%" height="100%"  loading="lazy"></iframe>
                     </div>
                     <div class="col-md-5">
-                        <p class=" d-flex align-items-center justify-content-center" style="text-align: justify">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quasi assumenda at suscipit libero, pariatur dignissimos accusantium magnam ratione eaque quis ut tempore veniam excepturi, itaque maiores sunt perspiciatis necessitatibus eveniet.</p>
+                        <p class=" d-flex align-items-center justify-content-center" style="text-align: justify">Desa Sukaharja merupakan salah satu Desa di Kecamatan Teluk Jambe Timur, Kota Karawang, Provinsi Jawa Barat, Indonesia. Luas wilayah Desa Sukaharja sebesar 272 Hektar(Ha) yang terdiri dari: Badan Air sebesar 7Ha, Kebun Campuran 25Ha, Ladang 18Ha, Lahan Terbangun 167Ha, Sawah 41Ha, Semak 2Ha dan Tanah Terbuka 13Ha. Desa Sukaharja terdiri dari 7 Dusun, 14 RW dan 47 RT.</p>
                     </div>
                    
                 </div>
@@ -71,8 +71,8 @@
     }
    }, step);
  }
- counter("count1m", 1000, 1500, 3000);
- counter("count1d", 1000, 1500, 3000);
+ counter("count1m", 80, 272, 3000);
+ counter("count1d", 80, 272, 3000);
  counter("count2", 0, 7, 3000);
  counter("count3", 0, 14, 3000);
  counter("count4", 0, 47, 3000);

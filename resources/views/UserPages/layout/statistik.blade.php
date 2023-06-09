@@ -83,12 +83,12 @@ new Chart(kependudukan, {
     labels: ['0-5 thn', '5-17 thn', '17-30 thn', '30-60 thn', '60+ thn'],
     datasets: [{
       label: 'Laki-Laki',
-      data: [12, 19, 3, 5, 2, 3],
+      data: [12, 19, 3, 5, 2],
       borderWidth: 1
     },
     {
       label: 'Perempuan',
-      data: [12, 19, 3, 5, 2, 3],
+      data: [12, 19, 3, 5, 2],
       borderWidth: 1
     }],
   },
@@ -167,10 +167,10 @@ new Chart(pekerjaan, {
 new Chart(lahan, {
   type: 'pie',
   data: {
-    labels: ['Lain', 'Pertanian','Danau','Perkebunan','Pemukiman'],
+    labels: ['Badan Air', 'Kebun Campuran','Ladang','Lahan Terbangun','Sawah','Semak','Tanah Terbuka'],
     datasets: [{
       label: 'Hektar',
-      data: [4,30,20,50,80],
+      data: [7,25,18,167,41,2,13],
       borderWidth: 1
     }],
   },
