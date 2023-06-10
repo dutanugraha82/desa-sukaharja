@@ -15,6 +15,12 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/login',[LoginController::class,'index'])->name('login')->middleware('guest');
+Route::post('/login',[LoginController::class,'authenticate'])->middleware('guest');
+Route::get('/admin/kk/create', [KartuKeluargaController::class,'create']);
+Route::get('/admin/profiles/create', [ProfileController::class,'create']);
+Route::post('/admin/profiles', [ProfileController::class,'store']);
+Route::post('/admin/kk',[KartuKeluargaController::class,'store']);
 
 Route::get('/', function () {
     return view('UserPages.layout.dashboard');
@@ -55,9 +61,3 @@ Route::get('/umkm-masyarakat/id', function(){
 Route::get('/admin', function () {
     return view('admin.contents.dashboard');
 });
-Route::get('/login',[LoginController::class,'index'])->name('login');
-Route::post('/login',[LoginController::class,'authenticate']);
-Route::get('/admin/kk/create', [KartuKeluargaController::class,'create']);
-Route::get('/admin/profiles/create', [ProfileController::class,'create']);
-Route::post('/admin/profiles', [ProfileController::class,'store']);
-Route::post('/admin/kk',[KartuKeluargaController::class,'store']);

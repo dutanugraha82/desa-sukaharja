@@ -40,7 +40,7 @@ class ProfileController extends Controller
             'nama_ibu' => 'required',
         ]);
 
-        Profiles::create([
+     $profilesId = Profiles::create([
         'kartu_keluarga_id' => $request->kartu_keluarga_id,
         'nama' => $request->nama,
         'nik' => Crypt::encrypt($request->nik),
@@ -54,12 +54,14 @@ class ProfileController extends Controller
         'status_hubungan_dalam_keluarga' => $request->status_hubungan_dalam_keluarga,
         'nama_ayah' => Crypt::encrypt($request->nama_ayah),
         'nama_ibu' => Crypt::encrypt($request->nama_ibu),
-        ]);
+        ])->id;
         
         User::create([
             'username' => $request->nik,
             'password' => Hash::make($tanggalLahir),
             'role' => 'warga',
+            'profiles_id' => $profilesId,
+
         ]);
         return redirect('/admin');
     }

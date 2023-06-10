@@ -17,7 +17,7 @@ class CreateKartuKeluargaTable extends Migration
             $table->id();
             $table->string('no_kk')->unique();
             $table->string('nama_kepala_keluarga');
-            $table->string('alamat');
+            $table->longText('alamat');
             $table->string('rt');
             $table->string('rw');
             $table->string('desa');

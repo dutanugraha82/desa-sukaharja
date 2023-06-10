@@ -24,4 +24,8 @@ class Profiles extends Model
         'nama_ayah',
         'nama_ibu',
     ];
+
+    public function user(){
+        return $this->hasOne(User::class,'profiles_id');
+    }
 }
