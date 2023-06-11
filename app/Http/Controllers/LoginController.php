@@ -25,13 +25,39 @@ class LoginController extends Controller
         // dd($credentials);
  
         if (Auth::attempt($credentials)) {
-            $request->session()->regenerate();
- 
-            return redirect()->intended('/');
+           if (auth()->user()->role == 'superadmin') {
+                return redirect('/superadmin');
+
+           }elseif (auth()->user()->role == 'admin') {
+                return redirect('/admin');
+
+           }elseif (auth()->user()->role == 'pelayanan') {
+                return redirect('/pelayanan');
+
+           }elseif (auth()->user()->role == 'kades') {
+                return redirect('/kades');
+
+           }elseif (auth()->user()->role == 'sekdes') {
+                return redirect('/sekdes');
+                
+           }elseif (auth()->user()->role == 'warga') {
+                return redirect('/warga');
+           }
+           
         }
  
         return back()->withErrors([
             'email' => 'The provided credentials do not match our records.',
         ]);
+    }
+
+    public function logout(Request $request){
+     Auth::logout();
+ 
+     $request->session()->invalidate();
+  
+     $request->session()->regenerateToken();
+     
+     return redirect('/');
     }
 }

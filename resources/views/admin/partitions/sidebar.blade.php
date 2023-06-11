@@ -11,7 +11,7 @@
 
     <!-- Nav Item - Dashboard -->
     <li class="nav-item">
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="/admin">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span></a>
     </li>
@@ -38,6 +38,13 @@
     <hr class="sidebar-divider">
     
     <!-- Nav Item - Dashboard -->
+    <li class="nav-item">
+        <a class="nav-link" href="/admin/kk">
+            <i class="fas fa-folder"></i>
+            <span>Kartu Keluarga</span></a>
+    </li>
+    <hr class="sidebar-divider">
+
     <li class="nav-item">
         <a class="nav-link" href="#">
             <i class="fas fa-users"></i>

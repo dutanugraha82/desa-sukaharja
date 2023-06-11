@@ -1,9 +1,10 @@
 <?php
 
-use App\Http\Controllers\Admin\KartuKeluargaController;
-use App\Http\Controllers\Admin\ProfileController;
-use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\AdminDesa\ProfileController;
+use App\Http\Controllers\AdminDesa\DashboardController;
+use App\Http\Controllers\AdminDesa\KartuKeluargaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,10 +18,24 @@ use Illuminate\Support\Facades\Route;
 */
 Route::get('/login',[LoginController::class,'index'])->name('login')->middleware('guest');
 Route::post('/login',[LoginController::class,'authenticate'])->middleware('guest');
-Route::get('/admin/kk/create', [KartuKeluargaController::class,'create']);
-Route::get('/admin/profiles/create', [ProfileController::class,'create']);
-Route::post('/admin/profiles', [ProfileController::class,'store']);
-Route::post('/admin/kk',[KartuKeluargaController::class,'store']);
+Route::post('/logout',[LoginController::class,'logout'])->middleware('auth');
+
+// Route Superadmin Start
+Route::middleware(['auth','superadmin','preventBack'])->name('superadmin.')->prefix('superadmin')->group(function (){
+
+});
+// Route Superadmin End
+
+// Route Admin Start
+Route::middleware(['auth','admin','preventBack'])->prefix('admin')->group(function(){
+    Route::get('/', [DashboardController::class,'index']);
+    Route::get('/kk', [KartuKeluargaController::class,'index']);
+    Route::get('/kk/create', [KartuKeluargaController::class,'create']);
+    Route::get('/profiles/create', [ProfileController::class,'create']);
+    Route::post('/profiles', [ProfileController::class,'store']);
+    Route::post('/kk',[KartuKeluargaController::class,'store']);
+});
+
 
 Route::get('/', function () {
     return view('UserPages.layout.dashboard');
@@ -58,6 +73,4 @@ Route::get('/umkm-masyarakat/id', function(){
     return view('UserPages.layout.umkm-masyarakat-detail');
 });
 
-Route::get('/admin', function () {
-    return view('admin.contents.dashboard');
-});
+

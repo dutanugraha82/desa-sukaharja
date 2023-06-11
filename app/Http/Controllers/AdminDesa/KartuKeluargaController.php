@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\AdminDesa;
 
 use App\Http\Controllers\Controller;
 use App\Models\KartuKeluarga;
@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Crypt;
 class KartuKeluargaController extends Controller
 {
     public function index(){
-
+        return view('admin.contents.kk.index');
     }
 
     public function create(){
