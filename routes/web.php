@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminDesa\BeritaController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\AdminDesa\ProfileController;
@@ -34,6 +35,7 @@ Route::middleware(['auth','admin','preventBack'])->prefix('admin')->group(functi
     Route::get('/profiles/create', [ProfileController::class,'create']);
     Route::post('/profiles', [ProfileController::class,'store']);
     Route::post('/kk',[KartuKeluargaController::class,'store']);
+    Route::resource('berita',BeritaController::class);
 });
 
 

@@ -20,7 +20,7 @@
     <hr class="sidebar-divider">
     <!-- Nav Item - Dashboard -->
     <li class="nav-item">
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="/admin/berita">
             <i class="fas fa-newspaper"></i>
             <span>Berita</span></a>
     </li>
