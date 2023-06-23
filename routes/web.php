@@ -6,6 +6,8 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\AdminDesa\ProfileController;
 use App\Http\Controllers\AdminDesa\DashboardController;
 use App\Http\Controllers\AdminDesa\KartuKeluargaController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\SuratController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,7 +22,8 @@ use App\Http\Controllers\AdminDesa\KartuKeluargaController;
 Route::get('/login',[LoginController::class,'index'])->name('login')->middleware('guest');
 Route::post('/login',[LoginController::class,'authenticate'])->middleware('guest');
 Route::post('/logout',[LoginController::class,'logout'])->middleware('auth');
-
+Route::get('/berita/json',[BeritaController::class,'json'])->name('berita.json');
+Route::get('/', [HomeController::class,'home']);
 // Route Superadmin Start
 Route::middleware(['auth','superadmin','preventBack'])->name('superadmin.')->prefix('superadmin')->group(function (){
 
@@ -37,11 +40,13 @@ Route::middleware(['auth','admin','preventBack'])->prefix('admin')->group(functi
     Route::post('/kk',[KartuKeluargaController::class,'store']);
     Route::resource('berita',BeritaController::class);
 });
+// Route Admin End
 
-
-Route::get('/', function () {
-    return view('UserPages.layout.dashboard');
+// Route Warga Start
+Route::middleware(['auth','warga','preventBack'])->group(function(){
+    Route::get('/ktm',[SuratController::class,'createKTM']);
 });
+// Route Warga End
 
 Route::get('/layanan-desa', function () {
     return view('UserPages.layout.layanan-desa');

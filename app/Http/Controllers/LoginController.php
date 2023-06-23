@@ -41,7 +41,7 @@ class LoginController extends Controller
                 return redirect('/sekdes');
                 
            }elseif (auth()->user()->role == 'warga') {
-                return redirect('/warga');
+                return redirect('/layanan-desa');
            }
            
         }

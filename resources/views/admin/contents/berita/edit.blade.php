@@ -7,27 +7,30 @@
 @endsection
 @section('content')
     <div class="card p-3">
-        <form action="/admin/berita" method="POST" enctype="multipart/form-data">
+        <form action="/admin/berita/{{ $data->id }}" method="POST" enctype="multipart/form-data">
             @csrf
+            @method('put')
             <div class="row">
                 <div class="col-md-6">
                     <div class="mb-3">
                         <label for="title">Judul</label>
-                        <input type="text" name="judul" class="form-control" required>
+                        <input type="text" name="judul" class="form-control" value="{{ $data->judul }}" required>
                     </div>
                     <div class="mb-3">
-                        <label for="gambar">Gambar</label>
-                        <input type="file" class="form-control" name="gambar" id="image" onchange="imgPreview()" required>
+                        <label for="gambar">Gambar Sekarang</label>
+                        <img src="{{ asset('storage'.'/'.$data->gambar) }}" class="col-5" alt="">
+                        <input type="hidden" name="oldGambar" value="{{ $data->gambar }}">
+                        <input type="file" class="form-control" name="gambar" id="image" onchange="imgPreview()">
                     </div>
                     <img class="col-5 img-preview" alt="">
                 </div>
                 <div class="col-md-6">
-                    <textarea name="deskripsi" id="summernote" cols="30" rows="10"></textarea>
+                    <textarea name="deskripsi" id="summernote" cols="30" rows="10">{{ $data->deskripsi }}</textarea>
                 </div>
             </div>
             <div class="d-flex justify-content-between mt-5">
                 <a href="/admin/berita" class="btn btn-warning">Kembali</a>
-                <button type="submit" class="btn btn-primary">Buat Berita</button>
+                <button type="submit" class="btn btn-primary">Sunting</button>
             </div>
         </form>
     </div>

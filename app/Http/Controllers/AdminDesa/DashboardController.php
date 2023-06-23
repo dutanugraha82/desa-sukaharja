@@ -2,12 +2,16 @@
 
 namespace App\Http\Controllers\AdminDesa;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
 
 class DashboardController extends Controller
 {
     public function index(){
-    return view('admin.contents.dashboard');
+    $berita = DB::table('berita')->count();
+    $penduduk = DB::table('users')->where('role','=','warga')->count();
+    // dd($penduduk);
+    return view('admin.contents.dashboard', compact('berita','penduduk'));
     }
 }
