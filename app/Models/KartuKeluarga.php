@@ -25,4 +25,8 @@ class KartuKeluarga extends Model
         'created_at',
         'updated_at',
     ];
+
+    public function profile(){
+        return $this->hasOne(Profiles::class,'kartu_keluarga_id');
+    }
 }

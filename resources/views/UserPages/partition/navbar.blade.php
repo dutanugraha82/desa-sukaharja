@@ -42,6 +42,14 @@
       <li class="nav-item">
         <a class="nav-link" href="/layanan-desa">Layanan Desa</a>
       </li>
+      @auth
+      <li class="nav-item">
+       <form action="/logout" method="POST">
+        @csrf
+        <button type="submit" class="btn btn-danger">Logout</button>
+      </form>
+      </li>
+      @endauth
     </ul>
   </div>
 </div>

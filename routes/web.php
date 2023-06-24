@@ -22,7 +22,6 @@ use App\Http\Controllers\SuratController;
 Route::get('/login',[LoginController::class,'index'])->name('login')->middleware('guest');
 Route::post('/login',[LoginController::class,'authenticate'])->middleware('guest');
 Route::post('/logout',[LoginController::class,'logout'])->middleware('auth');
-Route::get('/berita/json',[BeritaController::class,'json'])->name('berita.json');
 Route::get('/', [HomeController::class,'home']);
 // Route Superadmin Start
 Route::middleware(['auth','superadmin','preventBack'])->name('superadmin.')->prefix('superadmin')->group(function (){
@@ -38,6 +37,8 @@ Route::middleware(['auth','admin','preventBack'])->prefix('admin')->group(functi
     Route::get('/profiles/create', [ProfileController::class,'create']);
     Route::post('/profiles', [ProfileController::class,'store']);
     Route::post('/kk',[KartuKeluargaController::class,'store']);
+    Route::get('/ktm/{id}',[SuratController::class,'showKTM']);
+    Route::get('/berita/json',[BeritaController::class,'json'])->name('berita.json');
     Route::resource('berita',BeritaController::class);
 });
 // Route Admin End
@@ -45,6 +46,7 @@ Route::middleware(['auth','admin','preventBack'])->prefix('admin')->group(functi
 // Route Warga Start
 Route::middleware(['auth','warga','preventBack'])->group(function(){
     Route::get('/ktm',[SuratController::class,'createKTM']);
+    Route::post('/ktm',[SuratController::class,'storeKTM']);
 });
 // Route Warga End
 

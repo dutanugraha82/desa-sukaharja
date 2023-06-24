@@ -28,4 +28,8 @@ class Profiles extends Model
     public function user(){
         return $this->hasOne(User::class,'profiles_id');
     }
+
+    public function kk(){
+        return $this->hasOne(KartuKeluarga::class,'id');
+    }
 }
