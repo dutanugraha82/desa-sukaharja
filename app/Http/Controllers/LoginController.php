@@ -4,8 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Crypt;
-use Illuminate\Support\Facades\Hash;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class LoginController extends Controller
 {
@@ -41,6 +40,7 @@ class LoginController extends Controller
                 return redirect('/sekdes');
                 
            }elseif (auth()->user()->role == 'warga') {
+               Alert::success('Login Berhasil!');
                 return redirect('/layanan-desa');
            }
            
@@ -57,7 +57,7 @@ class LoginController extends Controller
      $request->session()->invalidate();
   
      $request->session()->regenerateToken();
-     
+     Alert::success('Logout Berhasil!');
      return redirect('/');
     }
 }

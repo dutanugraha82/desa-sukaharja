@@ -8,6 +8,7 @@ use App\Http\Controllers\AdminDesa\DashboardController;
 use App\Http\Controllers\AdminDesa\KartuKeluargaController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SuratController;
+use App\Http\Controllers\WargaController;
 
 /*
 |--------------------------------------------------------------------------

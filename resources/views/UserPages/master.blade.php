@@ -19,6 +19,7 @@
     <title>Desa Sukaharja | @yield('title')</title>
   </head>
   <body>
+    @include('sweetalert::alert')
     @include('UserPages.partition.navbar')
 
 <main style="margin-top: 8rem;">
