@@ -2,14 +2,36 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Profiles;
 use Carbon\Carbon;
+use App\Models\KTM;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Crypt;
 
 class SuratController extends Controller
 {
+    public function ktm(){
+        return view('admin.contents.ktm.index');
+    }
+
+    public function jsonKTM(){
+        $ktm = KTM::select('*')->orderBy('created_at','desc')->get();
+        return datatables()->of($ktm)
+        ->addIndexColumn()
+        ->addColumn('action', function($ktm){
+            return ' <div class="d-flex">   
+                    <a href="/admin/ktm/'.$ktm->id.'/edit" class="btn  btn-warning" style="width:80px;">Edit</a>
+                    <a href="/admin/ktm/'.$ktm->id.'" class="btn mx-3 btn-primary">Preview</a>
+                    <a href="/admin/ktm/'.$ktm->id.'" class="btn mx-3 btn-primary"><i class="fa fa-print"></i></a>
+                    </div>';
+        })
+        ->addColumn('created_at', function($ktm){
+            return Carbon::parse($ktm['created_at'])->isoFormat('dddd, D MMMM Y');
+        })
+        ->rawColumns(['action','created_at'])
+        ->make(true);
+    }
+
     public function createKTM(){
         $data = DB::table('kartu_keluarga')->join('profiles','kartu_keluarga.id','=','profiles.kartu_keluarga_id')->get();
 
@@ -21,6 +43,7 @@ class SuratController extends Controller
         // dd($nik);
         return view('UserPages.layout.ktm', compact('data','alamat','nik','tanggal_lahir'));
     }
+
 
     public function storeKTM(Request $request){
         // dd($request);

@@ -37,13 +37,29 @@ Route::middleware(['auth','admin','preventBack'])->prefix('admin')->group(functi
     Route::get('/kk/create', [KartuKeluargaController::class,'create']);
     Route::get('/profiles/create', [ProfileController::class,'create']);
     Route::post('/profiles', [ProfileController::class,'store']);
+    Route::get('/warga',[ProfileController::class,'index']);
+    Route::get('/warga/json',[ProfileController::class,'json'])->name('warga.json');
+    Route::get('/kk/json',[KartuKeluargaController::class,'json'])->name('kk.json');
     Route::post('/kk',[KartuKeluargaController::class,'store']);
+    Route::get('/ktm',[SuratController::class,'ktm']);
+    Route::get('/ktm/json',[SuratController::class,'jsonKTM'])->name('ktm.json');
     Route::get('/ktm/{id}',[SuratController::class,'showKTM']);
     Route::get('/berita/json',[BeritaController::class,'json'])->name('berita.json');
     Route::resource('berita',BeritaController::class);
 });
 // Route Admin End
 
+
+// Route Sensus Start
+    Route::middleware(['auth','petugas-sensus','preventBack'])->group(function(){
+        Route::get('/sensus', function(){
+            return view('sensus');
+        });
+        Route::get('/sensus-kk',[KartuKeluargaController::class,'create']);
+        Route::get('/sensus-penduduk',[ProfileController::class,'create']);
+
+    });
+// Route Sensus End
 // Route Warga Start
 Route::middleware(['auth','warga','preventBack'])->group(function(){
     Route::get('/ktm',[SuratController::class,'createKTM']);

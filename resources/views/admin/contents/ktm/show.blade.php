@@ -8,11 +8,11 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
 
-    <title>sktm</title>
+    <title>Surat KTM</title>
   </head>
   <body>
     <div class="container-fluid">
-        <img class="d-block mx-auto" src="{{ asset('img/kop-sktm.jpg') }}" alt="" style="width:90vw">
+        <img class="d-block mx-auto" src="{{ asset('img/kop-surat.JPG') }}" alt="" style="width:90vw">
         <hr style="border-width: 3px;border-color: black;width: 90vw;">
     </div>
     <div class="container-fluid mt-4">
@@ -62,6 +62,10 @@
 
         </div>
     </div>
-
+    <script>
+        window.onload = function(){
+            window.print();
+        };
+    </script>
   </body>
 </html>

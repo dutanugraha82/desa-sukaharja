@@ -46,7 +46,7 @@
     <hr class="sidebar-divider">
 
     <li class="nav-item">
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="/admin/warga">
             <i class="fas fa-users"></i>
             <span>Warga</span></a>
     </li>
@@ -63,7 +63,7 @@
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Jenis Surat:</h6>
                 <a class="collapse-item" href="#">Domistik</a>
-                <a class="collapse-item" href="#">KTM</a>
+                <a class="collapse-item" href="/admin/ktm">KTM</a>
                 <a class="collapse-item" href="#">SKU-Dalam</a>
                 <a class="collapse-item" href="#">SKU-Luar</a>
             </div>

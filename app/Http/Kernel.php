@@ -70,5 +70,6 @@ class Kernel extends HttpKernel
         'pelayanan' => \App\Http\Middleware\Pelayanan::class,
         'warga' => \App\Http\Middleware\Warga::class,
         'preventBack' => \App\Http\Middleware\PreventBack::class,
+        'petugas-sensus' => \App\Http\Middleware\PetugasSensus::class,
     ];
 }

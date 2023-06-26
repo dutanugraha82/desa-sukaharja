@@ -1,20 +1,18 @@
 @extends('admin.master')
 @section('pageTitle')
-    kartu-keluarga
+    surat-ktm
 @endsection
 @section('content')
 <div class="card p-3">
-    <h5>Data Kartu Keluarga</h5>
-    <a href="/admin/kk/create" class="btn btn-primary my-4" style="width: 150px">Tambah Data <sup>+</sup></a>
-    <table id="kk-table" class="table table-hover table-striped">
+    <h5>Data Surat KTM Masuk</h5>
+    <table id="ktm-table" class="table table-hover table-striped">
       <thead>
           <tr>
               <th scope="col">No</th>
-              <th scope="col">No KK</th>
-              <th scope="col">Nama Kepala Keluarga</th>
-              <th scope="col">Alamat</th>
-              <th scope="col">Rt</th>
-              <th scope="col">Rw</th>
+              <th scope="col">Nama Pengaju</th>
+              <th scope="col">Nama Anak</th>
+              <th scope="col">Tujuan Sekolah</th>
+              <th scope="col">Tanggal Diajukan</th>
               <th scope="col">Action</th>
           </tr>
       </thead>
@@ -24,7 +22,7 @@
 @push('js')
     <script>
         $(function (){
-        let table = $('#kk-table').DataTable({
+        let table = $('#ktm-table').DataTable({
             processing:true,
             serverSide:true,
             responsive:{
@@ -37,14 +35,13 @@
                 orderable:false,
                 targets:0
             }],
-            ajax:"{{ route('kk.json') }}",
+            ajax:"{{ route('ktm.json') }}",
             columns: [
                 {data: 'DT_RowIndex'},
-                {data: 'no_kk', name: 'no_kk'},
-                {data: 'nama_kepala_keluarga', name: 'nama_kepala_keluarga'},
-                {data: 'alamat', name: 'alamat'},
-                {data: 'rt', name: 'rt'},
-                {data: 'rw', name: 'rw'},
+                {data: 'nama_ortu', name: 'nama_ortu'},
+                {data: 'nama_anak', name: 'nama_anak'},
+                {data: 'sekolah', name: 'sekolah'},
+                {data: 'created_at', name: 'created_at'},
                 {data: 'action', name: 'action'},
             ]
         });

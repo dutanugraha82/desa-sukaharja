@@ -18,6 +18,20 @@ class ProfileController extends Controller
         return view('admin.contents.profiles.index');
     }
 
+    public function json(){
+        $warga = Profiles::select('*')->orderBy('created_at','desc')->get();
+        return datatables()->of($warga)
+        ->addIndexColumn()
+        ->addColumn('action', function($warga){
+            return ' <div class="d-flex">   
+                    <a href="/admin/warga/'.$warga->id.'/edit" class="btn  btn-warning" style="width:80px;">Edit</a>
+                    
+                    </div>';
+        })
+        ->rawColumns(['action'])
+        ->make(true);
+    }
+
     public function create(){
        $data = KartuKeluarga::all();
         return view('admin.contents.profiles.create', compact('data'));

@@ -13,6 +13,26 @@ class KartuKeluargaController extends Controller
         return view('admin.contents.kk.index');
     }
 
+    public function json(){
+        $kk = KartuKeluarga::select('*')->orderBy('created_at','desc')->get();
+        return datatables()->of($kk)
+        ->addIndexColumn()
+        ->addColumn('action', function($kk){
+            return ' <div class="d-flex">   
+                    <a href="/admin/kk/'.$kk->id.'/edit" class="btn  btn-warning" style="width:80px;">Edit</a>
+                    
+                    </div>';
+        })
+        ->addColumn('alamat', function($kk){
+            return Crypt::decrypt($kk['alamat']);
+        })
+        ->addColumn('no_kk', function($kk){
+            return Crypt::decrypt($kk['no_kk']);
+        })
+        ->rawColumns(['action','alamat','no_kk'])
+        ->make(true);
+    }
+
     public function create(){
         return view('admin.contents.kk.create');
     }
