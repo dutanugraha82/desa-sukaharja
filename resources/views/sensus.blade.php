@@ -17,21 +17,44 @@
             font-size: 0.2em;
             text-align: center;
         }
+        .bg-jumbotron{
+          background: rgb(180,225,255);
+          background: linear-gradient(90deg, rgba(180,225,255,1) 0%, rgba(117,214,255,0.3086484593837535) 5%, rgba(217,213,213,1) 100%);
+        }
     </style>
   </head>
   <body>
     @include('sweetalert::alert')
-    <div class="container" style="height: 20rem; margin-top:6rem;">
-        <div class="d-flex justify-content-around justify-content-center">
+    <div class="jumbotron jumbotron-fluid bg-jumbotron">
+      <div class="container">
+        <h4 class="text-center text-md-left" style="font-size: 2.3em; font-weight: 200"><b>Sensus Sukaharja</b></h4>
+        <hr>
+        <p style="font-size: 1.5em; text-align:justify;">Selamat datang di halaman sensus penduduk desa Sukaharja</p style="font-size: 2em">
+      </div>
+    </div>
+    <div class="container mt-4">
+        <div class="row">
+          <div class="col-6 text-center">
             <a class="text-dark" href="/sensus-kk"><i class='bx bxs-book-content icon text-center'><p>Sensus KK</p></i></a>
             
+          </div>
+          <div class="col-6 text-center">
             <a class="text-dark" href="/sensus-penduduk"><i class='bx bx-male-female icon text-center'><p>Sensus Penduduk</p></i></a><br>
-            
+          </div>
         </div>
-        <form action="/logout" method="POST">
+        <div class="card mt-4">
+          <div class="card-header">
+            Catatan
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">Silahkan untuk mengisi sensus kk terlebih dahulu, Bila no kk sudah diisi, bisa dilanjut ke sensus penduduk untuk anggota dalam kartu keluarga dengan no kk yang sama.</h5>
+             <form action="/logout" method="POST">
             @csrf
-            <button type="submit" class="btn btn-danger">Logout</button>
-        </form>
+            <button type="submit" class="btn btn-danger" onclick="return confirm('yakin ingin logout?')">Logout</button>
+            </form>
+          </div>
+        </div>
+       
     </div>
 
 

@@ -4,7 +4,8 @@
 @endsection
 @section('content')
 <div class="container">
-  <h3 class="text-center">Selamat Datang di Situs Resmi Desa Sukaharja Karawang</h3>
+  <h3 class="text-center fs-merriweathersans" data-aos="zoom-in-up" data-aos-delay="30"
+  data-aos-duration="1500">Selamat Datang di Situs Resmi Desa Sukaharja Karawang</h3>
   <hr>
   <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-inner">

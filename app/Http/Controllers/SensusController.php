@@ -1,44 +1,59 @@
 <?php
 
-namespace App\Http\Controllers\AdminDesa;
+namespace App\Http\Controllers;
 
 use Carbon\Carbon;
 use App\Models\User;
 use App\Models\Profiles;
-use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Models\KartuKeluarga;
-use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Crypt;
 use RealRashid\SweetAlert\Facades\Alert;
 
-class ProfileController extends Controller
+class SensusController extends Controller
 {
-    public function index(){
-        return view('admin.contents.profiles.index');
+    public function createKK(){
+        return view('sensus-kk');
     }
 
-    public function json(){
-        $warga = Profiles::select('*')->orderBy('created_at','desc')->get();
-        return datatables()->of($warga)
-        ->addIndexColumn()
-        ->addColumn('action', function($warga){
-            return ' <div class="d-flex">   
-                    <a href="/admin/warga/'.$warga->id.'/edit" class="btn  btn-warning" style="width:80px;">Edit</a>
-                    
-                    </div>';
-        })
-        ->rawColumns(['action'])
-        ->make(true);
+    public function storeKK(Request $request){
+        $request->validate([
+            'no_kk' => 'required|unique:kartu_keluarga',
+            'kepalaKeluarga' => 'required',
+            'alamat' => 'required',
+            'rt' => 'required',
+            'rw' => 'required',
+            'desa' => 'required',
+            'kecamatan' => 'required',
+            'kabupaten' => 'required',
+            'pos' => 'required',
+            'provinsi' => 'required',
+        ]);
+        
+        KartuKeluarga::create([
+            'no_kk' => Crypt::encrypt($request->no_kk),
+            'nama_kepala_keluarga' => $request->kepalaKeluarga,
+            'alamat' => Crypt::encrypt($request->alamat),
+            'rt' => $request->rt,
+            'rw' => $request->rw,
+            'desa' => $request->desa,
+            'kecamatan' => $request->kecamatan,
+            'kabupaten' => $request->kabupaten,
+            'pos' => $request->pos,
+            'provinsi' => $request->provinsi,
+        ]);
+        Alert::success('Berhasil!','data kk berhasil ditambahkan, silahkan masukan data penduduk');
+        return redirect('/sensus-penduduk');
     }
 
-    public function create(){
-       $data = KartuKeluarga::all();
-        return view('admin.contents.profiles.create', compact('data'));
+    public function createPenduduk(){
+       $data = DB::table('kartu_keluarga')->get();
+        return view('sensus-penduduk', compact('data'));
     }
 
-    public function store(Request $request){
+    public function storePenduduk(Request $request){
         $tanggalLahir = Carbon::parse($request->tanggalLahir)->format('dmY');
         $request->validate([
             'nama' => 'required',
@@ -78,7 +93,7 @@ class ProfileController extends Controller
             'profiles_id' => $profilesId,
 
         ]);
-        Alert::success('Berhasil!','data berhasil ditambahkan.');
-        return redirect('/admin/warga');
+        Alert::success('Berhasil!','data penduduk berhasil ditambahkan.');
+        return redirect('/sensus-penduduk');
     }
 }

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\KartuKeluarga;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class KartuKeluargaController extends Controller
 {
@@ -64,7 +65,7 @@ class KartuKeluargaController extends Controller
                         'pos' => $request->pos,
                         'provinsi' => $request->provinsi,
                     ]);
-
-                    return redirect('/admin/profiles/create');
+                    Alert::success('Berhasil!','data berhasil ditambahkan.');
+                    return redirect('/admin/kk');
                 }
     }

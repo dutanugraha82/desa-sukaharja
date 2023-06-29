@@ -7,6 +7,7 @@ use App\Http\Controllers\AdminDesa\ProfileController;
 use App\Http\Controllers\AdminDesa\DashboardController;
 use App\Http\Controllers\AdminDesa\KartuKeluargaController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\SensusController;
 use App\Http\Controllers\SuratController;
 use App\Http\Controllers\WargaController;
 
@@ -55,8 +56,10 @@ Route::middleware(['auth','admin','preventBack'])->prefix('admin')->group(functi
         Route::get('/sensus', function(){
             return view('sensus');
         });
-        Route::get('/sensus-kk',[KartuKeluargaController::class,'create']);
-        Route::get('/sensus-penduduk',[ProfileController::class,'create']);
+        Route::get('/sensus-kk',[SensusController::class,'createKK']);
+        Route::post('/sensus-kk',[SensusController::class,'storeKK']);
+        Route::get('/sensus-penduduk',[SensusController::class,'createPenduduk']);
+        Route::post('/sensus-penduduk',[SensusController::class,'storePenduduk']);
 
     });
 // Route Sensus End

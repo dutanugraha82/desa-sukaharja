@@ -7,10 +7,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     {{-- Box Icon --}}
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Merriweather Sans">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     {{-- fontSize --}}
     <style>
       .fs-icon{
           font-size: 4em;
+      }
+      .fs-merriweathersans{
+        font-family: "Merriweather Sans";
       }
   </style>
   @stack('css')
@@ -31,6 +36,10 @@
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+     AOS.init();
+    </script>
     @stack('js')
   </body>
 </html>
