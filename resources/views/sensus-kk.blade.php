@@ -24,6 +24,9 @@
                     <div class="mb-3">
                         <label for="nama">No Kartu Keluarga</label>
                         <input type="text" class="form-control" name="no_kk" id="kk" required>
+                        @error('no_kk')
+                        <p class="text-danger"><sup>*</sup>No KK harus 16 Digit</p>
+                        @enderror
                     </div>
 
                     <div class="mb-3">

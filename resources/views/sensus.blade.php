@@ -42,7 +42,7 @@
             <a class="text-dark" href="/sensus-penduduk"><i class='bx bx-male-female icon text-center'><p>Sensus Penduduk</p></i></a><br>
           </div>
         </div>
-        <div class="card mt-4">
+        <div class="card mt-5">
           <div class="card-header">
             Catatan
           </div>

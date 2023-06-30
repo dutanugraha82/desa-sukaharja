@@ -25,6 +25,9 @@
                     <div class="mb-3">
                         <label for="nama">NIK</label>
                         <input type="text" class="form-control" name="nik" required>
+                        @error('nik')
+                            <p class="text-danger"><sup>*</sup>NIK harus 16 Digit</p>
+                        @enderror
                     </div>
                     <div class="mb-3">
                         <label for="nama">Jenis Kelamin</label>

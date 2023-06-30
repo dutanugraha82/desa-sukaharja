@@ -42,13 +42,12 @@ class ProfileController extends Controller
         $tanggalLahir = Carbon::parse($request->tanggalLahir)->format('dmY');
         $request->validate([
             'nama' => 'required',
-            'nik' => 'required|unique:profiles',
+            'nik' => 'required|unique:profiles|min:16',
             'jk' => 'required',
             'kartu_keluarga_id' => 'required',
             'tempatLahir' => 'required',
             'tanggalLahir' => 'required',
             'agama' => 'required',
-            'pendidikan' => 'required',
             'status_perkawinan' => 'required',
             'status_hubungan_dalam_keluarga' => 'required',
             'nama_ayah' => 'required',

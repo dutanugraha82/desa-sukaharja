@@ -41,7 +41,7 @@ class KartuKeluargaController extends Controller
     public function store(Request $request){
         // dd($request);
        $request->validate([
-                    'no_kk' => 'required|unique:kartu_keluarga',
+                    'no_kk' => 'required|unique:kartu_keluarga|min:16',
                     'kepalaKeluarga' => 'required',
                     'alamat' => 'required',
                     'rt' => 'required',
