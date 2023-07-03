@@ -1,15 +1,16 @@
 <?php
 
-use App\Http\Controllers\AdminDesa\BeritaController;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\SuratController;
+use App\Http\Controllers\WargaController;
+use App\Http\Controllers\SensusController;
+use App\Http\Controllers\AdminDesa\BeritaController;
 use App\Http\Controllers\AdminDesa\ProfileController;
 use App\Http\Controllers\AdminDesa\DashboardController;
 use App\Http\Controllers\AdminDesa\KartuKeluargaController;
-use App\Http\Controllers\HomeController;
-use App\Http\Controllers\SensusController;
-use App\Http\Controllers\SuratController;
-use App\Http\Controllers\WargaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -73,6 +74,17 @@ Route::middleware(['auth','warga','preventBack'])->group(function(){
 Route::get('/layanan-desa', function () {
     return view('UserPages.layout.layanan-desa');
 });
+
+Route::get('/data-penduduk', function (){
+    $data = DB::table('profiles')->get();
+    if(request()->ajax()){
+        return datatables()
+        ->of($data)
+        ->addIndexColumn()
+        ->make(true);
+    }
+    return view('UserPages.layout.data-penduduk');
+})->name('data-penduduk');
 
 Route::get('/statistik', function(){
     return view('UserPages.layout.statistik');

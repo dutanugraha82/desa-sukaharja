@@ -18,8 +18,10 @@
                     </a>
                 </div>
                 <div class="col-6 col-md-4 text-center mb-3">
+                    <a href="/data-penduduk" class="text-dark">
                     <i class='bx bxs-user-badge fs-icon'></i>
                     <p>Data Penduduk</p>
+                    </a>
                 </div>
                 <div class="col-6 col-md-4 text-center mb-3">
                     <i class='bx bxs-user-plus fs-icon'></i>
@@ -42,24 +44,22 @@
     </div>
     {{-- Modal Layanan-Surat --}}
     <div class="modal fade" id="layanan-surat" tabindex="-1" aria-labelledby="layanan-surat" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
         <div class="modal-content">
             <div class="modal-header">
             <h5 class="modal-title" id="layanan-surat">Layanan Surat</h5>
          
             </div>
-            <div class="modal-body">
-                <div class="d-flex justify-content-around">
-                    <a class="btn btn-primary" href="/ktm" style="width: 100px">KTM</a>
-                </div>
-                <div class="d-flex justify-content-around mt-3">
-                    <a class="btn btn-primary" href="#" style="width: 120px">SKU Dalam</a>
-                    <a class="btn btn-primary" href="#" style="width: 120px">SKU Luar</a>
-                </div>
-                
+            <div class="modal-body text-center d-block">
+                <a class="mb-4 btn btn-primary" style="width: 10rem" href="/ktm">Surat Keterangan Tidak Mampu</a><br>
+                <a class="mb-4 btn btn-primary" style="width: 10rem" href="#">Surat Keterangan Usaha (dalam)</a><br>
+                <a class="mb-4 btn btn-primary" style="width: 10rem" href="#">Surat Keterangan Usaha (luar)</a><br>
+                <a class="mb-4 btn btn-primary" style="width: 10rem" href="/ktm">Surat Keterangan Domisili Dalam</a><br>
+                <a class="mb-4 btn btn-primary" style="width: 10rem" href="#">Surat Keterangan Sudah Menikah</a><br>
+                <a class="mb-4 btn btn-primary" style="width: 10rem" href="#">Surat Keterangan Umum</a><br>
             </div>
             <div class="modal-footer">
-                <p>Klik dimana saja untuk menutup</p>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
             </div>
         </div>
         </div>
