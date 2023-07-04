@@ -1,5 +1,5 @@
 @extends('UserPages.master')
-@section('pageTitle')
+@section('title')
     data-penduduk
 @endsection
 @section('content')
@@ -8,11 +8,12 @@
         <h5>Data Penduduk</h5>
         <table class="table table-hover" id="warga-table">
             <thead>
-              <tr>
-                <th scope="col">Nama</th>
-                <th scope="col">Jenis Kelamin</th>
-                <th scope="col">Status</th>
-                <th scope="col">Pekerjaan</th>
+                <tr>
+                  <th scope="col">No</th>
+                  <th scope="col">Nama</th>
+                  <th scope="col">Jenis Kelamin</th>
+                  <th scope="col">Status</th>
+                  <th scope="col">Pekerjaan</th>
               </tr>
             </thead>
           </table>
@@ -43,6 +44,7 @@
               {data: 'DT_RowIndex'},
               {data: 'nama', name: 'nama'},
               {data: 'jk', name: 'jk'},
+              {data: 'status_perkawinan', name: 'status_perkawinan'},
               {data: 'jenis_pekerjaan', name: 'jenis_pekerjaan'},
           ]
       });

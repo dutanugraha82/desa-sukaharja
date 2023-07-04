@@ -76,7 +76,7 @@ Route::get('/layanan-desa', function () {
 });
 
 Route::get('/data-penduduk', function (){
-    $data = DB::table('profiles')->get();
+    $data = DB::table('profiles')->orderBy('created_at','desc')->get();
     if(request()->ajax()){
         return datatables()
         ->of($data)
