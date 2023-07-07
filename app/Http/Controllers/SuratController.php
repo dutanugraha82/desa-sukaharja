@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use Carbon\Carbon;
 use App\Models\KTM;
+use App\Models\SKU;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Crypt;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class SuratController extends Controller
 {
@@ -90,19 +92,69 @@ class SuratController extends Controller
     }
 
     public function createSKU(){
-        $data = DB::table('profiles')->join('users','profiles.id','=','users.profiles_id')->where('users.id','=', auth()->user()->id)->get();
-        // dd($data);
+        $KK = DB::table('profiles')->where('profiles.id','=', auth()->user()->profiles_id)->join('users','profiles.id','=','users.profiles_id')->get('kartu_keluarga_id');
+        foreach ($KK as $item) {
+            $idKK = $item->kartu_keluarga_id;
+        }
+        $data = DB::table('kartu_keluarga')->where('kartu_keluarga.id','=',$idKK)->join('profiles','kartu_keluarga.id','=','profiles.kartu_keluarga_id')->get();
+
         foreach ($data as $item) {
+            $nama = $item->nama;
             $nik = Crypt::decrypt($item->nik);
-            $ttl = $item->tempat_lahir . ', ' . Carbon::parse($item->tanggal_lahir)->format('d m Y');
-            
+            $ttl = $item->tempat_lahir.', '. Carbon::parse($item->tanggal_lahir)->format('d m Y');
+            $jk = $item->jk;
+            $agama = $item->agama;
+            $pekerjaan = $item->jenis_pekerjaan;
+            $alamat = Crypt::decrypt($item->alamat).' RT.'.$item->rt . '/' . $item->rw . ' Desa ' . $item->desa . ' Kec. ' . $item->kecamatan . ',' . $item->kabupaten;
         }
 
-        dd($ttl);
-        return view('UserPages.layout.sku');
+        // dd($alamat);
+        return view('UserPages.layout.sku', compact('nama','nik','ttl','jk','agama','pekerjaan','alamat'));
     }
 
     public function storeSKU(Request $request){
+        $request->validate([
+            'nama' => 'required',
+            'nik' => 'required',
+            'ttl' => 'required',
+            'jk' => 'required',
+            'agama' => 'required',
+            'pekerjaan' => 'required',
+            'alamat' => 'required',
+            'jenis_usaha' => 'required',
+            'penghasilan' => 'required',
+            'tahun' => 'required',
+        ]);
 
+        DB::table('sku')->insert([
+            'users_id' => auth()->user()->id,
+            'nama' => $request->nama,
+            'nik' => $request->nik,
+            'ttl' => $request->ttl,
+            'jk' => $request->jk,
+            'agama' => $request->agama,
+            'pekerjaan' => $request->pekerjaan,
+            'alamat' => $request->alamat,
+            'jenis_usaha' => $request->jenis_usaha,
+            'penghasilan' => $request->penghasilan,
+            'tahun' => $request->tahun,
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+
+        ]);
+
+        Alert::success('Berhasil','Silahkan mengunjungi kantor Desa!');
+
+        return redirect('/layanan-desa');
+    }
+
+    public function showSKU($id){
+        $data = DB::table('sku')->where('id','=',$id)->get();
+
+        foreach ($data as $item) {
+            $tanggal_dibuat = Carbon::parse($item->created_at)->isoFormat('dddd D MMMM Y');
+        }
+        // dd($data);
+        return view('admin.contents.sku-dalam.show', compact('data','tanggal_dibuat'));
     }
 }

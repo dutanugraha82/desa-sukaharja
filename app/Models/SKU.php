@@ -19,6 +19,9 @@ class SKU extends Model
         'pekerjaan',
         'agama',
         'alamat',
+        'penghasilan',
+        'jenis_usaha',
+        'tahun',
         'created_at',
         'updated_at',
     ];

@@ -24,6 +24,9 @@ class CreateSkuTable extends Migration
             $table->string('pekerjaan');
             $table->string('agama');
             $table->string('alamat');
+            $table->string('penghasilan');
+            $table->string('jenis_usaha');
+            $table->string('tahun');
             $table->timestamps();
         });
     }

@@ -46,7 +46,9 @@ Route::middleware(['auth','admin','preventBack'])->prefix('admin')->group(functi
     Route::get('/ktm',[SuratController::class,'ktm']);
     Route::get('/ktm/json',[SuratController::class,'jsonKTM'])->name('ktm.json');
     Route::get('/ktm/{id}',[SuratController::class,'showKTM']);
+    Route::get('/sku-dalam/{id}',[SuratController::class,'showSKU']);
     Route::get('/berita/json',[BeritaController::class,'json'])->name('berita.json');
+
     Route::resource('berita',BeritaController::class);
 });
 // Route Admin End
@@ -69,7 +71,7 @@ Route::middleware(['auth','warga','preventBack'])->group(function(){
     Route::get('/ktm',[SuratController::class,'createKTM']);
     Route::post('/ktm',[SuratController::class,'storeKTM']);
     Route::get('/sku-dalam',[SuratController::class,'createSKU']);
-    
+    Route::post('/sku-dalam',[SuratController::class,'storeSKU']);
 });
 // Route Warga End
 
