@@ -88,4 +88,21 @@ class SuratController extends Controller
         }
         return view('admin.contents.ktm.show',compact('data','tanggal_dibuat'));
     }
+
+    public function createSKU(){
+        $data = DB::table('profiles')->join('users','profiles.id','=','users.profiles_id')->where('users.id','=', auth()->user()->id)->get();
+        // dd($data);
+        foreach ($data as $item) {
+            $nik = Crypt::decrypt($item->nik);
+            $ttl = $item->tempat_lahir . ', ' . Carbon::parse($item->tanggal_lahir)->format('d m Y');
+            
+        }
+
+        dd($ttl);
+        return view('UserPages.layout.sku');
+    }
+
+    public function storeSKU(Request $request){
+
+    }
 }

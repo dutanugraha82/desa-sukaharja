@@ -68,6 +68,8 @@ Route::middleware(['auth','admin','preventBack'])->prefix('admin')->group(functi
 Route::middleware(['auth','warga','preventBack'])->group(function(){
     Route::get('/ktm',[SuratController::class,'createKTM']);
     Route::post('/ktm',[SuratController::class,'storeKTM']);
+    Route::get('/sku-dalam',[SuratController::class,'createSKU']);
+    
 });
 // Route Warga End
 

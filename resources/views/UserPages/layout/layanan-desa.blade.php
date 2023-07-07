@@ -18,7 +18,7 @@
                     </a>
                 </div>
                 <div class="col-6 col-md-4 text-center mb-3">
-                    <a href="/data-penduduk" class="text-dark">
+                    <a href="/data-penduduk" class="text-dark nav-link">
                     <i class='bx bxs-user-badge fs-icon'></i>
                     <p>Data Penduduk</p>
                     </a>
@@ -52,9 +52,9 @@
             </div>
             <div class="modal-body text-center d-block">
                 <a class="mb-4 btn btn-primary" style="width: 10rem" href="/ktm">Surat Keterangan Tidak Mampu</a><br>
-                <a class="mb-4 btn btn-primary" style="width: 10rem" href="#">Surat Keterangan Usaha (dalam)</a><br>
+                <a class="mb-4 btn btn-primary" style="width: 10rem" href="/sku-dalam">Surat Keterangan Usaha (dalam)</a><br>
                 <a class="mb-4 btn btn-primary" style="width: 10rem" href="#">Surat Keterangan Usaha (luar)</a><br>
-                <a class="mb-4 btn btn-primary" style="width: 10rem" href="/ktm">Surat Keterangan Domisili Dalam</a><br>
+                <a class="mb-4 btn btn-primary" style="width: 10rem" href="#">Surat Keterangan Domisili Dalam</a><br>
                 <a class="mb-4 btn btn-primary" style="width: 10rem" href="#">Surat Keterangan Sudah Menikah</a><br>
                 <a class="mb-4 btn btn-primary" style="width: 10rem" href="#">Surat Keterangan Umum</a><br>
             </div>

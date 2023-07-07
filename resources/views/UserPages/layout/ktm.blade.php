@@ -4,6 +4,8 @@
 @endsection
 @section('content')
     <div class="container">
+        <h5 class="text-center">Formulir Pengajuan KTM</h5>
+        <hr>
         <form action="/ktm" method="POST">
             @csrf
             <div class="row">
