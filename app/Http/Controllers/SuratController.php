@@ -91,6 +91,30 @@ class SuratController extends Controller
         return view('admin.contents.ktm.show',compact('data','tanggal_dibuat'));
     }
 
+    public function skuDalam(){
+        return view('admin.contents.sku-dalam.index');
+    }
+
+    public function skuDalamJson(){
+        $skuDalam = SKU::select('*')->orderBy('created_at','desc')->get();
+        return datatables()->of($skuDalam)
+        ->addIndexColumn()
+        ->addColumn('action', function($skuDalam){
+            return ' <div class="d-flex">   
+                    <a href="/admin/sku-dalam/'.$skuDalam->id.'/edit" class="btn  btn-warning" style="width:80px;">Edit</a>
+                    <a href="/admin/sku-dalam/'.$skuDalam->id.'" class="btn mx-3 btn-primary">Preview</a>
+                    <a href="/admin/sku-dalam/'.$skuDalam->id.'" class="btn mx-3 btn-primary"><i class="fa fa-print"></i></a>
+                    </div>';
+        })
+        ->addColumn('created_at', function($skuDalam){
+            return Carbon::parse($skuDalam['created_at'])->isoFormat('dddd, D MMMM Y');
+        })
+        ->rawColumns(['action','created_at'])
+        ->make(true);
+    }
+
+    
+
     public function createSKU(){
         $KK = DB::table('profiles')->where('profiles.id','=', auth()->user()->profiles_id)->join('users','profiles.id','=','users.profiles_id')->get('kartu_keluarga_id');
         foreach ($KK as $item) {

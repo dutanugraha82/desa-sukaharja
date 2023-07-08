@@ -46,6 +46,8 @@ Route::middleware(['auth','admin','preventBack'])->prefix('admin')->group(functi
     Route::get('/ktm',[SuratController::class,'ktm']);
     Route::get('/ktm/json',[SuratController::class,'jsonKTM'])->name('ktm.json');
     Route::get('/ktm/{id}',[SuratController::class,'showKTM']);
+    Route::get('/sku-dalam',[SuratController::class,'skuDalam']);
+    Route::get('/sku-dalam/json',[SuratController::class,'skuDalamJson'])->name('sku-dalam.json');
     Route::get('/sku-dalam/{id}',[SuratController::class,'showSKU']);
     Route::get('/berita/json',[BeritaController::class,'json'])->name('berita.json');
 

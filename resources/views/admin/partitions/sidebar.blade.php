@@ -64,7 +64,7 @@
                 <h6 class="collapse-header">Jenis Surat:</h6>
                 <a class="collapse-item" href="#">Domistik</a>
                 <a class="collapse-item" href="/admin/ktm">KTM</a>
-                <a class="collapse-item" href="#">SKU-Dalam</a>
+                <a class="collapse-item" href="/admin/sku-dalam">SKU-Dalam</a>
                 <a class="collapse-item" href="#">SKU-Luar</a>
             </div>
         </div>
