@@ -79,7 +79,7 @@ class SuratController extends Controller
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ]);
-
+         Alert::success('Berhasil','Silahkan mengunjungi kantor Desa!');
         return redirect('/layanan-desa');
     }
 
