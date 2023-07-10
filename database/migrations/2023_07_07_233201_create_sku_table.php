@@ -16,7 +16,7 @@ class CreateSkuTable extends Migration
         Schema::create('sku', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('users_id');
-            $table->foreign('users_id')->references('id')->on('users');
+            $table->foreign('users_id')->references('id')->on('users')->nullOnDelete();
             $table->string('nama');
             $table->string('ttl');
             $table->string('nik');

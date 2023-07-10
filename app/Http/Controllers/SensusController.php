@@ -19,6 +19,16 @@ class SensusController extends Controller
     }
 
     public function storeKK(Request $request){
+        $dataKK = DB::table('kk')->where('kk','=',$request->no_kk)->get('kk');
+        // dd($dataKK);
+        if (!$dataKK->isEmpty()) {
+            Alert::error('Gagal!','No KK Sudah Ada');
+            return redirect()->back();
+        }
+
+        DB::table('kk')->insert([
+            'kk' => $request->no_kk,
+        ]);
         $request->validate([
             'no_kk' => 'required|unique:kartu_keluarga',
             'kepalaKeluarga' => 'required',
@@ -55,6 +65,11 @@ class SensusController extends Controller
 
     public function storePenduduk(Request $request){
         $tanggalLahir = Carbon::parse($request->tanggalLahir)->format('dmY');
+        $nik = DB::table('users')->where('username','=',$request->nik)->get('username');
+        if (!$nik->isEmpty()) {
+            Alert::error('Gagal','No NIK sudah terdaftar!');
+            return redirect()->back();
+        } 
         $request->validate([
             'nama' => 'required',
             'nik' => 'required|unique:profiles|min:16',

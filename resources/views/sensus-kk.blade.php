@@ -10,6 +10,7 @@
     <title>Sensus Kartu Keluarga</title>
   </head>
   <body>
+    @include('sweetalert::alert')
     <h5 class="text-center mt-5">Sensus Kartu Keluarga</h5>
     <hr>
     <div class="container">

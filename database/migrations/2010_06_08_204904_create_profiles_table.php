@@ -16,7 +16,7 @@ class CreateProfilesTable extends Migration
         Schema::create('profiles', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('kartu_keluarga_id');
-            $table->foreign('kartu_keluarga_id')->references('id')->on('kartu_keluarga');
+            $table->foreign('kartu_keluarga_id')->references('id')->on('kartu_keluarga')->nullOnDelete();
             $table->string('nama');
             $table->string('nik')->unique();
             $table->enum('jk',['Laki-Laki','Perempuan']);

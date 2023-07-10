@@ -32,6 +32,7 @@
     <!-- Page Wrapper -->
     <div id="wrapper">
         {{-- sidebar --}}
+        @include('sweetalert::alert')
        @include('admin.partitions.sidebar')
        {{-- end sidebar --}}
 

@@ -16,7 +16,7 @@ class CreateKtmTable extends Migration
         Schema::create('ktm', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('users_id');
-            $table->foreign('users_id')->references('id')->on('users');
+            $table->foreign('users_id')->references('id')->on('users')->nullOnDelete();
             $table->string('nama_ortu');
             $table->string('ttl_ortu');
             $table->string('jk_ortu');

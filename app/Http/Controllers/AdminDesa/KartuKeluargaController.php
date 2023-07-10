@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\AdminDesa;
 
-use App\Http\Controllers\Controller;
-use App\Models\KartuKeluarga;
 use Illuminate\Http\Request;
+use App\Models\KartuKeluarga;
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Crypt;
 use RealRashid\SweetAlert\Facades\Alert;
 
@@ -39,7 +40,16 @@ class KartuKeluargaController extends Controller
     }
 
     public function store(Request $request){
-        // dd($request);
+        $dataKK = DB::table('kk')->where('kk','=',$request->no_kk)->get('kk');
+        if (!$dataKK->isEmpty()) {
+            Alert::error('Gagal!','No KK Sudah Ada');
+            return redirect()->back();
+        }
+
+        DB::table('kk')->insert([
+            'kk' => $request->no_kk,
+        ]);
+
        $request->validate([
                     'no_kk' => 'required|unique:kartu_keluarga|min:16',
                     'kepalaKeluarga' => 'required',

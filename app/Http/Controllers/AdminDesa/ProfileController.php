@@ -8,10 +8,12 @@ use App\Models\Profiles;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Models\KartuKeluarga;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Crypt;
 use RealRashid\SweetAlert\Facades\Alert;
+use Illuminate\Support\Facades\Validator;
 
 class ProfileController extends Controller
 {
@@ -40,19 +42,25 @@ class ProfileController extends Controller
 
     public function store(Request $request){
         $tanggalLahir = Carbon::parse($request->tanggalLahir)->format('dmY');
-        $request->validate([
-            'nama' => 'required',
-            'nik' => 'required|unique:profiles|min:16',
-            'jk' => 'required',
-            'kartu_keluarga_id' => 'required',
-            'tempatLahir' => 'required',
-            'tanggalLahir' => 'required',
-            'agama' => 'required',
-            'status_perkawinan' => 'required',
-            'status_hubungan_dalam_keluarga' => 'required',
-            'nama_ayah' => 'required',
-            'nama_ibu' => 'required',
-        ]);
+        $nik = DB::table('users')->where('username','=',$request->nik)->get('username');
+        if (!$nik->isEmpty()) {
+            Alert::error('Gagal','No NIK sudah terdaftar!');
+            return redirect()->back();
+        } 
+      $request->validate([
+        'nama' => 'required',
+        'nik' => 'required|unique:profiles|min:16',
+        'jk' => 'required',
+        'kartu_keluarga_id' => 'required',
+        'tempatLahir' => 'required',
+        'tanggalLahir' => 'required',
+        'agama' => 'required',
+        'status_perkawinan' => 'required',
+        'status_hubungan_dalam_keluarga' => 'required',
+        'nama_ayah' => 'required',
+        'nama_ibu' => 'required',
+      ]);
+
 
      $profilesId = Profiles::create([
         'kartu_keluarga_id' => $request->kartu_keluarga_id,
