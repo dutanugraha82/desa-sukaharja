@@ -35,8 +35,9 @@ class SuratController extends Controller
     }
 
     public function createKTM(){
-        $data = DB::table('kartu_keluarga')->join('profiles','kartu_keluarga.id','=','profiles.kartu_keluarga_id')->get();
-
+        $data = DB::table('kartu_keluarga')->join('profiles','kartu_keluarga.id','=','profiles.kartu_keluarga_id')
+                                           ->where('profiles.id','=',auth()->user()->profiles_id)->get();
+        // dd($data);
         foreach ($data as $item) {
             $alamat = Crypt::decrypt($item->alamat);
             $nik = Crypt::decrypt($item->nik);
@@ -116,11 +117,8 @@ class SuratController extends Controller
     
 
     public function createSKU(){
-        $KK = DB::table('profiles')->where('profiles.id','=', auth()->user()->profiles_id)->join('users','profiles.id','=','users.profiles_id')->get('kartu_keluarga_id');
-        foreach ($KK as $item) {
-            $idKK = $item->kartu_keluarga_id;
-        }
-        $data = DB::table('kartu_keluarga')->where('kartu_keluarga.id','=',$idKK)->join('profiles','kartu_keluarga.id','=','profiles.kartu_keluarga_id')->get();
+       $data = DB::table('kartu_keluarga')->join('profiles','kartu_keluarga.id','=','profiles.kartu_keluarga_id')
+                                           ->where('profiles.id','=',auth()->user()->profiles_id)->get();
 
         foreach ($data as $item) {
             $nama = $item->nama;

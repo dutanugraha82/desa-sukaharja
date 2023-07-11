@@ -1,5 +1,5 @@
 @extends('UserPages.master')
-@section('pageTitle')
+@section('title')
     pengajuan-ktm
 @endsection
 @section('content')
@@ -70,7 +70,10 @@
                     </div>
                 </div>
             </div>
-            <button type="submit" class="btn btn-primary mt-5">Ajukan Surat!</button>
+            <div class="d-flex justify-content-around mt-4">
+                <a href="/layanan-desa" class="btn btn-warning">Kembali</a>
+                <button type="submit" class="btn btn-primary">Ajukan Surat!</button>
+            </div>
         </form>
     </div>
 @endsection
