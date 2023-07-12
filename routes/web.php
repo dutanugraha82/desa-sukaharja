@@ -11,6 +11,7 @@ use App\Http\Controllers\AdminDesa\BeritaController;
 use App\Http\Controllers\AdminDesa\ProfileController;
 use App\Http\Controllers\AdminDesa\DashboardController;
 use App\Http\Controllers\AdminDesa\KartuKeluargaController;
+use App\Http\Controllers\StatistikController;
 
 /*
 |--------------------------------------------------------------------------
@@ -92,9 +93,7 @@ Route::get('/data-penduduk', function (){
     return view('UserPages.layout.data-penduduk');
 })->name('data-penduduk');
 
-Route::get('/statistik', function(){
-    return view('UserPages.layout.statistik');
-});
+Route::get('/statistik', [StatistikController::class,'index']);
 
 Route::get('/wilayah', function(){
     return view('UserPages.layout.wilayah');

@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -31,5 +32,14 @@ class Profiles extends Model
 
     public function kk(){
         return $this->hasOne(KartuKeluarga::class,'id');
+    }
+
+    public static function age($gender, $minAge, $maxAge){
+        $currentDate = now();
+        $minDate = $currentDate->subYear($maxAge)->format('Y-m-d');
+        $maxDate = $currentDate->addYear($maxAge-$minAge)->format('Y-m-d');
+        
+        return self::where('jk',$gender)->whereBetween('tanggal_lahir',[$minDate, $maxDate])->get();
+
     }
 }

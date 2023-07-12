@@ -77,18 +77,44 @@ const perkawinan = document.getElementById('perkawinan');
 const pekerjaan = document.getElementById('pekerjaan');
 const lahan = document.getElementById('lahan');
 
+var p05 = {{ Js::from($p05) }}
+var p517 = {{ Js::from($p517) }}
+var p1730 = {{ Js::from($p1730) }}
+var p3060 = {{ Js::from($p3060) }}
+var p60 = {{ Js::from($p60) }}
+
+var l05 = {{ Js::from($l05) }}
+var l517 = {{ Js::from($l517) }}
+var l1730 = {{ Js::from($l1730) }}
+var l3060 = {{ Js::from($l3060) }}
+var l60 = {{ Js::from($l60) }}
+
+var ts = {{ Js::from($tidakSekolah) }}
+var sd = {{ Js::from($sd) }}
+var smp = {{ Js::from($smp) }}
+var sma = {{ Js::from($sma) }}
+var diploma = {{ Js::from($diploma) }}
+var sarjana = {{ Js::from($sarjana) }}
+
+var belumKawin = {{ Js::from($belumKawin) }}
+var kawin = {{ Js::from($kawin) }}
+var cerai = {{ Js::from($cerai) }}
+var ceraiMati = {{ Js::from($ceraiMati) }}
+
+var bekerja = {{ Js::from($bekerja) }}
+var tidakBekerja = {{ Js::from($tidakBekerja) }}
 new Chart(kependudukan, {
   type: 'bar',
   data: {
     labels: ['0-5 thn', '5-17 thn', '17-30 thn', '30-60 thn', '60+ thn'],
     datasets: [{
       label: 'Laki-Laki',
-      data: [12, 19, 3, 5, 2],
+      data: [l05, l517, l1730, l3060, l60],
       borderWidth: 1
     },
     {
       label: 'Perempuan',
-      data: [12, 19, 3, 5, 2],
+      data: [p05, p517, p1730, p3060, p60],
       borderWidth: 1
     }],
   },
@@ -105,10 +131,10 @@ new Chart(kependudukan, {
 new Chart(pendidikan, {
   type: 'pie',
   data: {
-    labels: ['SD', 'SMP', 'SMA/Sederajat', 'Diploma', 'Sarjana','Tidak Sekolah'],
+    labels: ['SD', 'SMP', 'SMA/Sederajat', 'Diploma', 'S1/S2/S3','Tidak Sekolah'],
     datasets: [{
       label: 'Masyarakat',
-      data: [12, 19, 3, 5, 2, 0],
+      data: [sd, smp, sma, diploma, sarjana, ts],
       borderWidth: 1
     },
     ],
@@ -126,10 +152,10 @@ new Chart(pendidikan, {
 new Chart(perkawinan, {
   type: 'pie',
   data: {
-    labels: ['Kawin', 'Belum Kawin', 'Cerai Mati'],
+    labels: ['Kawin', 'Belum Kawin', 'Cerai', 'Cerai Mati'],
     datasets: [{
       label: 'Masyarakat',
-      data: [12, 19, 3],
+      data: [kawin, belumKawin, cerai, ceraiMati],
       borderWidth: 1
     },
   ],
@@ -150,7 +176,7 @@ new Chart(pekerjaan, {
     labels: ['Bekerja', 'Tidak-Bekerja'],
     datasets: [{
       label: 'Masyarakat',
-      data: [100,80],
+      data: [bekerja, tidakBekerja],
       borderWidth: 1
     }],
   },
