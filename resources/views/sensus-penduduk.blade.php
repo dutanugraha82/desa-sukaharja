@@ -62,18 +62,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="nama">Pendidikan</label>
-                        <select name="pendidikan" class="form-control" id="">
-                            <option value="">Pilih Pendidikan</option>
-                            <option value="SD">SD</option>
-                            <option value="SMP">SMP</option>
-                            <option value="SMA">SMA</option>
-                            <option value="D1">D1</option>
-                            <option value="D2">D2</option>
-                            <option value="D3">D3</option>
-                            <option value="S1">S1</option>
-                            <option value="S2">S2</option>
-                            <option value="S3">S3</option>
-                        </select>
+                       <input type="text" class="form-control" name="pendidikan">
                     </div>
                     <div class="mb-3">
                         <label for="nama">Jenis Pekerjaan</label>
@@ -81,22 +70,11 @@
                     </div>
                     <div class="mb-3">
                         <label for="nama">Status Perkawinan</label>
-                        <select name="status_perkawinan" class="form-control" id="" required>
-                            <option value="">Pilih Status Perkawinan</option>
-                            <option value="belum-kawin">Belum Kawin</option>
-                            <option value="kawin">Kawin</option>
-                            <option value="cerai">Cerai</option>
-                            <option value="cerai-mati">Cerai Mati</option>
-                        </select>
+                        <input type="text" class="form-control" name="status_perkawinan">
                     </div>
                     <div class="mb-3">
                         <label for="status">Status Hubungan Dalam Keluarga</label>
-                        <select name="status_hubungan_dalam_keluarga" class="form-control" required>
-                            <option value="">Pilih Status</option>
-                            <option value="anak">Anak</option>
-                            <option value="isteri">Isteri</option>
-                            <option value="kepala-keluarga">Kepala Keluarga</option>
-                        </select>
+                       <input type="text" class="form-control" name="status_hubungan_dalam_keluarga">
                     </div>
                     <div class="mb-3">
                         <label for="namaAyah">Nama Ayah</label>

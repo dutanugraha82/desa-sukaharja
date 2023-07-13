@@ -23,10 +23,10 @@ class CreateProfilesTable extends Migration
             $table->string('tempat_lahir');
             $table->date('tanggal_lahir');
             $table->string('agama');
-            $table->enum('pendidikan',['SD','SMP','SMA','D1','D2','D3','S1','S2','S3'])->nullable();
+            $table->string('pendidikan')->nullable();
             $table->string('jenis_pekerjaan')->nullable();
-            $table->enum('status_perkawinan',['kawin','belum-kawin','cerai','cerai-mati']);
-            $table->enum('status_hubungan_dalam_keluarga',['anak','isteri','kepala-keluarga'])->nullable();
+            $table->string('status_perkawinan');
+            $table->string('status_hubungan_dalam_keluarga')->nullable();
             $table->string('nama_ayah');
             $table->string('nama_ibu');
             $table->timestamps();
