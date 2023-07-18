@@ -16,7 +16,15 @@ class KartuKeluargaController extends Controller
     }
 
     public function json(){
-        $kk = KartuKeluarga::select('*')->orderBy('created_at','desc')->get();
+        $kk = KartuKeluarga::select('*')->orderBy('updated_at','desc')->get();
+        // $no_kk = [];
+        // $alamat = [];
+        // foreach ($kk as $item) {
+        //     $no_kk[] = Crypt::decrypt($item->no_kk);
+        //     $alamat[] = Crypt::decrypt($item->alamat);
+        // }
+
+        // dd($no_kk);
         return datatables()->of($kk)
         ->addIndexColumn()
         ->addColumn('action', function($kk){
@@ -25,13 +33,14 @@ class KartuKeluargaController extends Controller
                     
                     </div>';
         })
+        ->addColumn('no_kk', function($kk){
+            return Crypt::decrypt($kk['no_kk']) ;
+        })
         ->addColumn('alamat', function($kk){
             return Crypt::decrypt($kk['alamat']);
         })
-        ->addColumn('no_kk', function($kk){
-            return Crypt::decrypt($kk['no_kk']);
-        })
-        ->rawColumns(['action','alamat','no_kk'])
+        
+        ->rawColumns(['action','no_kk','alamat'])
         ->make(true);
     }
 
@@ -78,4 +87,41 @@ class KartuKeluargaController extends Controller
                     Alert::success('Berhasil!','data berhasil ditambahkan.');
                     return redirect('/admin/kk');
                 }
+
+        public function edit($id){
+          $data =  KartuKeluarga::find($id);
+            return view('admin.contents.kk.edit', compact('data'));
+        }
+
+        public function update(Request $request, $id){
+
+            // dd($request);
+            $request->validate([
+                'kepalaKeluarga' => 'required',
+                'no_kk' => 'required',
+                'alamat' => 'required',
+                'rt' => 'required',
+                'rw' => 'required',
+                'kecamatan' => 'required',
+                'kabupaten' => 'required',
+                'pos' => 'required',
+                'provinsi' => 'required',
+                'desa' => 'required',
+            ]);
+            KartuKeluarga::find($id)->update([
+                'nama_kepala_keluarga' => $request->kepalaKeluarga,
+                'no_kk' => Crypt::encrypt($request->no_kk),
+                'alamat' => Crypt::encrypt($request->alamat),
+                'rt' => $request->rt,
+                'rw' => $request->rw,
+                'kabupaten' => $request->kabupaten,
+                'pos' => $request->pos,
+                'provinsi' => $request->provinsi,
+                'desa' => $request->desa,
+                'kecamatan' => $request->kecamatan,
+            ]);
+
+            Alert::success('Berhasil!','data berhasil dirubah!');
+            return redirect('/admin/kk');
+        }
     }

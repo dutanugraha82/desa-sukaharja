@@ -6,7 +6,7 @@
 <div class="card p-3">
     <h5>Data Kartu Keluarga</h5>
     <a href="/admin/kk/create" class="btn btn-primary my-4" style="width: 150px">Tambah Data <sup>+</sup></a>
-    <table id="kk-table" class="table table-hover table-striped">
+    <table id="kk_table" class="table table-hover table-striped">
       <thead>
           <tr>
               <th scope="col">No</th>
@@ -24,7 +24,7 @@
 @push('js')
     <script>
         $(function (){
-        let table = $('#kk-table').DataTable({
+        let table = $('#kk_table').DataTable({
             processing:true,
             serverSide:true,
             responsive:{

@@ -38,6 +38,8 @@ Route::middleware(['auth','admin','preventBack'])->prefix('admin')->group(functi
     Route::get('/', [DashboardController::class,'index']);
     Route::get('/kk', [KartuKeluargaController::class,'index']);
     Route::get('/kk/create', [KartuKeluargaController::class,'create']);
+    Route::get('/kk/{id}/edit', [KartuKeluargaController::class,'edit']);
+    Route::put('/kk/{id}', [KartuKeluargaController::class,'update']);
     Route::get('/profiles/create', [ProfileController::class,'create']);
     Route::post('/profiles', [ProfileController::class,'store']);
     Route::get('/warga',[ProfileController::class,'index']);
