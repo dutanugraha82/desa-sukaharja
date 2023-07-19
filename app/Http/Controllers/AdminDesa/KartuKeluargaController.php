@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\KartuKeluarga;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Crypt;
 use RealRashid\SweetAlert\Facades\Alert;
 
@@ -17,14 +18,7 @@ class KartuKeluargaController extends Controller
 
     public function json(){
         $kk = KartuKeluarga::select('*')->orderBy('updated_at','desc')->get();
-        // $no_kk = [];
-        // $alamat = [];
-        // foreach ($kk as $item) {
-        //     $no_kk[] = Crypt::decrypt($item->no_kk);
-        //     $alamat[] = Crypt::decrypt($item->alamat);
-        // }
-
-        // dd($no_kk);
+    
         return datatables()->of($kk)
         ->addIndexColumn()
         ->addColumn('action', function($kk){
@@ -90,12 +84,12 @@ class KartuKeluargaController extends Controller
 
         public function edit($id){
           $data =  KartuKeluarga::find($id);
-            return view('admin.contents.kk.edit', compact('data'));
+          $kkOld = Crypt::decrypt($data->no_kk);
+        //   dd($noKK);
+            return view('admin.contents.kk.edit', compact('data','kkOld'));
         }
 
         public function update(Request $request, $id){
-
-            // dd($request);
             $request->validate([
                 'kepalaKeluarga' => 'required',
                 'no_kk' => 'required',
@@ -119,6 +113,11 @@ class KartuKeluargaController extends Controller
                 'provinsi' => $request->provinsi,
                 'desa' => $request->desa,
                 'kecamatan' => $request->kecamatan,
+            ]);
+
+            DB::table('kk')->where('kk','=',$request->kkOld)->update([
+                'kk' => $request->no_kk,
+                'updated_at' => Carbon::now(),
             ]);
 
             Alert::success('Berhasil!','data berhasil dirubah!');

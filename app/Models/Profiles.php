@@ -31,7 +31,7 @@ class Profiles extends Model
     }
 
     public function kk(){
-        return $this->hasOne(KartuKeluarga::class,'id');
+        return $this->belongsTo(KartuKeluarga::class,'kartu_keluarga_id');
     }
 
     public static function age($gender, $minAge, $maxAge){

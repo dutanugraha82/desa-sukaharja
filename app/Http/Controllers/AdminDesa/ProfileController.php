@@ -27,7 +27,7 @@ class ProfileController extends Controller
         ->addIndexColumn()
         ->addColumn('action', function($warga){
             return ' <div class="d-flex">   
-                    <a href="/admin/warga/'.$warga->id.'/edit" class="btn  btn-warning" style="width:80px;">Edit</a>
+                    <a href="/admin/profiles/'.$warga->id.'/edit" class="btn  btn-warning" style="width:80px;">Edit</a>
                     
                     </div>';
         })
@@ -87,5 +87,61 @@ class ProfileController extends Controller
         ]);
         Alert::success('Berhasil!','data berhasil ditambahkan.');
         return redirect('/admin/warga');
+    }
+
+    public function edit($id){
+        $data = DB::table('kartu_keluarga')
+                ->join('profiles','kartu_keluarga.id','=','profiles.kartu_keluarga_id')
+                ->where('profiles.id',$id)
+                ->get();
+        $kk = DB::table('kartu_keluarga')->get();
+        return view('admin.contents.profiles.edit', compact('data','kk'));
+    }
+
+    public function update(Request $request, $id){
+        $tanggalLahir = Carbon::parse($request->tanggalLahir)->format('dmY');
+
+
+        $request->validate([
+            'nama' => 'required',
+            'nik' => 'required',
+            'jk' => 'required',
+            'kartu_keluarga_id' => 'required',
+            'tempatLahir' => 'required',
+            'tanggalLahir' => 'required',
+            'agama' => 'required',
+            'pendidikan' => 'required',
+            'jenisPekerjaan' => 'required',
+            'status_perkawinan' => 'required',
+            'status_hubungan_dalam_keluarga' => 'required',
+            'nama_ayah' => 'required',
+            'nama_ibu' => 'required',
+        ]);
+
+        DB::table('profiles')->where('id',$id)->update([
+            'nama' => $request->nama,
+            'nik' => Crypt::encrypt($request->nik),
+            'jk' => $request->jk,
+            'kartu_keluarga_id' => $request->kartu_keluarga_id,
+            'tempat_lahir' => $request->tempatLahir,
+            'tanggal_lahir' => $request->tanggalLahir,
+            'agama' => $request->agama,
+            'pendidikan' => $request->pendidikan,
+            'jenis_pekerjaan' => $request->jenisPekerjaan,
+            'status_perkawinan' => $request->status_perkawinan,
+            'status_hubungan_dalam_keluarga' => $request->status_hubungan_dalam_keluarga,
+            'nama_ayah' => Crypt::encrypt($request->nama_ayah),
+            'nama_ibu' => Crypt::encrypt($request->nama_ibu),
+
+        ]);
+
+        DB::table('users')->where('profiles_id',$id)->update([
+            'username' => $request->nik,
+            'password' => Hash::make($tanggalLahir),
+        ]);
+
+        Alert::success('Berhasil!', 'Data berhasil disunting');
+        return redirect('/admin/profiles');
+
     }
 }

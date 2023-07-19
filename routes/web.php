@@ -42,8 +42,10 @@ Route::middleware(['auth','admin','preventBack'])->prefix('admin')->group(functi
     Route::put('/kk/{id}', [KartuKeluargaController::class,'update']);
     Route::get('/profiles/create', [ProfileController::class,'create']);
     Route::post('/profiles', [ProfileController::class,'store']);
-    Route::get('/warga',[ProfileController::class,'index']);
-    Route::get('/warga/json',[ProfileController::class,'json'])->name('warga.json');
+    Route::get('/profiles/{id}/edit', [ProfileController::class,'edit']);
+    Route::put('/profiles/{id}',[ProfileController::class,'update']);
+    Route::get('/profiles',[ProfileController::class,'index']);
+    Route::get('/profiles/json',[ProfileController::class,'json'])->name('warga.json');
     Route::get('/kk/json',[KartuKeluargaController::class,'json'])->name('kk.json');
     Route::post('/kk',[KartuKeluargaController::class,'store']);
     Route::get('/ktm',[SuratController::class,'ktm']);

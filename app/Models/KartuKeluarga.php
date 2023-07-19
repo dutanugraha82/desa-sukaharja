@@ -27,6 +27,6 @@ class KartuKeluarga extends Model
     ];
 
     public function profile(){
-        return $this->hasOne(Profiles::class,'kartu_keluarga_id');
+        return $this->hasMany(Profiles::class,'kartu_keluarga_id');
     }
 }

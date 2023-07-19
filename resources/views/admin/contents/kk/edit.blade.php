@@ -28,6 +28,7 @@
                         <div class="mb-3">
                             <label for="nama">No Kartu Keluarga</label>
                             <input type="text" class="form-control" name="no_kk" id="kk" value="{{ Crypt::decrypt($data->no_kk) }}" required>
+                            <input type="hidden" value="{{ $kkOld }}" name="kkOld">
                         </div>
 
                         <div class="mb-3">
