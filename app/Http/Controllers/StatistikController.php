@@ -30,13 +30,13 @@ class StatistikController extends Controller
        $diploma = DB::table('profiles')->whereIn('pendidikan',['D1','D2','D3'])->count();
        $sarjana = DB::table('profiles')->whereIn('pendidikan',['S1','S2','S3'])->count();
 
-       $kawin = DB::table('profiles')->where('status_perkawinan','kawin')->count();
-       $belumKawin = DB::table('profiles')->where('status_perkawinan','belum-kawin')->count();
-       $cerai = DB::table('profiles')->where('status_perkawinan','cerai')->count();
-       $ceraiMati = DB::table('profiles')->where('status_perkawinan','cerai-mati')->count();
+       $kawin = DB::table('profiles')->where('status_perkawinan','KAWIN')->count();
+       $belumKawin = DB::table('profiles')->where('status_perkawinan','BELUM KAWIN')->count();
+       $cerai = DB::table('profiles')->where('status_perkawinan','CERAI')->count();
+       $ceraiMati = DB::table('profiles')->where('status_perkawinan','CERAI MATI')->count();
 
        $bekerja = DB::table('profiles')->whereNotNull('jenis_pekerjaan')->count();
-       $tidakBekerja = DB::table('profiles')->whereNull('jenis_pekerjaan')->count();
+       $tidakBekerja = DB::table('profiles')->whereIn('jenis_pekerjaan',['IBU RUMAH TANGGA','PELAJAR/MAHASISWA'])->count();
     //    dd($pendidikanSarjana);
         // dd($bekerja);
         return view('UserPages.layout.statistik', compact('p05','p517','p1730','p3060','p60','l05','l517','l1730','l3060','l60','tidakSekolah','sd','smp','sma','diploma','sarjana','kawin','belumKawin','cerai','ceraiMati','bekerja','tidakBekerja'));
