@@ -59,7 +59,7 @@ class SensusController extends Controller
     }
 
     public function createPenduduk(){
-       $data = DB::table('kartu_keluarga')->get();
+       $data = DB::table('kartu_keluarga')->orderBy('created_at','desc')->get();
         return view('sensus-penduduk', compact('data'));
     }
 

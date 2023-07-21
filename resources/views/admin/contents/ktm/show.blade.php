@@ -25,13 +25,26 @@
             <p class="mb-5" style="font-size: 1.2em; text-align: justify;">Pemerintah Desa Sukaharja Kecamatan Telukjambe Timur Kabupaten Karawang menerangkan<br>
                 bahwa :</p>
                 <div style="margin-left: 60px;">
-                    <p style="font-size: 1.2em;">Nama&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: {{ $item->nama_ortu }}</p>
-                    <p style="font-size: 1.2em;">Tempat/Tgl Lahir &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: {{ $item->ttl_ortu }}</p>
-                    <p style="font-size: 1.2em;">Jenis Kelamin&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: {{ $item->jk_ortu }}</p>
-                    <p style="font-size: 1.2em;">Nik &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: {{ $item->nik }}</p>
-                    <p style="font-size: 1.2em;">Agama&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: {{ $item->agama }}</p>
-                    <p style="font-size: 1.2em;">Pekerjaan&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: {{ $item->pekerjaan }}</p>
-                    <p style="font-size: 1.2em;">Alamat asal&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: {{ $item->alamat }}</p>
+                    <div class="row">
+                        <div class="col-3">
+                            <p style="font-size: 1.2em;">Nama</p>
+                            <p style="font-size: 1.2em;">Tempat/Tgl Lahir</p>
+                            <p style="font-size: 1.2em;">Jenis Kelamin</p>
+                            <p style="font-size: 1.2em;">NIK</p>
+                            <p style="font-size: 1.2em;">Agama</p>
+                            <p style="font-size: 1.2em;">Pekerjaan</p>
+                            <p style="font-size: 1.2em;">Alamat asal</p>
+                        </div>
+                        <div class="col-9">
+                            <p style="font-size: 1.2em;">: {{ $item->nama_ortu }}</p>
+                            <p style="font-size: 1.2em;">: {{ $item->ttl_ortu }}</p>
+                            <p style="font-size: 1.2em;">: {{ $item->jk_ortu }}</p>
+                            <p style="font-size: 1.2em;">: {{ $item->nik }}</p>
+                            <p style="font-size: 1.2em;">: {{ $item->agama }}</p>
+                            <p style="font-size: 1.2em;">: {{ $item->pekerjaan }}</p>
+                            <p style="font-size: 1.2em;">: {{ $item->alamat }}</p>
+                        </div>
+                    </div>
                 </div>
 
             <div style="margin-top: 40px; width: 75vw;">

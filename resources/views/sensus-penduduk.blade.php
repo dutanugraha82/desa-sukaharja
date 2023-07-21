@@ -51,7 +51,7 @@
                         <input type="text" class="form-control" name="tempatLahir" required>
                     </div>
                     <div class="mb-3">
-                        <label for="nama">Tanggak Lahir</label>
+                        <label for="nama">Tanggal Lahir</label>
                         <input type="date" class="form-control" name="tanggalLahir" required>
                     </div>
                 </div>
