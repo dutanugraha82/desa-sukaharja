@@ -3,7 +3,8 @@
     Layanan Desa
 @endsection
 @section('content')
-    <div class="container">
+    <div class="container" data-aos="flip-right" data-aos-delay="30"
+    data-aos-duration="1500">
         <h4 class="text-center">Layanan Desa Sukaharja</h4>
         <hr>
         <div class="container-fluid">

@@ -31,11 +31,11 @@
   <hr>
 </div>
 
-<div class="container my-3">
+<div class="container my-4">
   <div id="tentang-desa">
-    <h4 class="mb-4">Tentang Desa : </h4>
     <div class="row mb-3">
-        <div class="col-md-4 d-flex">
+        <div class="col-md-4 d-flex" data-aos="flip-left" data-aos-delay="30"
+        data-aos-duration="1500">
           {{-- style="background-attachment: fixed; object-fit: cover" --}}
           <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-indicators">
@@ -64,10 +64,10 @@
             </button>
           </div>
         </div>
-        <div class="col-md-8 mt-3">
-            <div class="mb-2">
-                <h5><b>Desa Sukaharja</b></h5>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam quis, minus illum placeat unde porro voluptas magni necessitatibus facere animi explicabo culpa repellendus sint modi dignissimos fuga cumque nihil at!</p>
+        <div class="col-md-8 mt-3" data-aos="flip-right" data-aos-delay="30"
+        data-aos-duration="1500">
+            <div class="mb-4">
+                <h5 class="text-center"><b>Visi dan Misi Desa Sukaharja</b></h5>
             </div>
             <div class="mb-2">
                 <h5  class="mt-3">Visi : </h5>

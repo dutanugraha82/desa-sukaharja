@@ -13,7 +13,6 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Crypt;
 use RealRashid\SweetAlert\Facades\Alert;
-use Illuminate\Support\Facades\Validator;
 
 class ProfileController extends Controller
 {
@@ -26,9 +25,16 @@ class ProfileController extends Controller
         return datatables()->of($warga)
         ->addIndexColumn()
         ->addColumn('action', function($warga){
-            return ' <div class="d-flex">   
+            return ' <div class="d-flex justify-content-around">   
                     <a href="/admin/profiles/'.$warga->id.'/edit" class="btn  btn-warning" style="width:80px;">Edit</a>
+                    <form action="/admin/profiles/'.$warga->id.'" method="POST">
+                    '.csrf_field().'
+                    '.method_field('DELETE').'
+                    <button type="submit" class="btn btn-danger" style="width:80px;" onclick="javascript: return confirm(\'Yakin ingin menghapus data?\')">
+                    Hapus
+                    </button>
                     
+                    </form>
                     </div>';
         })
         ->rawColumns(['action'])
@@ -143,5 +149,12 @@ class ProfileController extends Controller
         Alert::success('Berhasil!', 'Data berhasil disunting');
         return redirect('/admin/profiles');
 
+    }
+
+    public function destroy($id){
+        DB::table('users')->where('profiles_id',$id)->delete();
+        DB::table('profiles')->where('id',$id)->delete();
+        Alert::success('Berhasil!','Data Berhasil dihapus!');
+        return redirect('/admin/profiles');
     }
 }

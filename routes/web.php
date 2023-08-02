@@ -44,6 +44,7 @@ Route::middleware(['auth','admin','preventBack'])->prefix('admin')->group(functi
     Route::post('/profiles', [ProfileController::class,'store']);
     Route::get('/profiles/{id}/edit', [ProfileController::class,'edit']);
     Route::put('/profiles/{id}',[ProfileController::class,'update']);
+    Route::delete('/profiles/{id}',[ProfileController::class,'destroy']);
     Route::get('/profiles',[ProfileController::class,'index']);
     Route::get('/profiles/json',[ProfileController::class,'json'])->name('warga.json');
     Route::get('/kk/json',[KartuKeluargaController::class,'json'])->name('kk.json');
