@@ -9,11 +9,11 @@
         <div class="container-fluid">
             <div class="row" style="margin-top: 3rem;">
                 {{-- Karang Taruna --}}
-                <div class="col-6 col-md-4 text-center mb-3" data-aos="zoom-in" data-aos-delay="30"
-                data-aos-duration="1500">
+                <div class="col-6 col-md-4 text-center mb-3">
                     <!-- Button trigger modal -->
                         <a class="btn" data-bs-toggle="modal" data-bs-target="#karangTaruna">
-                            <img src="{{ asset('img/logo-karang-taruna.png') }}" style="max-width: 7em" alt="">
+                            <img src="{{ asset('img/logo-karang-taruna.png') }}" style="max-width: 7em" alt="" data-aos="zoom-in" data-aos-delay="30"
+                            data-aos-duration="1500">
                         </a>
                         
                         <!-- Modal -->
@@ -37,11 +37,11 @@
                 </div>
                 
                 {{-- POSYANDU --}}
-                <div class="col-6 col-md-4 text-center mb-3" data-aos="zoom-in" data-aos-delay="30"
-                data-aos-duration="1500">
+                <div class="col-6 col-md-4 text-center mb-3">
                     <!-- Button trigger modal -->
                     <a class="btn" data-bs-toggle="modal" data-bs-target="#posyandu">
-                        <img src="{{ asset('img/posyandu-logo.png') }}" style="max-width: 7em" alt="">
+                        <img src="{{ asset('img/posyandu-logo.png') }}" style="max-width: 7em" alt="" data-aos="zoom-in" data-aos-delay="30"
+                        data-aos-duration="1500">
                     </a>
                     
                     <!-- Modal -->
@@ -65,11 +65,11 @@
                 </div>
 
                 {{-- PKK --}}
-                <div class="col-6 col-md-4 text-center mb-3" data-aos="zoom-in" data-aos-delay="30"
-                data-aos-duration="1500">
+                <div class="col-6 col-md-4 text-center mb-3">
                     <!-- Button trigger modal -->
                     <a class="btn" data-bs-toggle="modal" data-bs-target="#pkk">
-                        <img src="{{ asset('img/pkk-logo.png') }}" style="max-width: 7em" alt="">
+                        <img src="{{ asset('img/pkk-logo.png') }}" style="max-width: 7em" alt="" data-aos="zoom-in" data-aos-delay="30"
+                        data-aos-duration="1500">
                     </a>
                     
                     <!-- Modal -->
@@ -153,11 +153,11 @@
                 </div>
 
                 {{-- BPD --}}
-                <div class="col-6 col-md-4 text-center mb-3" data-aos="zoom-in" data-aos-delay="30"
-                data-aos-duration="1500">
+                <div class="col-6 col-md-4 text-center mb-3">
                       <!-- Button trigger modal -->
                       <a class="btn" data-bs-toggle="modal" data-bs-target="#bpd">
-                        <img src="{{ asset('img/bpd-logo.png') }}" style="max-width: 7em" alt="">
+                        <img src="{{ asset('img/bpd-logo.png') }}" style="max-width: 7em" alt="" data-aos="zoom-in" data-aos-delay="30"
+                        data-aos-duration="1500">
                     </a>
                     
                     <!-- Modal -->
@@ -193,10 +193,10 @@
                 </div>
 
                 {{-- PSM --}}
-                <div class="col-6 col-md-4 text-center mb-3" data-aos="zoom-in" data-aos-delay="30"
-                data-aos-duration="1500">
+                <div class="col-6 col-md-4 text-center mb-3">
                     <a class="btn" data-bs-toggle="modal" data-bs-target="#psm">
-                        <img src="{{ asset('img/psm-logo.png') }}" style="max-width: 7em" alt="">
+                        <img src="{{ asset('img/psm-logo.png') }}" style="max-width: 7em" alt="" data-aos="zoom-in" data-aos-delay="30"
+                        data-aos-duration="1500">
                     </a>
                     
                     <!-- Modal -->
@@ -235,10 +235,10 @@
                 </div>
 
                 {{-- LPM --}}
-                <div class="col-6 col-md-4 text-center mb-3" data-aos="zoom-in" data-aos-delay="30"
-                data-aos-duration="1500">
+                <div class="col-6 col-md-4 text-center mb-3">
                     <a class="btn" data-bs-toggle="modal" data-bs-target="#lpm">
-                        <img src="{{ asset('img/lpm-logo.png') }}" style="max-width: 7em" alt="">
+                        <img src="{{ asset('img/lpm-logo.png') }}" style="max-width: 7em" alt="" data-aos="zoom-in" data-aos-delay="30"
+                        data-aos-duration="1500">
                     </a>
                     
                     <!-- Modal -->
@@ -283,10 +283,10 @@
                 </div>
 
                 {{-- BUMDES --}}
-            <div class="col-6 col-md-4 text-center mb-3" data-aos="zoom-in" data-aos-delay="30"
-            data-aos-duration="1500">
+            <div class="col-6 col-md-4 text-center mb-3">
                 <a class="btn" data-bs-toggle="modal" data-bs-target="#bumdes">
-                    <img src="{{ asset('img/bumdes-logo.png') }}" style="max-width: 7em" alt="">
+                    <img src="{{ asset('img/bumdes-logo.png') }}" style="max-width: 7em" alt="" data-aos="zoom-in" data-aos-delay="30"
+                    data-aos-duration="1500">
                 </a>
                 
                 <!-- Modal -->
@@ -336,10 +336,10 @@
             </div>
 
             {{-- LINMAS --}}
-            <div class="col-6 col-md-4 text-center mb-3" data-aos="zoom-in" data-aos-delay="30"
-            data-aos-duration="1500">
+            <div class="col-6 col-md-4 text-center mb-3">
                 <a class="btn" data-bs-toggle="modal" data-bs-target="#linmas">
-                    <img src="{{ asset('img/linmas-logo.png') }}" style="max-width: 7em" alt="">
+                    <img src="{{ asset('img/linmas-logo.png') }}" style="max-width: 7em" alt="" data-aos="zoom-in" data-aos-delay="30"
+                    data-aos-duration="1500">
                 </a>
                 
                 <!-- Modal -->
