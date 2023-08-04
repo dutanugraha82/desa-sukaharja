@@ -68,11 +68,11 @@ class SensusController extends Controller
         $nik = DB::table('users')->where('username','=',$request->nik)->get('username');
         if (!$nik->isEmpty()) {
             Alert::error('Gagal','No NIK sudah terdaftar!');
-            return redirect()->back();
+            return back();
         } 
         $request->validate([
             'nama' => 'required',
-            'nik' => 'required|unique:profiles|min:16',
+            'nik' => 'required|unique:profiles|min:16|max:16',
             'jk' => 'required',
             'kartu_keluarga_id' => 'required',
             'tempatLahir' => 'required',
