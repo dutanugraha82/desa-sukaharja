@@ -11,6 +11,7 @@ use App\Http\Controllers\AdminDesa\BeritaController;
 use App\Http\Controllers\AdminDesa\ProfileController;
 use App\Http\Controllers\AdminDesa\DashboardController;
 use App\Http\Controllers\AdminDesa\KartuKeluargaController;
+use App\Http\Controllers\LayananDesaController;
 use App\Http\Controllers\StatistikController;
 
 /*
@@ -56,7 +57,6 @@ Route::middleware(['auth','admin','preventBack'])->prefix('admin')->group(functi
     Route::get('/sku-dalam/json',[SuratController::class,'skuDalamJson'])->name('sku-dalam.json');
     Route::get('/sku-dalam/{id}',[SuratController::class,'showSKU']);
     Route::get('/berita/json',[BeritaController::class,'json'])->name('berita.json');
-
     Route::resource('berita',BeritaController::class);
 });
 // Route Admin End
@@ -83,20 +83,17 @@ Route::middleware(['auth','warga','preventBack'])->group(function(){
 });
 // Route Warga End
 
-Route::get('/layanan-desa', function () {
-    return view('UserPages.layout.layanan-desa');
+// Route UMKM
+Route::middleware(['auth','preventBack'])->group(function(){
+    Route::get('/pengajuan-umkm',[LayananDesaController::class,'pengajuanUMKM']);
+    Route::post('/filepond',[LayananDesaController::class,'filePond']);
 });
+// Route UMKM END
 
-Route::get('/data-penduduk', function (){
-    $data = DB::table('profiles')->orderBy('created_at','desc')->get();
-    if(request()->ajax()){
-        return datatables()
-        ->of($data)
-        ->addIndexColumn()
-        ->make(true);
-    }
-    return view('UserPages.layout.data-penduduk');
-})->name('data-penduduk');
+Route::get('/layanan-desa', [LayananDesaController::class,'index']);
+Route::get('/berita/{slug}', [HomeController::class,'berita']);
+Route::get('/data-penduduk', [LayananDesaController::class,'dataPenduduk'])->name('data-penduduk');
+
 
 Route::get('/statistik', [StatistikController::class,'index']);
 

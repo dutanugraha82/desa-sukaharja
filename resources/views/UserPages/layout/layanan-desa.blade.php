@@ -33,8 +33,10 @@
                     <p>Saran Untuk Desa</p>
                 </div>
                 <div class="col-6 col-md-4 text-center mb-3">
-                    <i class='bx bx-send fs-icon'></i>
-                    <p>Pengajuan Produk UMKM</p>
+                    <a href="/pengajuan-umkm" class="text-dark nav-link">
+                        <i class='bx bx-send fs-icon'></i>
+                        <p>Pengajuan Produk UMKM</p>
+                    </a>
                 </div>
                 <div class="col-6 col-md-4 text-center mb-3">
                     <i class='bx bx-trophy fs-icon'></i>

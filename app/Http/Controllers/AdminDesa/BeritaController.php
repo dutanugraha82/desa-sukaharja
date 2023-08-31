@@ -74,6 +74,7 @@ class BeritaController extends Controller
             'slug' => Str::slug($request->judul,'-'),
             'gambar' => $request->file('gambar')->store('berita'),
             'deskripsi' => $request->deskripsi,
+            'status_validasi' => 0,
         ]);
 
         return redirect('/admin/berita');
@@ -87,7 +88,7 @@ class BeritaController extends Controller
      */
     public function show($id)
     {
-        //
+        
     }
 
     /**
