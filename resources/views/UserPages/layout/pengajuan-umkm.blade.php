@@ -13,7 +13,7 @@
     <div class="container-fluid">
         <h5 class="text-center">Form Pengajuan UMKM</h5>
         <hr>
-        <form class="my-4" action="/pengajuan-umkm" method="POST">
+        <form class="my-4" action="/pengajuan-umkm" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="container">
                 <p class="text-muted text-center my-3">Form Data UMKM</p>
@@ -32,8 +32,8 @@
                             <input type="text" class="form-control" name="nama_umkm" required>
                         </div>
                         <div class="mb-3">
-                            <label for="">No WhatsApp <span class="text-danger">*(+62xxx)</span></label>
-                            <input type="text" placeholder="+62xxxx" class="form-control" name="nohp" required>
+                            <label for="">No WhatsApp <span class="text-danger">*(62xxx)</span></label>
+                            <input type="text" placeholder="62xxxx" class="form-control" name="nohp" required>
                         </div>
                         <div class="mb-3">
                             <label for="">Logo UMKM <span class="text-danger">*</span></label>
@@ -120,7 +120,7 @@
 
         function deleteImage(nameFile){
             $.ajax({
-                url: '/adminunit/revert',
+                url: '/revert',
                 headers: {
                     'X-CSRF-TOKEN':'{{ csrf_token() }}'
                 },

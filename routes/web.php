@@ -87,6 +87,8 @@ Route::middleware(['auth','warga','preventBack'])->group(function(){
 Route::middleware(['auth','preventBack'])->group(function(){
     Route::get('/pengajuan-umkm',[LayananDesaController::class,'pengajuanUMKM']);
     Route::post('/filepond',[LayananDesaController::class,'filePond']);
+    Route::delete('/revert',[LayananDesaController::class,'deleteFilePond']);
+    Route::post('/pengajuan-umkm',[LayananDesaController::class,'storePengajuanUMKM']);
 });
 // Route UMKM END
 
