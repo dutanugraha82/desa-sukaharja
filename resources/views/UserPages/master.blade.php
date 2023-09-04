@@ -5,6 +5,8 @@
     <meta charset="utf-8">
     <link rel="icon" type="image/x-icon" href="{{ asset('img/LAMBANG_KABUPATEN_KARAWANG.ico') }}">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="sukaharja karawang, desa sukaharja karawang, sukaharja, karawang sukaharja">
+    
     {{-- Box Icon --}}
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Merriweather Sans">
