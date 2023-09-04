@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top">
+<nav class="navbar navbar-expand-lg navbar-dark bg-success fixed-top">
   <div class="container">
   <a class="navbar-brand d-flex gap-2" href="/">
     <img src="{{ asset('img/LAMBANG_KABUPATEN_KARAWANG.png') }}" alt="Logo" width="40" height="50" class="d-inline-block align-text-top">

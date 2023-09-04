@@ -8,7 +8,7 @@
       <hr>
       <br>
         <div class="card mx-auto" style="max-width: 60rem;">
-            <div class="card-header">
+            <div class="card-header text-dark text-center">
                 <h5>Kependudukan</h5>
                 <p>Data Penduduk Berdasarkan Usia</p>
             </div>
@@ -19,7 +19,7 @@
         <div class="row">
             <div class="col-md-4">
                 <div class="card mt-4 mx-auto" style="max-width:30rem;">
-                    <div class="card-header">
+                    <div class="card-header text-dark text-center">
                         <h5>Pendidikan</h5>
                         <p>Statistik Pendidikan</p>
                     </div>
@@ -30,7 +30,7 @@
             </div>
             <div class="col-md-4">
                 <div class="card mt-4 mx-auto" style="max-width:30rem;">
-                    <div class="card-header">
+                    <div class="card-header text-dark text-center">
                         <h5>Perkawinan</h5>
                         <p>Statistik Perkawinan</p>
                     </div>
@@ -41,7 +41,7 @@
             </div>
             <div class="col-md-4">
                 <div class="card mt-4 mx-auto" style="max-width:30rem;">
-                    <div class="card-header">
+                    <div class="card-header text-dark text-center">
                         <h5>Pekerjaan</h5>
                         <p>Statistik Pekerjaan</p>
                     </div>
@@ -57,7 +57,7 @@
         <h4 class="text-center">Grafik Lahan</h4>
         <hr>
          <div class="card mx-auto mt-4" style="max-width: 60rem;">
-            <div class="card-header">
+            <div class="card-header text-dark text-center">
                 <h5>Lahan</h5>
                 <p>Data Lahan Desa</p>
             </div>

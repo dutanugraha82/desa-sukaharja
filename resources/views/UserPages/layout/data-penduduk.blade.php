@@ -5,7 +5,7 @@
 @section('content')
 <div class="container">
     <div class="card p-3">
-        <h5>Data Penduduk</h5>
+        <h5 class="text-center text-dark">Data Penduduk</h5>
         <table class="table table-hover" id="warga-table">
             <thead>
                 <tr>

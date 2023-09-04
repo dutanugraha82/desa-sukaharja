@@ -18,7 +18,7 @@
                         
                         <!-- Modal -->
                         <div class="modal fade" id="karangTaruna" tabindex="-1" aria-labelledby="karangTaruna" aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-scrollable">
+                            <div class="modal-dialog modal-dialog-scrollable text-dark">
                             <div class="modal-content">
                                 <div class="modal-body">
                                     <img class="d-block mx-auto" src="{{ asset('img/logo-karang-taruna.png') }}" style="max-width: 100px" alt="">
@@ -46,7 +46,7 @@
                     
                     <!-- Modal -->
                     <div class="modal fade" id="posyandu" tabindex="-1" aria-labelledby="posyandu" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-scrollable">
+                        <div class="modal-dialog modal-dialog-scrollable text-dark">
                         <div class="modal-content">
                             <div class="modal-body">
                                 <img class="d-block mx-auto" src="{{ asset('img/posyandu-logo.png') }}" style="max-width: 100px" alt="">
@@ -74,7 +74,7 @@
                     
                     <!-- Modal -->
                     <div class="modal fade" id="pkk" tabindex="-1" aria-labelledby="pkk" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-scrollable">
+                        <div class="modal-dialog modal-dialog-scrollable text-dark">
                         <div class="modal-content">
                             <div class="modal-body">
                                 <img class="d-block mx-auto" src="{{ asset('img/pkk-logo.png') }}" style="max-width: 100px" alt="">
@@ -162,7 +162,7 @@
                     
                     <!-- Modal -->
                     <div class="modal fade" id="bpd" tabindex="-1" aria-labelledby="bpd" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-scrollable">
+                        <div class="modal-dialog modal-dialog-scrollable text-dark">
                         <div class="modal-content">
                             <div class="modal-body">
                                 <img class="d-block mx-auto" src="{{ asset('img/bpd-logo.png') }}" style="max-width: 100px" alt="">
@@ -201,7 +201,7 @@
                     
                     <!-- Modal -->
                     <div class="modal fade" id="psm" tabindex="-1" aria-labelledby="psm" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-scrollable">
+                        <div class="modal-dialog modal-dialog-scrollable text-dark">
                         <div class="modal-content">
                             <div class="modal-body">
                                 <img class="d-block mx-auto" src="{{ asset('img/psm-logo.png') }}" style="max-width: 100px" alt="">
@@ -243,7 +243,7 @@
                     
                     <!-- Modal -->
                     <div class="modal fade" id="lpm" tabindex="-1" aria-labelledby="lpm" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-scrollable">
+                        <div class="modal-dialog modal-dialog-scrollable text-dark">
                         <div class="modal-content">
                             <div class="modal-body">
                                 <img class="d-block mx-auto" src="{{ asset('img/lpm-logo.png') }}" style="max-width: 100px" alt="">
@@ -291,7 +291,7 @@
                 
                 <!-- Modal -->
                 <div class="modal fade" id="bumdes" tabindex="-1" aria-labelledby="bumdes" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-scrollable">
+                    <div class="modal-dialog modal-dialog-scrollable text-dark">
                     <div class="modal-content">
                         <div class="modal-body">
                             <img class="d-block mx-auto" src="{{ asset('img/bumdes-logo.png') }}" style="max-width: 100px" alt="">
@@ -344,7 +344,7 @@
                 
                 <!-- Modal -->
                 <div class="modal fade" id="linmas" tabindex="-1" aria-labelledby="linmas" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-scrollable">
+                    <div class="modal-dialog modal-dialog-scrollable text-dark">
                     <div class="modal-content">
                         <div class="modal-body">
                             <img class="d-block mx-auto" src="{{ asset('img/linmas-logo.png') }}" style="max-width: 100px" alt="">

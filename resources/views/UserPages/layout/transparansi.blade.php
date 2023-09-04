@@ -10,9 +10,9 @@
             <div class="col-md-8">
                 <div class="card p-3 shadow">
                     <div class="card-header">
-                        <h5 class="text-center">Dokumen Transparansi Publik</h5>
+                        <h5 class="text-center text-dark">Dokumen Transparansi Publik</h5>
                     </div>
-                    <div class="card-body" style="max-height: 21rem; overflow-y:scroll">
+                    <div class="card-body text-dark" style="max-height: 21rem; overflow-y:scroll">
                         <ol>
                             <li class="mb-2">File.pdf</li>
                             <li class="mb-2">File.pdf</li>

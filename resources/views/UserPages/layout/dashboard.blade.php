@@ -1,9 +1,5 @@
 @extends('UserPages.master')
 @section('content')
-<div class="container">
-  <h3 class="text-center fs-merriweathersans" data-aos="zoom-in-up" data-aos-delay="30"
-  data-aos-duration="1500">Selamat Datang di Situs Resmi Desa Sukaharja Karawang</h3>
-  <hr>
   <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-inner">
       <div class="carousel-item active">
@@ -25,8 +21,6 @@
       <span class="visually-hidden">Next</span>
     </button>
   </div>
-  <hr>
-</div>
 
 <div class="container my-4">
   <div id="tentang-desa">
@@ -64,14 +58,14 @@
         <div class="col-md-8 mt-3" data-aos="flip-right" data-aos-delay="30"
         data-aos-duration="1500">
             <div class="mb-4">
-                <h5 class="text-center"><b>Visi dan Misi Desa Sukaharja</b></h5>
+                <h5 class="text-center"><b>VISI DAN MISI DESA SUKAHARJA</b></h5>
             </div>
             <div class="mb-2">
-                <h5  class="mt-3">Visi : </h5>
+                <h5  class="mt-3">VISI : </h5>
                   <ul>
                     <li>Masyarakat Desa Sukaharja yang AGAMIS, MAJU, SEHAT dan SEJAHTERA</li>
                   </ul>
-                <h5 class="mt-3">Misi :</h5>
+                <h5 class="mt-3">MISI :</h5>
                 <ul>
                   <li>MEMBANGUN MASYARAKAT DESA SUKAHARJA YANG MEMULIAKAN AGAMA.</li>
                   <li>MEWUJUDKAN PEMERINTAHAAN YANG BAIK DAN BERSIH MELALUI SISTEM INFORMASI KEMASYARAKATAN YANG TRANSFARAN DAN HUMANIS.</li>
@@ -86,15 +80,15 @@
   </div>
     <hr>
     <div class="mt-4">
-      <h4 class="my-5 text-center" id="berita-desa">Berita Desa</h4>
+      <h4 class="my-5 text-center" id="berita-desa">ARTIKEL DESA</h4>
       <div class="container">
         <div class="row mb-3">
           @foreach ($berita as $item)
           <div class="col-md-4">
-            <div class="card shadow-lg" style="width: 18rem;">
+            <div class="card shadow-lg mx-auto" style="width: 18rem;">
               <img src="{{ asset('storage'.'/'.$item->gambar) }}" class="card-img-top" alt="...">
               <div class="card-body">
-                <p class="card-title">{{ Str::upper($item->judul) }}</p>
+                <p class="card-title text-dark">{{ Str::upper($item->judul) }}</p>
                 <a href="/berita/{{ $item->slug }}" class="btn btn-primary  d-block">Baca Selengkapnya</a>
               </div>
             </div>
@@ -102,7 +96,7 @@
           @endforeach
         </div>
         <a href="#">
-          <p class="text-center text-md-end">Lihat Selengkapnya</p>
+          <p class="text-center text-white text-md-end">Lihat Selengkapnya</p>
         </a>
       </div>
        

@@ -12,7 +12,7 @@
 @endpush
 @section('content')
     <div class="container">
-        <div class="container mb-4">
+        <div class="container text-dark mb-4">
             <div class="card p-2 jumbotron">
                 <h4 class="text-center">Data Informasi Wilayah</h4>
                 <hr>

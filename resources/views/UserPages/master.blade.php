@@ -30,11 +30,11 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <title>Sukaharja Karawang @yield('title')</title>
   </head>
-  <body>
+  <body class="bg-success">
     @include('sweetalert::alert')
     @include('UserPages.partition.navbar')
 
-<main style="margin-top: 8rem;">
+<main class="text-white" style="margin-top: 5rem;">
     @yield('content')
 </main>
 @include('UserPages.partition.footer')
