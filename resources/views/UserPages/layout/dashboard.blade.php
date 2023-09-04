@@ -1,7 +1,4 @@
 @extends('UserPages.master')
-@section('title')
-    Dahsboard
-@endsection
 @section('content')
 <div class="container">
   <h3 class="text-center fs-merriweathersans" data-aos="zoom-in-up" data-aos-delay="30"
