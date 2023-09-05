@@ -4,7 +4,7 @@
 @endsection
 @section('content')
     <div class="container">
-        <h4 class="text-center">Lembaga Desa Sukaharja</h4>
+        <h4 class="text-center text-white">Lembaga Desa Sukaharja</h4>
         <hr>
         <div class="container-fluid">
             <div class="row" style="margin-top: 3rem;">

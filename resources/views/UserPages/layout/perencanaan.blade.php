@@ -4,7 +4,7 @@
 @endsection
 @section('content')
     <div class="container">
-        <h4 class="text-center">Perencanaan</h4>
+        <h4 class="text-center text-white">Perencanaan</h4>
         <hr>
         <div class="card p-3 mt-4">
             <ul class="nav nav-tabs justify-content-center" id="myTab" role="tablist">

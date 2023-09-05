@@ -30,7 +30,7 @@
     
     <!-- Nav Item - Dashboard -->
     <li class="nav-item">
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="/admin/umkm">
             <i class="fas fa-shopping-bag"></i>
             <span>UMKM</span></a>
     </li>

@@ -11,8 +11,10 @@ use App\Http\Controllers\AdminDesa\BeritaController;
 use App\Http\Controllers\AdminDesa\ProfileController;
 use App\Http\Controllers\AdminDesa\DashboardController;
 use App\Http\Controllers\AdminDesa\KartuKeluargaController;
+use App\Http\Controllers\AdminDesa\UMKMController;
 use App\Http\Controllers\LayananDesaController;
 use App\Http\Controllers\StatistikController;
+use App\Models\UMKM;
 
 /*
 |--------------------------------------------------------------------------
@@ -58,6 +60,10 @@ Route::middleware(['auth','admin','preventBack'])->prefix('admin')->group(functi
     Route::get('/sku-dalam/{id}',[SuratController::class,'showSKU']);
     Route::get('/berita/json',[BeritaController::class,'json'])->name('berita.json');
     Route::resource('berita',BeritaController::class);
+    Route::get('/umkm', [UMKMController::class,'index']);
+    Route::get('/umkm/json',[UMKMController::class,'json'])->name('umkm.json');
+    Route::get('/umkm/{id}/edit',[UMKMController::class,'edit']);
+    Route::delete('/umkm/{id}',[UMKMController::class,'destroy']);
 });
 // Route Admin End
 

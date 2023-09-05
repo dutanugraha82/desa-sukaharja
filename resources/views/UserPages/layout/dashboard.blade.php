@@ -55,7 +55,7 @@
             </button>
           </div>
         </div>
-        <div class="col-md-8 mt-3" data-aos="flip-right" data-aos-delay="30"
+        <div class="col-md-8 mt-3 text-white" data-aos="flip-right" data-aos-delay="30"
         data-aos-duration="1500">
             <div class="mb-4">
                 <h5 class="text-center"><b>VISI DAN MISI DESA SUKAHARJA</b></h5>
@@ -80,7 +80,7 @@
   </div>
     <hr>
     <div class="mt-4">
-      <h4 class="my-5 text-center" id="berita-desa">ARTIKEL DESA</h4>
+      <h4 class="my-5 text-center text-white" id="berita-desa">ARTIKEL DESA</h4>
       <div class="container">
         <div class="row mb-3">
           @foreach ($berita as $item)

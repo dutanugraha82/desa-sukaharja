@@ -1,18 +1,20 @@
 @extends('admin.master')
 @section('pageTitle')
-    berita-desa
+    umkm-desa
 @endsection
 @section('content')
 <div class="card p-3">
-    <h5>Daftar Berita</h5>
-    <a href="/pengajuan-umkm" class="btn btn-primary mb-3" style="width: 130px">Buat Berita <sup>+</sup></a>
-    <table id="berita-table" class="table table-hover table-striped">
+    <h5>Data Pengajuan UMKM</h5>
+    <a href="/admin/berita/create" class="btn btn-primary mb-3" style="width: 130px">Tambah Data<sup>+</sup></a>
+    <table id="umkm-table" class="table table-hover table-striped">
       <thead>
           <tr>
-              <th scope="col">No</th>
-              <th scope="col">Judul</th>
-              <th scope="col">Dibuat</th>
-              <th scope="col">Action</th>
+              <th>No</th>
+              <th>NIK</th>
+              <th>Nama Pemilik</th>
+              <th>Nama UMKM</th>
+              <th>No WhatsApp</th>
+              <th>Action</th>
           </tr>
       </thead>
   </table>
@@ -22,7 +24,7 @@
  @push('js')
      <script>
       $(function (){
-        let table = $('#berita-table').DataTable({
+        let table = $('#umkm-table').DataTable({
             processing:true,
             serverSide:true,
             responsive:{
@@ -35,11 +37,13 @@
                 orderable:false,
                 targets:0
             }],
-            ajax:"{{ route('berita.json') }}",
+            ajax:"{{ route('umkm.json') }}",
             columns: [
                 {data: 'DT_RowIndex'},
-                {data: 'judul', name: 'judul'},
-                {data: 'created_at', name: 'created_at'},
+                {data: 'nik', name: 'nik'},
+                {data: 'nama_pemilik', name: 'nama_pemilik'},
+                {data: 'nama_umkm', name: 'nama_umkm'},
+                {data: 'nohp', name: 'nohp'},
                 {data: 'action', name: 'action'},
             ]
         });

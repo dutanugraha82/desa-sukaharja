@@ -4,7 +4,7 @@
 @endsection
 @section('content')
     <div class="container">
-        <h4 class="text-center">Data Transparansi Desa</h4>
+        <h4 class="text-center text-white">Data Transparansi Desa</h4>
         <hr>
         <div class="row mt-4">
             <div class="col-md-8">

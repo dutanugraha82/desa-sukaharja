@@ -5,7 +5,7 @@
 
 @section('content')
     <div class="container">
-        <h4 class="text-center">Produk UMKM Masyarakat Desa Sukaharja</h4>
+        <h4 class="text-center text-white">UMKM Masyarakat Desa Sukaharja</h4>
         <hr class="my-4">
         <div class="row">
             <div class="col-6 col-md-4 mb-3">

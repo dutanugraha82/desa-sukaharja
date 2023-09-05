@@ -6,7 +6,7 @@
 <div class="container">
     <div class="card p-3">
         <h5 class="text-center text-dark">Data Penduduk</h5>
-        <table class="table table-hover" id="warga-table">
+        <table class="table text-dark table-hover" id="warga-table">
             <thead>
                 <tr>
                   <th scope="col">No</th>

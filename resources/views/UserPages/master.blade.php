@@ -34,7 +34,7 @@
     @include('sweetalert::alert')
     @include('UserPages.partition.navbar')
 
-<main class="text-white" style="margin-top: 5rem;">
+<main style="margin-top: 5rem;">
     @yield('content')
 </main>
 @include('UserPages.partition.footer')

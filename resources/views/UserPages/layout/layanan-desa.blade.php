@@ -5,7 +5,7 @@
 @section('content')
     <div class="container" data-aos="flip-right" data-aos-delay="30"
     data-aos-duration="1500">
-        <h4 class="text-center">Layanan Desa Sukaharja</h4>
+        <h4 class="text-center text-white">Layanan Desa Sukaharja</h4>
         <hr>
         <div class="container-fluid">
             <div class="row" style="margin-top: 3rem;">
@@ -25,12 +25,16 @@
                     </a>
                 </div>
                 <div class="col-6 col-md-4 text-center mb-3">
+                    <a href="#" class="text-white nav-link">
                     <i class='bx bxs-user-plus fs-icon'></i>
                     <p>Laporan Pendatang</p>
+                    </a>
                 </div>
                 <div class="col-6 col-md-4 text-center mb-3">
+                    <a href="#" class="text-white nav-link">
                     <i class='bx bx-mail-send fs-icon'></i>
                     <p>Saran Untuk Desa</p>
+                    </a>
                 </div>
                 <div class="col-6 col-md-4 text-center mb-3">
                     <a href="/pengajuan-umkm" class="nav-link text-white">
@@ -39,8 +43,10 @@
                     </a>
                 </div>
                 <div class="col-6 col-md-4 text-center mb-3">
+                    <a href="#" class="text-white nav-link">
                     <i class='bx bx-trophy fs-icon'></i>
                     <p>Prestasi Desa</p>
+                    </a>
                 </div>
             </div>
         </div>
