@@ -6,6 +6,7 @@ use App\Models\GambarProduk;
 use App\Models\UMKM;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -46,6 +47,18 @@ class LayananDesaController extends Controller
         DB::table('temporary_image')->where('image',$request->image)->delete(); //filepond always parsing the image file with object named image.
         Storage::delete($request->image);
     }
+
+    public function umkm(){
+        $umkm = UMKM::where('status_validasi',1)->get();
+        return view('UserPages.layout.umkm-masyarakat', compact('umkm'));
+    }
+
+    public function detailUMKM($id){
+        $umkm = UMKM::find($id);
+        $gambarProduk = DB::table('gambar_produk')->where('umkm_id',$id)->get();
+        return view('UserPages.layout.umkm-masyarakat-detail', compact('umkm','gambarProduk'));
+    }
+
     public function pengajuanUMKM(){
         return view('UserPages.layout.pengajuan-umkm');
     }
@@ -61,15 +74,42 @@ class LayananDesaController extends Controller
             'deskripsi' => 'required',
         ]);
 
-       $id = UMKM::create([
-            'nik' => $request->nik,
+        if (auth()->user()->role == 'warga') {
+            $id = UMKM::create([
+                'nik' => Crypt::encrypt( $request->nik),
+                'nama_pemilik' => $request->nama_pemilik,
+                'nama_umkm' => $request->nama_umkm,
+                'nohp' => $request->nohp,
+                'logo' => $request->file('logo')->store('logo-umkm'),
+                'alamat' => $request->alamat,
+                'deskripsi' => $request->deskripsi,
+                'status_validasi' => 0
+            ])->id;
+            
+            $gambarProduk = DB::table('temporary_image')->where('users_id',auth()->user()->id)->get();
+    
+            foreach ($gambarProduk as $item) {
+                GambarProduk::create([
+                    'umkm_id' => $id,
+                    'gambar_produk' => $item->image
+                ]);
+    
+            }
+            DB::table('temporary_image')->where('users_id',auth()->user()->id)->delete();
+    
+            Alert::success('Berhasil!','Silahkan Menunggu Validasi Pelayanan Desa');
+            return redirect('/');
+
+        } elseif(auth()->user()->role == 'admin') {
+            $id = UMKM::create([
+            'nik' => Crypt::encrypt( $request->nik),
             'nama_pemilik' => $request->nama_pemilik,
             'nama_umkm' => $request->nama_umkm,
             'nohp' => $request->nohp,
             'logo' => $request->file('logo')->store('logo-umkm'),
             'alamat' => $request->alamat,
             'deskripsi' => $request->deskripsi,
-            'status_validasi' => 0
+            'status_validasi' => 1
         ])->id;
         
         $gambarProduk = DB::table('temporary_image')->where('users_id',auth()->user()->id)->get();
@@ -83,9 +123,13 @@ class LayananDesaController extends Controller
         }
         DB::table('temporary_image')->where('users_id',auth()->user()->id)->delete();
 
-        Alert::success('Berhasil!','Silahkan Menunggu Validasi Pelayanan Desa');
-        return redirect('/');
-
+        Alert::success('Berhasil ditambahkan!');
+        return redirect('/admin/umkm');
+        
+        }else{
+            Alert::error('Gagal!');
+            return back();
+        }
 
     }
 }

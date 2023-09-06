@@ -61,8 +61,12 @@ Route::middleware(['auth','admin','preventBack'])->prefix('admin')->group(functi
     Route::get('/berita/json',[BeritaController::class,'json'])->name('berita.json');
     Route::resource('berita',BeritaController::class);
     Route::get('/umkm', [UMKMController::class,'index']);
+    Route::get('/umkm/create',[UMKMController::class,'create']);
+    Route::get('/umkm/json-validasi-umkm',[UMKMController::class,'jsonValidasiUMKM'])->name('validasiUMKM.json');
     Route::get('/umkm/json',[UMKMController::class,'json'])->name('umkm.json');
     Route::get('/umkm/{id}/edit',[UMKMController::class,'edit']);
+    Route::get('/umkm/{id}',[UMKMController::class,'show']);
+    Route::put('/umkm/{id}/validasi',[UMKMController::class,'validasiUMKM']);
     Route::delete('/umkm/{id}',[UMKMController::class,'destroy']);
 });
 // Route Admin End
@@ -101,7 +105,8 @@ Route::middleware(['auth','preventBack'])->group(function(){
 Route::get('/layanan-desa', [LayananDesaController::class,'index']);
 Route::get('/berita/{slug}', [HomeController::class,'berita']);
 Route::get('/data-penduduk', [LayananDesaController::class,'dataPenduduk'])->name('data-penduduk');
-
+Route::get('/umkm-masyarakat', [LayananDesaController::class,'umkm']);
+Route::get('/umkm-masyarakat/{id}', [LayananDesaController::class,'detailUMKM']);
 
 Route::get('/statistik', [StatistikController::class,'index']);
 
@@ -119,14 +124,6 @@ Route::get('/transparansi', function(){
 
 Route::get('/lembaga', function(){
     return view('UserPages.layout.lembaga');
-});
-
-Route::get('/umkm-masyarakat', function(){
-    return view('UserPages.layout.umkm-masyarakat');
-});
-
-Route::get('/umkm-masyarakat/id', function(){
-    return view('UserPages.layout.umkm-masyarakat-detail');
 });
 
 
