@@ -3,7 +3,7 @@
     data-penduduk
 @endsection
 @section('content')
-<div class="container">
+<div class="container" style="margin-top: 8rem">
     <div class="card p-3">
         <h5 class="text-center text-dark">Data Penduduk</h5>
         <table class="table text-dark table-hover" id="warga-table">

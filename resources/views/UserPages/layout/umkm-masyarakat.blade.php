@@ -4,8 +4,9 @@
 @endsection
 
 @section('content')
-    <div class="container">
-        <h4 class="text-center text-white">UMKM Masyarakat Desa Sukaharja</h4>
+    <div class="container" style="margin-top: 8rem;">
+      <div class="card card-body blur shadow-blur mx-3 mx-md-4">
+        <h4 class="text-center">UMKM Masyarakat Desa Sukaharja</h4>
         <hr class="my-4">
         <div class="row">
             @foreach ($umkm as $item)
@@ -17,11 +18,12 @@
                     <p class="card-text">{{ $item->alamat }}</p>
                   </div>
                   <div class="card-body">
-                    <a class="btn btn-primary d-block" href="/umkm-masyarakat/{{ $item->id }}">Detail UMKM</a>
+                    <a class="btn btn-info d-block" href="/umkm-masyarakat/{{ $item->id }}">Detail UMKM</a>
                   </div>
                 </div>
           </div>
             @endforeach
         </div>
+      </div>
     </div>
 @endsection

@@ -3,11 +3,9 @@
     Statistik
 @endsection
 @section('content')
-    <div class="container">
-      <h4 class="text-center text-white">Grafik Kependudukan</h4>
-      <hr>
+    <div class="container" style="margin-top: 7rem">
       <br>
-        <div class="card mx-auto" style="max-width: 60rem;">
+        <div class="card mx-auto" style="max-width: 83rem;">
             <div class="card-header text-dark text-center">
                 <h5>Kependudukan</h5>
                 <p>Data Penduduk Berdasarkan Usia</p>
@@ -54,9 +52,8 @@
         <hr>
         <br>
         <br>
-        <h4 class="text-center text-white">Grafik Lahan</h4>
         <hr>
-         <div class="card mx-auto mt-4" style="max-width: 60rem;">
+         <div class="card mx-auto mt-4" style="max-width: 83rem;">
             <div class="card-header text-dark text-center">
                 <h5>Lahan</h5>
                 <p>Data Lahan Desa</p>

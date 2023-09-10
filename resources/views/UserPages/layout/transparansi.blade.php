@@ -3,9 +3,8 @@
     Transparansi
 @endsection
 @section('content')
-    <div class="container">
-        <h4 class="text-center text-white">Data Transparansi Desa</h4>
-        <hr>
+    <div class="container" style="margin-top: 8rem;">
+      <div class="card card-body blur shadow-blur mx-3 mx-md-3">
         <div class="row mt-4">
             <div class="col-md-8">
                 <div class="card p-3 shadow">
@@ -59,5 +58,6 @@
                   </div>
             </div>
         </div>
+      </div>
     </div>
 @endsection

@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="id">
   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -26,15 +26,26 @@
         font-family: "Merriweather Sans";
       }
   </style>
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <!--     Fonts and icons     -->
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Roboto+Slab:400,700" />
+<!-- Nucleo Icons -->
+<link href="{{ asset('assets/css/nucleo-icons.css') }}" rel="stylesheet" />
+<link href="{{ asset('assets/css/nucleo-svg.css') }}" rel="stylesheet" />
+<!-- Font Awesome Icons -->
+<script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
+<!-- Material Icons -->
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
+<!-- CSS Files -->
+<link id="pagestyle" href="{{ asset('assets/css/material-kit.css?v=3.0.4') }}" rel="stylesheet" />
+
+  
     <title>Sukaharja Karawang @yield('title')</title>
   </head>
-  <body class="bg-success">
+  <body class="index-page bg-gray-200">
     @include('sweetalert::alert')
     @include('UserPages.partition.navbar')
 
-<main style="margin-top: 5rem;">
+<main>
     @yield('content')
 </main>
 @include('UserPages.partition.footer')
@@ -42,7 +53,6 @@
     <!-- Optional JavaScript; choose one of the two! -->
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script src="https://unpkg.com/filepond@^4/dist/filepond.js"></script>
     <script src="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.js"></script>
@@ -51,6 +61,20 @@
     <script src="https://unpkg.com/filepond-plugin-image-edit/dist/filepond-plugin-image-edit.js"></script>
     <script src="https://unpkg.com/filepond-plugin-file-encode/dist/filepond-plugin-file-encode.js"></script>
     <script src="https://unpkg.com/filepond-plugin-file-poster/dist/filepond-plugin-file-poster.js"></script>
+    <script src="{{ asset('assets/js/core/popper.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('assets/js/core/bootstrap.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('assets/js/plugins/perfect-scrollbar.min.js') }}"></script>
+    <script src="{{ asset('assets/js/plugins/countup.min.js') }}"></script>
+    <script src="{{ asset('assets/js/plugins/choices.min.js') }}"></script>
+    <script src="{{ asset('assets/js/plugins/prism.min.js') }}"></script>
+    <script src="{{ asset('assets/js/plugins/highlight.min.js') }}"></script>
+    <!--  Plugin for Parallax, full documentation here: https://github.com/dixonandmoe/rellax -->
+    <script src="{{ asset('assets/js/plugins/rellax.min.js') }}"></script>
+    <!--  Plugin for TiltJS, full documentation here: https://gijsroge.github.io/tilt.js/ -->
+    <script src="{{ asset('assets/js/plugins/tilt.min.js') }}"></script>
+    <!--  Plugin for Selectpicker - ChoicesJS, full documentation here: https://github.com/jshjohnson/Choices -->
+    <script src="{{ asset('assets/js/plugins/choices.min.js') }}"></script>
+
     <script>
      AOS.init();
     </script>

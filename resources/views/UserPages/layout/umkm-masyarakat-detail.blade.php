@@ -3,14 +3,15 @@
     (Nama Produk)
 @endsection
 @section('content')
-    <div class="container">
+<div class="card p-3 card-body blur shadow-blur mx-3 mx-md-6" style="margin-top: 8rem">
+<div class="container">
         <div class="row p-2">
             <div class="col-md-6 mb-3 mb-md-0">
                 <img src="{{ asset('/storage'.'/'.$umkm->logo) }}" class="d-block mx-auto" style="max-width:20rem" alt="foto-produk" >
             </div>
             <div class="col-md-6 align-self-center">
-                <h4 class="text-white">{{ $umkm->nama_umkm }}</h4>
-                <p class="text-white" style="text-align: justify">{{ $umkm->deskripsi }}</p>
+                <h4>{{ $umkm->nama_umkm }}</h4>
+                <p style="text-align: justify">{{ $umkm->deskripsi }}</p>
                 <div class="card">
                     <div class="card-header">
                         <p>Info UMKM</p>
@@ -30,7 +31,7 @@
         </div>
     </div>
     <hr>
-    <h5 class="text-center text-white mt-3 mb-5">Produk Kami :</h5>
+    <h5 class="text-center  mt-3 mb-5">Produk Kami :</h5>
 
     <div class="container mb-4">
         <div class="row">
@@ -41,4 +42,5 @@
             @endforeach
         </div>
     </div>
+</div>
 @endsection

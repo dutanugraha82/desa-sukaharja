@@ -3,9 +3,7 @@
     Perencanaan
 @endsection
 @section('content')
-    <div class="container">
-        <h4 class="text-center text-white">Perencanaan</h4>
-        <hr>
+    <div class="container" style="margin-top:8rem;">
         <div class="card p-3 mt-4">
             <ul class="nav nav-tabs justify-content-center" id="myTab" role="tablist">
                 <li class="nav-item" role="presentation">
@@ -24,7 +22,7 @@
               <div class="tab-content mt-4" id="myTabContent">
                 {{-- RPJM --}}
                 <div class="tab-pane fade show active" id="rpjm" role="tabpanel" aria-labelledby="rpjm-tab">
-                    <p>data RPJM</p>
+                    <p>Data RPJM</p>
                 </div>
     
                 {{-- RKP --}}
