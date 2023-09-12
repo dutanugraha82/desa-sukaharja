@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminDesa\AkunController;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
@@ -36,6 +37,17 @@ Route::middleware(['auth','superadmin','preventBack'])->name('superadmin.')->pre
 });
 // Route Superadmin End
 
+// Route Sekdes Start
+Route::middleware(['auth','sekdes','preventBack'])->prefix('sekdes')->group(function(){
+    Route::get('/',[ DashboardController::class,'index']);
+    Route::get('/berita',[BeritaController::class,'index']);
+    Route::get('/berita/json',[BeritaController::class,'json'])->name('sekdes.berita.json');
+    Route::get('/berita/{id}',[BeritaController::class,'show']);
+    Route::put('/berita/{id}/validasi',[BeritaController::class,'validasiBerita']);
+
+});
+// Route Sekdes End
+
 // Route Admin Start
 Route::middleware(['auth','admin','preventBack'])->prefix('admin')->group(function(){
     Route::get('/', [DashboardController::class,'index']);
@@ -68,6 +80,8 @@ Route::middleware(['auth','admin','preventBack'])->prefix('admin')->group(functi
     Route::get('/umkm/{id}',[UMKMController::class,'show']);
     Route::put('/umkm/{id}/validasi',[UMKMController::class,'validasiUMKM']);
     Route::delete('/umkm/{id}',[UMKMController::class,'destroy']);
+    Route::get('/akun',[AkunController::class,'edit']);
+    Route::put('/akun/{id}',[AkunController::class,'update']);
 });
 // Route Admin End
 

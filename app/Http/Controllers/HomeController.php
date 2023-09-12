@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\DB;
 class HomeController extends Controller
 {
     public function home(){
-        $berita = DB::table('berita')->orderBy('created_at','desc')->limit(9)->get();
+        $berita = DB::table('berita')->where('status_validasi',1)->orderBy('created_at','desc')->limit(9)->get();
         return view('UserPages.layout.dashboard', compact('berita'));
     }
 

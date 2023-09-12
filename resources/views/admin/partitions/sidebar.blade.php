@@ -3,7 +3,7 @@
 
     <!-- Sidebar - Brand -->
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="#">
-        <div class="sidebar-brand-text mx-3">Admin Desa</div>
+        <div class="sidebar-brand-text mx-3">{{ Str::upper(auth()->user()->username) }}</div>
     </a>
 
     <!-- Divider -->
@@ -20,7 +20,7 @@
     <hr class="sidebar-divider">
     <!-- Nav Item - Dashboard -->
     <li class="nav-item">
-        <a class="nav-link" href="/admin/berita">
+        <a class="nav-link" href="/{{ auth()->user()->role }}/berita">
             <i class="fas fa-newspaper"></i>
             <span>Berita</span></a>
     </li>
