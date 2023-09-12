@@ -54,18 +54,36 @@
     <!-- Divider -->
     <hr class="sidebar-divider">
     <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-            aria-expanded="true" aria-controls="collapseTwo">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#surat"
+            aria-expanded="true" aria-controls="surat">
             <i class="fas fa-envelope"></i>
             <span>Surat</span>
         </a>
-        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+        <div id="surat" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Jenis Surat:</h6>
                 <a class="collapse-item" href="#">Domistik</a>
                 <a class="collapse-item" href="/admin/ktm">KTM</a>
                 <a class="collapse-item" href="/admin/sku-dalam">SKU-Dalam</a>
                 <a class="collapse-item" href="#">SKU-Luar</a>
+            </div>
+        </div>
+    </li>
+    <hr class="sidebar-divider">
+
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#perencanaan"
+            aria-expanded="true" aria-controls="perencanaan">
+            <i class="fas fa-building"></i>
+            <span>Perencanaan</span>
+        </a>
+        <div id="perencanaan" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <a class="collapse-item" href="/admin/rpjm">RPJM</a>
+                <a class="collapse-item" href="/admin/rkp">RKP</a>
+                <a class="collapse-item" href="/admin/perdes">PERDES</a>
+                <a class="collapse-item" href="/admin/perkades">PERKADES</a>
+                <a class="collapse-item" href="/admin/transparansi">TRANSPARANSI</a>
             </div>
         </div>
     </li>

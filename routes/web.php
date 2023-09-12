@@ -12,6 +12,7 @@ use App\Http\Controllers\AdminDesa\BeritaController;
 use App\Http\Controllers\AdminDesa\ProfileController;
 use App\Http\Controllers\AdminDesa\DashboardController;
 use App\Http\Controllers\AdminDesa\KartuKeluargaController;
+use App\Http\Controllers\AdminDesa\PerencanaanController;
 use App\Http\Controllers\AdminDesa\UMKMController;
 use App\Http\Controllers\LayananDesaController;
 use App\Http\Controllers\StatistikController;
@@ -82,6 +83,31 @@ Route::middleware(['auth','admin','preventBack'])->prefix('admin')->group(functi
     Route::delete('/umkm/{id}',[UMKMController::class,'destroy']);
     Route::get('/akun',[AkunController::class,'edit']);
     Route::put('/akun/{id}',[AkunController::class,'update']);
+    Route::get('/rpjm',[PerencanaanController::class,'rpjm'])->name('admin.rpjm');
+    Route::post('/rpjm',[PerencanaanController::class,'rpjmStore']);
+    Route::get('/rpjm/{id}/edit',[PerencanaanController::class,'rpjmEdit']);
+    Route::put('/rpjm/{id}',[PerencanaanController::class,'rpjmUpdate']);
+    Route::delete('/rpjm/{id}',[PerencanaanController::class,'rpjmDestroy']);
+    Route::get('/rkp',[PerencanaanController::class,'rkp'])->name('admin.rkp');
+    Route::post('/rkp',[PerencanaanController::class,'rkpStore']);
+    Route::get('/rkp/{id}/edit',[PerencanaanController::class,'rkpEdit']);
+    Route::put('/rkp/{id}',[PerencanaanController::class,'rkpUpdate']);
+    Route::delete('/rkp/{id}',[PerencanaanController::class,'rkpDestroy']);
+    Route::get('/perdes',[PerencanaanController::class,'perdes'])->name('admin.perdes');
+    Route::post('/perdes',[PerencanaanController::class,'perdesStore']);
+    Route::get('/perdes/{id}/edit',[PerencanaanController::class,'perdesEdit']);
+    Route::put('/perdes/{id}',[PerencanaanController::class,'perdesUpdate']);
+    Route::delete('/perdes/{id}',[PerencanaanController::class,'perdesDestroy']);
+    Route::get('/perkades',[PerencanaanController::class,'perkades'])->name('admin.perkades');
+    Route::post('/perkades',[PerencanaanController::class,'perkadesStore']);
+    Route::get('/perkades/{id}/edit',[PerencanaanController::class,'perkadesEdit']);
+    Route::put('/perkades/{id}',[PerencanaanController::class,'perkadesUpdate']);
+    Route::delete('/perkades/{id}',[PerencanaanController::class,'perkadesDestroy']);
+    Route::get('/transparansi',[PerencanaanController::class,'transparansi'])->name('admin.transparansi');
+    Route::post('/transparansi',[PerencanaanController::class,'transparansiStore']);
+    Route::get('/transparansi/{id}/edit',[PerencanaanController::class,'transparansiEdit']);
+    Route::put('/transparansi/{id}',[PerencanaanController::class,'transparansiUpdate']);
+    Route::delete('/transparansi/{id}',[PerencanaanController::class,'transparansiDestroy']);
 });
 // Route Admin End
 
@@ -128,12 +154,11 @@ Route::get('/wilayah', function(){
     return view('UserPages.layout.wilayah');
 });
 
-Route::get('/perencanaan', function(){
-    return view('UserPages.layout.perencanaan');
-});
+Route::get('/perencanaan', [PerencanaanController::class,'user']);
 
 Route::get('/transparansi', function(){
-    return view('UserPages.layout.transparansi');
+    $data = DB::table('transparansi')->get();
+    return view('UserPages.layout.transparansi', compact('data'));
 });
 
 Route::get('/lembaga', function(){
