@@ -10,45 +10,51 @@
     pengajuan-umkm
 @endsection
 @section('content')
-    <div class="container-fluid">
-        <h5 class="text-center text-white">Form Pengajuan UMKM</h5>
+    <div class="container-fluid" style="margin-top: 8rem">
+        <div class="card p-2">
+            <h5 class="text-center ">Form Pengajuan UMKM</h5>
         <hr>
         <form class="my-4" action="/pengajuan-umkm" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="container">
-                <p class=" text-center my-3 text-white">Form Data UMKM</p>
+                <p class=" text-center my-3 ">Form Data UMKM</p>
                 <div class="row">
                     <div class="col-md-6">
-                        <div class="mb-3">
-                            <label class="text-white" for="">NIK Pemilik UMKM<span class="text-danger">*</span></label>
+                        <label class="" for="">NIK Pemilik UMKM<span class="text-danger">*</span></label>
+                        <div class="mb-3 input-group input-group-outline">
                             <input type="text" class="form-control" name="nik" required>
                         </div>
-                        <div class="mb-3">
-                            <label class="text-white" for="">Nama Pemilik UMKM<span class="text-danger">*</span></label>
+
+                        <label class="" for="">Nama Pemilik UMKM<span class="text-danger">*</span></label>
+                        <div class="mb-3 input-group input-group-outline">
                             <input type="text" class="form-control" name="nama_pemilik" required>
                         </div>
-                        <div class="mb-3">
-                            <label class="text-white" for="">Nama UMKM <span class="text-danger">*</span></label>
+
+                        <label class="" for="">Nama UMKM <span class="text-danger">*</span></label>
+                        <div class="mb-3 input-group input-group-outline">
                             <input type="text" class="form-control" name="nama_umkm" required>
                         </div>
-                        <div class="mb-3">
-                            <label class="text-white" for="">No WhatsApp <span class="text-danger">*(62xxx)</span></label>
+
+                        <label class="" for="">No WhatsApp <span class="text-danger">*(62xxx)</span></label>
+                        <div class="mb-3 input-group input-group-outline">
                             <input type="text" placeholder="62xxxx" class="form-control" name="nohp" required>
                         </div>
-                        <div class="mb-3">
-                            <label class="text-white" for="">Logo UMKM <span class="text-danger">*</span></label>
+
+                        <label class="" for="">Logo UMKM <span class="text-danger">*</span></label>
+                        <div class="mb-3 input-group input-group-outline">
                             <input type="file" class="form-control" id="image" name="logo" onchange="imgPreview()" required>
-                            <img class="img-preview d-block mx-auto col-6 mt-4"  alt="">
                         </div>
+                        <img class="img-preview d-block mx-auto col-6 mt-4"  alt="">
                         
                     </div>
                     <div class="col-md-6">
-                        <div class="mb-3">
-                            <label class="text-white" for="">Alamat UMKM <span class="text-danger">*</span></label>
+                        <label class="" for="">Alamat UMKM <span class="text-danger">*</span></label>
+                        <div class="mb-3 input-group input-group-outline">
                             <textarea class="form-control" name="alamat" id="" cols="30" rows="10"></textarea>
                         </div>
-                        <div class="mb-3">
-                            <label class="text-white" for="">Deskripsi UMKM <span class="text-danger">*</span></label>
+
+                        <label class="" for="">Deskripsi UMKM <span class="text-danger">*</span></label>
+                        <div class="mb-3 input-group input-group-outline">
                             <textarea class="form-control" name="deskripsi" id="" cols="30" rows="10"></textarea>
                         </div>
                     </div>
@@ -57,7 +63,7 @@
             </div>
             <hr>
             <div class="container">
-                <p class=" text-center text-white">Gambar Produk</p>
+                <p class=" text-center ">Gambar Produk</p>
                 <div class="my-3" id="produk">
                 <div class="mb-3">
                     <input type="file" name="gambar_produk" multiple data-max-files="10" data-allow-reorder="true" data-max-files-size="2MB" id="gambar_produk">
@@ -69,7 +75,7 @@
                 <a href="/" style="width: 90%" class="btn btn-warning">Kembali</a>
             </div>  
             </form>
-        
+        </div>
     </div>
 @endsection
 @push('js')
