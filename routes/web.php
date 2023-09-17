@@ -6,7 +6,6 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\SuratController;
-use App\Http\Controllers\WargaController;
 use App\Http\Controllers\SensusController;
 use App\Http\Controllers\AdminDesa\BeritaController;
 use App\Http\Controllers\AdminDesa\ProfileController;
@@ -16,7 +15,6 @@ use App\Http\Controllers\AdminDesa\PerencanaanController;
 use App\Http\Controllers\AdminDesa\UMKMController;
 use App\Http\Controllers\LayananDesaController;
 use App\Http\Controllers\StatistikController;
-use App\Models\UMKM;
 
 /*
 |--------------------------------------------------------------------------
@@ -108,6 +106,8 @@ Route::middleware(['auth','admin','preventBack'])->prefix('admin')->group(functi
     Route::get('/transparansi/{id}/edit',[PerencanaanController::class,'transparansiEdit']);
     Route::put('/transparansi/{id}',[PerencanaanController::class,'transparansiUpdate']);
     Route::delete('/transparansi/{id}',[PerencanaanController::class,'transparansiDestroy']);
+    Route::get('/saran',[LayananDesaController::class,'adminSaran'])->name('admin.saran');
+    Route::get('/saran/{id}',[LayananDesaController::class,'adminSaranShow']);
 });
 // Route Admin End
 
@@ -155,7 +155,8 @@ Route::get('/wilayah', function(){
 });
 
 Route::get('/perencanaan', [PerencanaanController::class,'user']);
-
+Route::get('/saran', [LayananDesaController::class,'saran']);
+Route::post('/saran',[LayananDesaController::class,'saranStore']);
 Route::get('/transparansi', function(){
     $data = DB::table('transparansi')->get();
     return view('UserPages.layout.transparansi', compact('data'));

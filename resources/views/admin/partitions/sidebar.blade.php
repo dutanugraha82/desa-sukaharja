@@ -90,7 +90,7 @@
     <hr class="sidebar-divider">
 
     <li class="nav-item">
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="/{{ auth()->user()->role }}/saran">
             <i class="fas fa-caret-square-down"></i>
             <span>Saran dan Masukan</span></a>
     </li>

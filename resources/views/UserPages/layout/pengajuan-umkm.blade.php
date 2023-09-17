@@ -22,22 +22,23 @@
                     <div class="col-md-6">
                         <label class="" for="">NIK Pemilik UMKM<span class="text-danger">*</span></label>
                         <div class="mb-3 input-group input-group-outline">
-                            <input type="text" class="form-control" name="nik" required>
+                            <input type="text" placeholder="NIK Pemilik UMKM" class="form-control" name="nik" required>
                         </div>
 
                         <label class="" for="">Nama Pemilik UMKM<span class="text-danger">*</span></label>
                         <div class="mb-3 input-group input-group-outline">
-                            <input type="text" class="form-control" name="nama_pemilik" required>
+                            <input type="text" class="form-control" placeholder="Nama Pemilik UMKM" name="nama_pemilik" required>
                         </div>
 
                         <label class="" for="">Nama UMKM <span class="text-danger">*</span></label>
                         <div class="mb-3 input-group input-group-outline">
-                            <input type="text" class="form-control" name="nama_umkm" required>
+                            <input type="text" class="form-control" placeholder="Nama UMKM" name="nama_umkm" required>
                         </div>
 
-                        <label class="" for="">No WhatsApp <span class="text-danger">*(62xxx)</span></label>
-                        <div class="mb-3 input-group input-group-outline">
-                            <input type="text" placeholder="62xxxx" class="form-control" name="nohp" required>
+                        <label class="" for="">No WhatsApp <span class="text-danger">*</span></label>
+                        <div class="mb-3 input-group input-group-outline d-flex">
+                            <input type="text" value="+62" style="width: 60px" class="p-2" disabled>
+                            <input type="text" class="form-control" name="nohp" required>
                         </div>
 
                         <label class="" for="">Logo UMKM <span class="text-danger">*</span></label>

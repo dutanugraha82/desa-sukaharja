@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\GambarProduk;
+use App\Models\Saran;
 use App\Models\UMKM;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -79,7 +80,7 @@ class LayananDesaController extends Controller
                 'nik' => Crypt::encrypt( $request->nik),
                 'nama_pemilik' => $request->nama_pemilik,
                 'nama_umkm' => $request->nama_umkm,
-                'nohp' => $request->nohp,
+                'nohp' => "62" . $request->nohp,
                 'logo' => $request->file('logo')->store('logo-umkm'),
                 'alamat' => $request->alamat,
                 'deskripsi' => $request->deskripsi,
@@ -105,7 +106,7 @@ class LayananDesaController extends Controller
             'nik' => Crypt::encrypt( $request->nik),
             'nama_pemilik' => $request->nama_pemilik,
             'nama_umkm' => $request->nama_umkm,
-            'nohp' => $request->nohp,
+            'nohp' => "62" .  $request->nohp,
             'logo' => $request->file('logo')->store('logo-umkm'),
             'alamat' => $request->alamat,
             'deskripsi' => $request->deskripsi,
@@ -131,5 +132,55 @@ class LayananDesaController extends Controller
             return back();
         }
 
+    }
+
+    public function saran(){
+        return view('UserPages.layout.saran');
+    }
+
+    public function saranStore(Request $request){
+        $request->validate([
+            'nik' => 'required|min:16|max:16',
+            'nama' => 'required',
+            'nohp' => 'required',
+            'saran' => 'required',
+        ]);
+
+        $nohp = "62" . $request->nohp;
+
+        Saran::create([
+            'nik' => Crypt::encrypt($request->nik),
+            'nama' => $request->nama,
+            'nohp' => $nohp,
+            'saran' => $request->saran,
+        ]);
+
+        Alert::success('Berhasil','Terima Kasih atas Saran Anda!');
+        return redirect('/layanan-desa');
+    }
+
+    public function adminSaran(Request $request){
+        $saran = DB::table('saran')->orderBy('created_at','desc')->get();
+        if(request()->ajax()){
+            return datatables()
+            ->of($saran)
+            ->addIndexColumn()
+            ->addColumn('nik', function($saran){
+                return Crypt::decrypt($saran->nik);
+            })
+            ->addColumn('action', function($saran){
+                return '<a href="/'.auth()->user()->role.'/saran/'.$saran->id.'" class="btn btn-primary">Lihat</a>';
+            })
+            ->rawColumns(['nik','action'])
+            ->make(true);
+        }
+
+        return view('admin.contents.saran.index');
+    }
+
+    public function adminSaranShow($id){
+        $data = Saran::find($id);
+
+        return view('admin.contents.saran.show',compact('data'));
     }
 }

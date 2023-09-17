@@ -29,7 +29,7 @@
                     </a>
                 </div>
                 <div class="col-6 col-md-4 text-center text-dark mb-3">
-                    <a href="#" class=" nav-link">
+                    <a href="/saran" class=" nav-link">
                     <i class='bx bx-mail-send fs-icon'></i>
                     <p>Saran Untuk Desa</p>
                     </a>
