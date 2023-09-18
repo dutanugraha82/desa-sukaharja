@@ -88,7 +88,7 @@
              
             <div style="margin-top: 50px">
                 <a style="width: 70vw" href="/{{ auth()->user()->role }}/sku-luar" class="btn btn-warning d-block mx-auto">Kembali</a> <br>
-                <form action="/{{ auth()->user()->role }}/{{ $data->id }}" method="POST">
+                <form action="/{{ auth()->user()->role }}/sku-luar/{{ $data->id }}" method="POST">
                 @csrf
                 @method('delete')
                 <button style="width: 70vw" class="btn btn-danger d-block mx-auto" onclick="return confirm('Yakin Ingin Menghapus Data Ini?')">Hapus</button>
