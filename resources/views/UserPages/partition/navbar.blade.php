@@ -47,6 +47,11 @@
           <li class="nav-item">
             <a class="nav-link" href="/layanan-desa">Layanan Desa</a>
           </li>
+          @guest
+          <li class="nav-item">
+            <a class="nav-link text-info" href="/login">Admin</a>
+          </li>
+          @endguest
           @auth
           <li class="nav-item">
            <form action="/logout" method="POST">

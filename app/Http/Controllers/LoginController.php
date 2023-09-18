@@ -42,7 +42,7 @@ class LoginController extends Controller
                 
            }elseif (auth()->user()->role == 'warga') {
                Alert::success('Login Berhasil!');
-                return redirect()->intended();
+                return redirect()->intended('/');
            }elseif(auth()->user()->role == 'petugas-sensus'){
             Alert::success('Login Berhasil');
             return redirect('/sensus');

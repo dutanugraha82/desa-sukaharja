@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Carbon\Carbon;
 use App\Models\KTM;
 use App\Models\SKU;
+use App\Models\SKULuar;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Crypt;
@@ -37,7 +38,7 @@ class SuratController extends Controller
     public function createKTM(){
         $data = DB::table('kartu_keluarga')->join('profiles','kartu_keluarga.id','=','profiles.kartu_keluarga_id')
                                            ->where('profiles.id','=',auth()->user()->profiles_id)->get();
-        // dd($data);
+    
         foreach ($data as $item) {
             $alamat = Crypt::decrypt($item->alamat);
             $nik = Crypt::decrypt($item->nik);
@@ -178,5 +179,136 @@ class SuratController extends Controller
         }
         // dd($data);
         return view('admin.contents.sku-dalam.show', compact('data','tanggal_dibuat'));
+    }
+
+
+    public function skuLuar(Request $request){
+        $skuLuar = skuLuar::all();
+        if ($request->ajax()) {
+            return datatables()->of($skuLuar)
+            ->addIndexColumn()
+            ->addColumn('nik', function($skuLuar){
+                return Crypt::decrypt($skuLuar->nik);
+            })
+            ->addColumn('action', function($skuLuar){
+                return ' <div class="d-flex">   
+                        <a href="/admin/sku-luar/'.$skuLuar->id.'/edit" class="btn  btn-warning" style="width:80px;">Edit</a>
+                        <a href="/admin/sku-luar/'.$skuLuar->id.'" class="btn mx-3 btn-primary">Preview</a>
+                        <a href="/admin/sku-luar/'.$skuLuar->id.'/print" class="btn mx-3 btn-primary"><i class="fa fa-print"></i></a>
+                        </div>';
+            })
+            ->addColumn('created_at', function($skuLuar){
+                return Carbon::parse($skuLuar->created_at)->format('d M Y');
+            })
+            ->rawColumns(['nik','action'])
+            ->make(true);
+        }
+
+        return view('admin.contents.sku-luar.index');
+    }
+
+    public function createSkuLuar(){
+        return view('UserPages.layout.sku-luar');
+    }
+
+    public function storeSkuLuar(Request $request){
+
+        $request->validate([
+            'jenis_usaha' => 'required',
+            'penghasilan' => 'required',
+            'tahun_berdiri' => 'required',
+            'nama' => 'required',
+            'ttl' => 'required',
+            'nik' => 'required|max:16|min:16',
+            'jk' => 'required',
+            'pekerjaan' => 'required',
+            'agama' => 'required',
+            'kelurahan' => 'required',
+            'kecamatan' => 'required',
+            'kota' => 'required',
+            'alamat_usaha' => 'required',
+            'alamat_asal' => 'required',
+        ]);
+
+        SKULuar::create([
+            'jenis_usaha' => $request->jenis_usaha,
+            'penghasilan' => $request->penghasilan,
+            'tahun_berdiri' => $request->tahun_berdiri,
+            'nama' => $request->nama,
+            'ttl' => $request->ttl,
+            'nik' => Crypt::encrypt($request->nik),
+            'jk' => $request->jk,
+            'pekerjaan' => $request->pekerjaan,
+            'agama' => $request->agama,
+            'kelurahan' => $request->kelurahan,
+            'kecamatan' => $request->kecamatan,
+            'kota' => $request->kota,
+            'alamat_usaha' => $request->alamat_usaha,
+            'alamat_asal' => $request->alamat_asal,
+        ]);
+
+        Alert::success('Berhasil!', 'Silahkan ambil surat ke kantor desa');
+        return redirect('/layanan-desa');
+    }
+
+    public function editSkuLuar($id){
+        $data = SKULuar::find($id);
+        return view('admin.contents.sku-luar.edit', compact('data'));
+    }
+
+    public function updateSkuLuar(Request $request, $id){
+        $request->validate([
+            'jenis_usaha' => 'required',
+            'penghasilan' => 'required',
+            'tahun_berdiri' => 'required',
+            'nama' => 'required',
+            'ttl' => 'required',
+            'nik' => 'required|max:16|min:16',
+            'jk' => 'required',
+            'pekerjaan' => 'required',
+            'agama' => 'required',
+            'kelurahan' => 'required',
+            'kecamatan' => 'required',
+            'kota' => 'required',
+            'alamat_usaha' => 'required',
+            'alamat_asal' => 'required',
+        ]);
+
+        SKULuar::find($id)->update([
+            'jenis_usaha' => $request->jenis_usaha,
+            'penghasilan' => $request->penghasilan,
+            'tahun_berdiri' => $request->tahun_berdiri,
+            'nama' => $request->nama,
+            'ttl' => $request->ttl,
+            'nik' => Crypt::encrypt($request->nik),
+            'jk' => $request->jk,
+            'pekerjaan' => $request->pekerjaan,
+            'agama' => $request->agama,
+            'kelurahan' => $request->kelurahan,
+            'kecamatan' => $request->kecamatan,
+            'kota' => $request->kota,
+            'alamat_usaha' => $request->alamat_usaha,
+            'alamat_asal' => $request->alamat_asal,
+        ]);
+
+        Alert::success('Berhasil dirubah!');
+        return redirect('/'. auth()->user()->role . '/sku-luar');
+    }
+
+    public function showSkuLuar($id){
+        $data = SKULuar::find($id);
+        return view('admin.contents.sku-luar.show', compact('data'));
+    }
+
+    public function printSkuLuar($id){
+        $data = SKULuar::find($id);
+        $tanggal_dibuat = Carbon::parse($data['created_at'])->isoFormat('dddd D MMMM Y');
+        return view('admin.contents.sku-luar.print', compact('data','tanggal_dibuat'));
+    }
+
+    public function destroySkuLuar($id){
+        SKULuar::find($id)->delete();
+        Alert::success('Berhasil dihapus!');
+        return redirect('/'.auth()->user()->role.'/sku-luar');
     }
 }

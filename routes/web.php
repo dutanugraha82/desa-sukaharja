@@ -29,7 +29,7 @@ use App\Http\Controllers\StatistikController;
 Route::get('/login',[LoginController::class,'index'])->name('login')->middleware('guest');
 Route::post('/login',[LoginController::class,'authenticate'])->middleware('guest');
 Route::post('/logout',[LoginController::class,'logout'])->middleware('auth');
-Route::get('/', [HomeController::class,'home']);
+Route::get('/', [HomeController::class,'home'])->name('home');
 // Route Superadmin Start
 Route::middleware(['auth','superadmin','preventBack'])->name('superadmin.')->prefix('superadmin')->group(function (){
 
@@ -69,6 +69,12 @@ Route::middleware(['auth','admin','preventBack'])->prefix('admin')->group(functi
     Route::get('/sku-dalam',[SuratController::class,'skuDalam']);
     Route::get('/sku-dalam/json',[SuratController::class,'skuDalamJson'])->name('sku-dalam.json');
     Route::get('/sku-dalam/{id}',[SuratController::class,'showSKU']);
+    Route::get('/sku-luar',[SuratController::class,'skuLuar'])->name('admin.sku-luar');
+    Route::get('/sku-luar/{id}',[SuratController::class,'showSkuLuar']);
+    Route::get('/sku-luar/{id}/edit',[SuratController::class,'editSkuLuar']);
+    Route::put('/sku-luar/{id}',[SuratController::class,'updateSkuLuar']);
+    Route::get('/sku-luar/{id}/print',[SuratController::class,'printSkuLuar']);
+    Route::delete('/sku-luar/{id}',[SuratController::class,'destroySkuLuar']);
     Route::get('/berita/json',[BeritaController::class,'json'])->name('berita.json');
     Route::resource('berita',BeritaController::class);
     Route::get('/umkm', [UMKMController::class,'index']);
@@ -125,8 +131,9 @@ Route::middleware(['auth','admin','preventBack'])->prefix('admin')->group(functi
     });
 // Route Sensus End
 // Route Warga Start
+
 Route::middleware(['auth','warga','preventBack'])->group(function(){
-    Route::get('/ktm',[SuratController::class,'createKTM']);
+    Route::get('/ktm',[SuratController::class,'createKTM']);    
     Route::post('/ktm',[SuratController::class,'storeKTM']);
     Route::get('/sku-dalam',[SuratController::class,'createSKU']);
     Route::post('/sku-dalam',[SuratController::class,'storeSKU']);
@@ -147,6 +154,8 @@ Route::get('/berita/{slug}', [HomeController::class,'berita']);
 Route::get('/data-penduduk', [LayananDesaController::class,'dataPenduduk'])->name('data-penduduk');
 Route::get('/umkm-masyarakat', [LayananDesaController::class,'umkm']);
 Route::get('/umkm-masyarakat/{id}', [LayananDesaController::class,'detailUMKM']);
+Route::get('/sku-luar',[SuratController::class,'createSkuLuar']);
+Route::post('/sku-luar',[SuratController::class,'storeSkuLuar']);
 
 Route::get('/statistik', [StatistikController::class,'index']);
 
