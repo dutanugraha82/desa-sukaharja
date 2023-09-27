@@ -22,30 +22,46 @@
               <div class="tab-content mt-4" id="myTabContent">
                 {{-- RPJM --}}
                 <div class="tab-pane fade show active" id="rpjm" role="tabpanel" aria-labelledby="rpjm-tab">
+                   <ol type="1">
                     @foreach ($rpjm as $item)
-                        <a class="text-info" href="{{ asset('/storage'.'/'.$item->file) }}" target='_blank' rel='noopener noreferrer'><u>{{ $item->nama }}</u></a>
-                    @endforeach
+                    <li>
+                      <a class="text-info" href="{{ asset('/storage'.'/'.$item->file) }}" target='_blank' rel='noopener noreferrer'><u>{{ $item->nama }}</u></a>
+                    </li>
+                  @endforeach
+                   </ol>
                 </div>
     
                 {{-- RKP --}}
                 <div class="tab-pane fade" id="rkp" role="tabpanel" aria-labelledby="rkp-tab">
-                  @foreach ($rkp as $item)
-                  <a class="text-info" href="{{ asset('/storage'.'/'.$item->file) }}" target='_blank' rel='noopener noreferrer'><u>{{ $item->nama }}</u></a>
-              @endforeach
+                  <ol type="1">
+                    @foreach ($rkp as $item)
+                    <li>
+                      <a class="text-info" href="{{ asset('/storage'.'/'.$item->file) }}" target='_blank' rel='noopener noreferrer'><u>{{ $item->nama }}</u></a>
+                    </li>
+                  @endforeach
+                  </ol>
                 </div>
     
                 {{-- Perdes --}}
                 <div class="tab-pane fade" id="perdes" role="tabpanel" aria-labelledby="perdes-tab">
-                  @foreach ($perdes as $item)
-                  <a class="text-info" href="{{ asset('/storage'.'/'.$item->file) }}" target='_blank' rel='noopener noreferrer'><u>{{ $item->nama }}</u></a>
-              @endforeach
+                  <ol type="1">
+                    @foreach ($perdes as $item)
+                    <li>
+                      <a class="text-info" href="{{ asset('/storage'.'/'.$item->file) }}" target='_blank' rel='noopener noreferrer'><u>{{ $item->nama }}</u></a>
+                    </li>
+                  @endforeach
+                  </ol>
                 </div>
     
                 {{-- Perdakes --}}
                 <div class="tab-pane fade" id="perkades" role="tabpanel" aria-labelledby="perkades-tab">
+                 <ol type="1">
                   @foreach ($perkades as $item)
-                  <a class="text-info" href="{{ asset('/storage'.'/'.$item->file) }}" target='_blank' rel='noopener noreferrer'><u>{{ $item->nama }}</u></a>
-              @endforeach
+                  <li>
+                    <a class="text-info" href="{{ asset('/storage'.'/'.$item->file) }}" target='_blank' rel='noopener noreferrer'><u>{{ $item->nama }}</u></a>
+                  </li>
+                  @endforeach
+                 </ol>
                 </div>
               </div>
         </div>

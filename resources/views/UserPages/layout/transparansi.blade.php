@@ -12,9 +12,11 @@
                         <h5 class="text-center text-dark">Dokumen Transparansi Publik</h5>
                     </div>
                     <div class="card-body text-dark" style="max-height: 21rem; overflow-y:scroll">
-                        <ol>
+                        <ol type="1">
                            @foreach ($data as $item)
-                           <a class="text-info" href="{{ asset('/storage'.'/'.$item->file) }}" target="_blank" rel="noopener noreferrer"><u><li class="mb-2">{{ $item->nama }}</li></u></a>
+                           <li>
+                             <a class="text-info" href="{{ asset('/storage'.'/'.$item->file) }}" target="_blank" rel="noopener noreferrer"><u><li class="mb-2">{{ $item->nama }}</li></u></a>
+                           </li>
                            @endforeach
                         </ol>
                     </div>
