@@ -7,7 +7,7 @@
         <div class="card p-3 mt-4">
             <ul class="nav nav-tabs justify-content-center" id="myTab" role="tablist">
                 <li class="nav-item" role="presentation">
-                  <button class="nav-link text-info" id="rpjm-tab" data-bs-toggle="tab" data-bs-target="#rpjm" type="button" role="tab" aria-controls="rpjm" aria-selected="true">RPJM</button>
+                  <button class="nav-link active text-info" id="rpjm-tab" data-bs-toggle="tab" data-bs-target="#rpjm" type="button" role="tab" aria-controls="rpjm" aria-selected="true">RPJM</button>
                 </li>
                 <li class="nav-item" role="presentation">
                   <button class="nav-link text-info" id="rkp-tab" data-bs-toggle="tab" data-bs-target="#rkp" type="button" role="tab" aria-controls="rkp" aria-selected="false">RKP</button>

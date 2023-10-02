@@ -41,7 +41,7 @@
                     </a>
                 </div>
                 <div class="col-6 col-md-4 text-center text-dark mb-3">
-                    <a href="#" class=" nav-link">
+                    <a href="/prestasi" class=" nav-link">
                     <i class='bx bx-trophy fs-icon'></i>
                     <p>Prestasi Desa</p>
                     </a>

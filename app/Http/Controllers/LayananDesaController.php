@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\GambarProduk;
+use App\Models\Prestasi;
 use App\Models\Saran;
 use App\Models\UMKM;
 use Illuminate\Http\Request;
@@ -182,5 +183,33 @@ class LayananDesaController extends Controller
         $data = Saran::find($id);
 
         return view('admin.contents.saran.show',compact('data'));
+    }
+
+
+    public function prestasi(){
+        $prestasi = Prestasi::all();
+        return view('UserPages.layout.prestasi', compact('prestasi'));
+    }
+
+    public function prestasiCreate(){
+        return view('admin.contents.prestasi.create');
+    }
+
+    public function prestasiStore(Request $request){
+        $request->validate([
+            'judul' => 'required',
+            'foto' => 'image',
+            'deskripsi' => 'required',
+        ]);
+
+        Prestasi::create([
+            'judul' => $request->judul,
+            'foto' => $request->file('foto')->store('prestasi'),
+            'deskripsi' => $request->deskripsi,
+        ]);
+
+        Alert::success('Berhasil ditambahkan!');
+
+        return redirect('/admin');
     }
 }

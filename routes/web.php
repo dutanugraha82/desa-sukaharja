@@ -49,7 +49,7 @@ Route::middleware(['auth','sekdes','preventBack'])->prefix('sekdes')->group(func
 
 // Route Admin Start
 Route::middleware(['auth','admin','preventBack'])->prefix('admin')->group(function(){
-    Route::get('/', [DashboardController::class,'index']);
+    Route::get('/', [DashboardController::class,'index'])->name('admin.dashboard');
     Route::get('/kk', [KartuKeluargaController::class,'index']);
     Route::get('/kk/create', [KartuKeluargaController::class,'create']);
     Route::get('/kk/{id}/edit', [KartuKeluargaController::class,'edit']);
@@ -114,6 +114,8 @@ Route::middleware(['auth','admin','preventBack'])->prefix('admin')->group(functi
     Route::delete('/transparansi/{id}',[PerencanaanController::class,'transparansiDestroy']);
     Route::get('/saran',[LayananDesaController::class,'adminSaran'])->name('admin.saran');
     Route::get('/saran/{id}',[LayananDesaController::class,'adminSaranShow']);
+    Route::get('/prestasi/create',[LayananDesaController::class,'prestasiCreate']);
+    Route::post('/prestasi',[LayananDesaController::class,'prestasiStore']);
 });
 // Route Admin End
 
@@ -162,7 +164,7 @@ Route::get('/statistik', [StatistikController::class,'index']);
 Route::get('/wilayah', function(){
     return view('UserPages.layout.wilayah');
 });
-
+Route::get('/prestasi',[LayananDesaController::class,'prestasi']);
 Route::get('/perencanaan', [PerencanaanController::class,'user']);
 Route::get('/saran', [LayananDesaController::class,'saran']);
 Route::post('/saran',[LayananDesaController::class,'saranStore']);
