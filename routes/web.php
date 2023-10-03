@@ -116,6 +116,9 @@ Route::middleware(['auth','admin','preventBack'])->prefix('admin')->group(functi
     Route::get('/saran/{id}',[LayananDesaController::class,'adminSaranShow']);
     Route::get('/prestasi/create',[LayananDesaController::class,'prestasiCreate']);
     Route::post('/prestasi',[LayananDesaController::class,'prestasiStore']);
+    Route::get('/prestasi/{id}',[LayananDesaController::class,'prestasiEdit']);
+    Route::put('/prestasi/{id}',[LayananDesaController::class,'prestasiUpdate']);
+    Route::delete('/prestasi/{id}',[LayananDesaController::class,'prestasiDestroy']);
 });
 // Route Admin End
 

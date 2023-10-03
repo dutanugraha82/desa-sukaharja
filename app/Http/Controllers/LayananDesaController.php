@@ -212,4 +212,58 @@ class LayananDesaController extends Controller
 
         return redirect('/admin');
     }
+
+    public function prestasiEdit($id){
+       $prestasi = Prestasi::find($id);
+
+       return view('admin.contents.prestasi.edit', compact('prestasi'));
+    }
+
+    public function prestasiUpdate(Request $request, $id){
+        if ($request->fotoBaru) {
+
+            $request->validate([
+                'judul' => 'required',
+                'fotoBaru' => 'image',
+                'deskripsi' => 'required',
+            ]);
+
+            Prestasi::find($id)->update([
+                'judul' => $request->judul,
+                'foto' => $request->file('fotoBaru')->store('prestasi'),
+                'deskripsi' => $request->deskripsi,
+            ]);
+
+            Storage::delete($request->fotoLama);
+            Alert::success('Data Terupdate!');
+            return redirect('/admin');
+
+        } else {
+            $request->validate([
+                'judul' => 'required',
+                'deskripsi' => 'required',
+            ]);
+
+            Prestasi::find($id)->update([
+                'judul' => $request->judul,
+                'deskripsi' => $request->deskripsi,
+            ]);
+
+            Alert::success('Berhasil Terupdate!');
+            return redirect('/admin');
+        }
+        
+    }
+
+    public function prestasiDestroy(Request $request, $id){
+
+       $prestasi =  Prestasi::find($id);
+
+       Storage::delete($prestasi['foto']);
+       $prestasi->delete();
+       Alert::success('Data Terhapus!');
+
+       return redirect('/admin');
+
+    }
 }

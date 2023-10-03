@@ -21,7 +21,14 @@ class DashboardController extends Controller
             ->of($prestasi)
             ->addIndexColumn()
             ->addColumn('action', function($prestasi){
-                return '<a href="/'.auth()->user()->role.'/prestasi/'.$prestasi->id.'" class="btn btn-primary">Lihat</a>';
+                return '<div class="d-flex justify-content-rounded">
+                             <a href="/'.auth()->user()->role.'/prestasi/'.$prestasi->id.'" class="btn btn-warning mr-3" style="width:100px;">Edit</a>
+                            <form action="/admin/prestasi/'.$prestasi->id.'" method="POST">
+                            '.method_field("DELETE").'
+                            '.csrf_field().'
+                            <button type="submit" style="width:100px;" onclick="javascript: return confirm(\'Yakin Ingin Hapus Data?\')"  class="btn btn-danger">Hapus</button>
+                            </form>
+                        </div>';
             })
             ->addColumn('created_at', function($prestasi){
                 return Carbon::parse($prestasi->created_at)->isoFormat('ddd, DD MMM Y');
