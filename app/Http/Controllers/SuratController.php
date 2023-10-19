@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\KartuKeluarga;
 use Carbon\Carbon;
 use App\Models\KTM;
+use App\Models\Profiles;
 use App\Models\SKU;
 use App\Models\SKULuar;
+use App\Models\SuratPenghasilanOrtu;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Crypt;
@@ -311,4 +314,152 @@ class SuratController extends Controller
         Alert::success('Berhasil dihapus!');
         return redirect('/'.auth()->user()->role.'/sku-luar');
     }
+
+    public function createSuratPenghasilanOrtu(){
+        $profiles = Profiles::where('id',auth()->user()->profiles_id)->first();
+        $tanggal_lahir = Carbon::parse($profiles->tanggal_lahir)->isoFormat('D-MM-Y');
+        $kk = KartuKeluarga::where('id', $profiles->kartu_keluarga_id)->first();
+        $alamat = Crypt::decrypt($kk->alamat) . ' Rt.' . $kk->rt . ' Rw.' . $kk->rw . ' Desa/Kel.' . $kk->desa . ' Kec.' . $kk->kecamatan . ' Kab.' . $kk->kabupaten;
+
+        return view('UserPages.layout.surat-penghasilan-ortu', compact('profiles','tanggal_lahir','alamat'));
+    }
+
+
+    public function suratPenghasilanOrtu(Request $request){
+        $suratPenghasilanOrtu = SuratPenghasilanOrtu::all();
+        if ($request->ajax()) {
+            return datatables()->of($suratPenghasilanOrtu)
+            ->addIndexColumn()
+            ->addColumn('action', function($suratPenghasilanOrtu){
+                return ' <div class="d-flex">   
+                        <a href="/admin/surat-penghasilan-orang-tua/'.$suratPenghasilanOrtu->id.'/edit" class="btn  btn-warning" style="width:80px;">Edit</a>
+                        <a href="/admin/surat-penghasilan-orang-tua/'.$suratPenghasilanOrtu->id.'" class="btn mx-3 btn-primary">Preview</a>
+                        <a href="/admin/surat-penghasilan-orang-tua/'.$suratPenghasilanOrtu->id.'/print" class="btn mx-3 btn-primary"><i class="fa fa-print"></i></a>
+                        </div>';
+            })
+            ->addColumn('created_at', function($suratPenghasilanOrtu){
+                return Carbon::parse($suratPenghasilanOrtu->created_at)->format('d M Y');
+            })
+            ->rawColumns(['action'])
+            ->make(true);
+        }
+
+        return view('admin.contents.suratPenghasilanOrtu.index');
+    }
+
+    public function storeSuratPenghasilanOrtu(Request $request){
+        $request->validate([
+            'nama' => 'required',
+            'ttl' => 'required',
+            'agama' => 'required',
+            'jk' => 'required',
+            'pekerjaan' => 'required',
+            'nik' => 'required',
+            'kewarganegaraan' => 'required',
+            'penghasilan' => 'required',
+            'ejaan_penghasilan' => 'required',
+            'anggota' => 'required',
+            'ejaan_anggota' => 'required',
+            'alamat' => 'required',
+            'nama_anak' => 'required',
+            'ttl_anak' => 'required',
+            'jk_anak' => 'required',
+            'pekerjaan_anak' => 'required',
+            'nik_anak' => 'required',
+            'alamat_anak' => 'required',
+           ]);
+    
+           SuratPenghasilanOrtu::create([
+            'nama' => $request->nama,
+            'ttl' => $request->ttl,
+            'agama' => $request->agama,
+            'jk' => $request->jk,
+            'pekerjaan' => $request->pekerjaan,
+            'nik' => $request->nik,
+            'kewarganegaraan' => $request->kewarganegaraan,
+            'penghasilan' => $request->penghasilan,
+            'ejaan_penghasilan' => $request->ejaan_penghasilan,
+            'anggota' => $request->anggota,
+            'ejaan_anggota' => $request->ejaan_anggota,
+            'alamat' => $request->alamat,
+            'nama_anak' => $request->nama_anak,
+            'ttl_anak' => $request->ttl_anak,
+            'jk_anak' => $request->jk_anak,
+            'pekerjaan_anak' => $request->pekerjaan_anak,
+            'nik_anak' => $request->nik_anak,
+            'alamat_anak' => $request->alamat_anak,
+           ]);
+    
+           Alert::success('Berhasil!','Silahkan ke kantor desa untuk pengambilan surat');
+           return redirect('/layanan-desa');
+    }
+
+    public function editSuratPenghasilanOrtu($id){
+
+       $data = SuratPenghasilanOrtu::find($id);
+
+       return view('admin.contents.suratPenghasilanOrtu.edit', compact('data'));
+
+    }
+
+    public function updateSuratPenghasilanOrtu(Request $request, $id){
+        $request->validate([
+            'nama' => 'required',
+            'ttl' => 'required',
+            'agama' => 'required',
+            'jk' => 'required',
+            'pekerjaan' => 'required',
+            'nik' => 'required',
+            'kewarganegaraan' => 'required',
+            'penghasilan' => 'required',
+            'ejaan_penghasilan' => 'required',
+            'anggota' => 'required',
+            'ejaan_anggota' => 'required',
+            'alamat' => 'required',
+            'nama_anak' => 'required',
+            'ttl_anak' => 'required',
+            'jk_anak' => 'required',
+            'pekerjaan_anak' => 'required',
+            'nik_anak' => 'required',
+            'alamat_anak' => 'required',
+        ]);
+
+        SuratPenghasilanOrtu::find($id)->update([
+            'nama' => $request->nama,
+            'ttl' => $request->ttl,
+            'agama' => $request->agama,
+            'jk' => $request->jk,
+            'pekerjaan' => $request->pekerjaan,
+            'nik' => $request->nik,
+            'kewarganegaraan' => $request->kewarganegaraan,
+            'penghasilan' => $request->penghasilan,
+            'ejaan_penghasilan' => $request->ejaan_penghasilan,
+            'anggota' => $request->anggota,
+            'ejaan_anggota' => $request->ejaan_anggota,
+            'alamat' => $request->alamat,
+            'nama_anak' => $request->nama_anak,
+            'ttl_anak' => $request->ttl_anak,
+            'jk_anak' => $request->jk_anak,
+            'pekerjaan_anak' => $request->pekerjaan_anak,
+            'nik_anak' => $request->nik_anak,
+            'alamat_anak' => $request->alamat_anak,
+        ]);
+
+        Alert::success('Berhasil!','Data surat berhasil dirubah!');
+        return redirect('/'.auth()->user()->role.'/surat-penghasilan-orang-tua');
+    }
+
+    public function showSuratPenghasilanOrtu($id){
+        $data = SuratPenghasilanOrtu::find($id);
+
+        return view('admin.contents.suratPenghasilanOrtu.show', compact('data'));
+    }
+
+    public function printSuratPenghasilanOrtu($id){
+        $data = SuratPenghasilanOrtu::find($id);
+        $tanggal_dibuat = Carbon::parse($data['created_at'])->isoFormat('dddd D MMMM Y');
+        return view('admin.contents.suratPenghasilanOrtu.print', compact('data', 'tanggal_dibuat'));
+    }
+      
+
 }

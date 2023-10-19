@@ -12,16 +12,16 @@ class StatistikController extends Controller
     public function index(){
 
        $p05 = Profiles::age('Perempuan',0,5)->count();
-       $p517 = Profiles::age('Perempuan',5,17)->count();
-       $p1730 = Profiles::age('Perempuan',17,30)->count();
-       $p3060 = Profiles::age('Perempuan',30,60)->count();
-       $p60 = Profiles::age('Perempuan',60,150)->count();
+       $p517 = Profiles::age('Perempuan',6,17)->count();
+       $p1730 = Profiles::age('Perempuan',18,30)->count();
+       $p3060 = Profiles::age('Perempuan',31,60)->count();
+       $p60 = Profiles::age('Perempuan',61,150)->count();
        
        $l05 = Profiles::age('Laki-Laki',0,5)->count();
-       $l517 = Profiles::age('Laki-Laki',5,17)->count();
-       $l1730 = Profiles::age('Laki-Laki',17,30)->count();
-       $l3060 = Profiles::age('Laki-Laki',30,60)->count();
-       $l60 = Profiles::age('Laki-Laki',60,150)->count();
+       $l517 = Profiles::age('Laki-Laki',6,17)->count();
+       $l1730 = Profiles::age('Laki-Laki',18,30)->count();
+       $l3060 = Profiles::age('Laki-Laki',31,60)->count();
+       $l60 = Profiles::age('Laki-Laki',61,150)->count();
 
        $tidakSekolah = DB::table('profiles')->whereIn('pendidikan',['-','BELUM SEKOLAH','BELUM TAMAT SD/SEDERAJAT','TIDAK/BELUM SEKOLAH','TIDAK/BLM SEKOLAH','TIDAK SEKOLAH'])->count();
        $sd = DB::table('profiles')->where('pendidikan','TAMAT SD/SEDERAJAT')->count();

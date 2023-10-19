@@ -63,7 +63,7 @@
                 <a class="mb-4 btn btn-info" style="width: 10rem" href="/ktm">Surat Keterangan Tidak Mampu</a><br>
                 <a class="mb-4 btn btn-info" style="width: 10rem" href="/sku-dalam">Surat Keterangan Usaha (dalam)</a><br>
                 <a class="mb-4 btn btn-info" style="width: 10rem" href="/sku-luar">Surat Keterangan Usaha (luar)</a><br>
-                <a class="mb-4 btn btn-info" style="width: 10rem" href="#">Surat Keterangan Domisili Dalam</a><br>
+                <a class="mb-4 btn btn-info" style="width: 10rem" href="/surat-penghasilan-orang-tua">Surat Penghasilan Orang Tua</a><br>
                 <a class="mb-4 btn btn-info" style="width: 10rem" href="#">Surat Keterangan Sudah Menikah</a><br>
                 <a class="mb-4 btn btn-info" style="width: 10rem" href="#">Surat Keterangan Umum</a><br>
             </div>

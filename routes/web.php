@@ -63,9 +63,11 @@ Route::middleware(['auth','admin','preventBack'])->prefix('admin')->group(functi
     Route::get('/profiles/json',[ProfileController::class,'json'])->name('warga.json');
     Route::get('/kk/json',[KartuKeluargaController::class,'json'])->name('kk.json');
     Route::post('/kk',[KartuKeluargaController::class,'store']);
+    
     Route::get('/ktm',[SuratController::class,'ktm']);
     Route::get('/ktm/json',[SuratController::class,'jsonKTM'])->name('ktm.json');
     Route::get('/ktm/{id}',[SuratController::class,'showKTM']);
+
     Route::get('/sku-dalam',[SuratController::class,'skuDalam']);
     Route::get('/sku-dalam/json',[SuratController::class,'skuDalamJson'])->name('sku-dalam.json');
     Route::get('/sku-dalam/{id}',[SuratController::class,'showSKU']);
@@ -75,6 +77,13 @@ Route::middleware(['auth','admin','preventBack'])->prefix('admin')->group(functi
     Route::put('/sku-luar/{id}',[SuratController::class,'updateSkuLuar']);
     Route::get('/sku-luar/{id}/print',[SuratController::class,'printSkuLuar']);
     Route::delete('/sku-luar/{id}',[SuratController::class,'destroySkuLuar']);
+
+    Route::get('/surat-penghasilan-orang-tua',[SuratController::class,'suratPenghasilanOrtu'])->name('admin.suratPenghasilanOrtu');
+    Route::get('/surat-penghasilan-orang-tua/{id}/edit',[SuratController::class,'editSuratPenghasilanOrtu']);
+    Route::put('/surat-penghasilan-orang-tua/{id}',[SuratController::class,'updateSuratPenghasilanOrtu']);
+    Route::get('/surat-penghasilan-orang-tua/{id}',[SuratController::class,'showSuratPenghasilanOrtu']);
+    Route::get('/surat-penghasilan-orang-tua/{id}/print',[SuratController::class,'printSuratPenghasilanOrtu']);
+
     Route::get('/berita/json',[BeritaController::class,'json'])->name('berita.json');
     Route::resource('berita',BeritaController::class);
     Route::get('/umkm', [UMKMController::class,'index']);
@@ -142,6 +151,8 @@ Route::middleware(['auth','warga','preventBack'])->group(function(){
     Route::post('/ktm',[SuratController::class,'storeKTM']);
     Route::get('/sku-dalam',[SuratController::class,'createSKU']);
     Route::post('/sku-dalam',[SuratController::class,'storeSKU']);
+    Route::get('/surat-penghasilan-orang-tua', [SuratController::class,'createSuratPenghasilanOrtu']);
+    Route::post('/surat-penghasilan-orang-tua', [SuratController::class,'storeSuratPenghasilanOrtu']);
 });
 // Route Warga End
 

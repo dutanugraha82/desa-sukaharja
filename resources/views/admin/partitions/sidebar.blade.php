@@ -62,7 +62,7 @@
         <div id="surat" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Jenis Surat:</h6>
-                <a class="collapse-item" href="#">Domistik</a>
+                <a class="collapse-item" href="/{{ auth()->user()->role }}/surat-penghasilan-orang-tua">Penghasilan Ortu</a>
                 <a class="collapse-item" href="/{{ auth()->user()->role }}/ktm">KTM</a>
                 <a class="collapse-item" href="/{{ auth()->user()->role }}/sku-dalam">SKU-Dalam</a>
                 <a class="collapse-item" href="/{{ auth()->user()->role }}/sku-luar">SKU-Luar</a>
