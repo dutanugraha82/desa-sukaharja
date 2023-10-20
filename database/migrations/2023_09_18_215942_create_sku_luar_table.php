@@ -16,7 +16,7 @@ class CreateSkuLuarTable extends Migration
         Schema::create('sku_luar', function (Blueprint $table) {
             $table->id();
             $table->string('jenis_usaha');
-            $table->integer('penghasilan');
+            $table->stirng('penghasilan');
             $table->string('tahun_berdiri');
             $table->string('nama');
             $table->string('ttl');

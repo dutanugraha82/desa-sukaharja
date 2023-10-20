@@ -8,6 +8,7 @@
     <table id="sku-dalam-table" class="table table-hover table-striped">
       <thead>
           <tr>
+              <th scope="col"></th>
               <th scope="col">No</th>
               <th scope="col">Nama</th>
               <th scope="col">Jenis Usaha</th>
@@ -38,6 +39,7 @@
             }],
             ajax:"{{ route('sku-dalam.json') }}",
             columns: [
+                {data: 'DT_RowIndex'},
                 {data: 'DT_RowIndex'},
                 {data: 'nama', name: 'nama'},
                 {data: 'jenis_usaha', name: 'jenis_usaha'},

@@ -92,7 +92,9 @@
     <div class="container-fluid card p-3">
         <div class="d-flex p-2 justify-content-between">
             <h5>Prestasi Desa</h5>
+            @if (auth()->user()->role == 'admin')
             <a href="/{{ auth()->user()->role }}/prestasi/create" class="btn btn-primary">Tambah <sup>+</sup></a>
+            @endif
         </div>
         <table id="prestasi" class="table table-hover">
             <thead>
@@ -108,6 +110,7 @@
                
     </div>
 @endsection
+@if (auth()->user()->role == 'admin')
 @push('js')
 <script>
     $(function (){
@@ -136,3 +139,62 @@
    });
    </script>
 @endpush
+@elseif(auth()->user()->role == 'kades')
+@push('js')
+<script>
+    $(function (){
+      let table = $('#prestasi').DataTable({
+          processing:true,
+          serverSide:true,
+          responsive:{
+              details:{
+                  type:'column'
+              }
+          },
+          columnDefs:[{
+              className:'dtr-control',
+              orderable:false,
+              targets:0
+          }],
+          ajax:"{{ route('kades.dashboard') }}",
+          columns: [
+              {data: 'DT_RowIndex'},
+              {data: 'DT_RowIndex'},
+              {data: 'judul', name: 'judul'},
+              {data: 'created_at', name: 'created_at'},
+              {data: 'action', name: 'action'},
+          ]
+      });
+   });
+   </script>
+@endpush
+@elseif(auth()->user()->role == 'sekdes')
+@push('js')
+<script>
+    $(function (){
+      let table = $('#prestasi').DataTable({
+          processing:true,
+          serverSide:true,
+          responsive:{
+              details:{
+                  type:'column'
+              }
+          },
+          columnDefs:[{
+              className:'dtr-control',
+              orderable:false,
+              targets:0
+          }],
+          ajax:"{{ route('sekdes.dashboard') }}",
+          columns: [
+              {data: 'DT_RowIndex'},
+              {data: 'DT_RowIndex'},
+              {data: 'judul', name: 'judul'},
+              {data: 'created_at', name: 'created_at'},
+              {data: 'action', name: 'action'},
+          ]
+      });
+   });
+   </script>
+@endpush
+@endif

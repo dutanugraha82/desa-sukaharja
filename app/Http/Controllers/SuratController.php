@@ -88,12 +88,59 @@ class SuratController extends Controller
         return redirect('/layanan-desa');
     }
 
+
+    public function editKTM($id){
+       $data =  KTM::find($id);
+       return view('admin.contents.ktm.edit', compact('data'));
+    }
+
+    public function updateKTM(Request $request, $id){
+
+        // dd($request);
+        $request->validate([
+            'namaOrtu' => 'required',
+            'ttlOrtu' => 'required',
+            'jkOrtu' => 'required',
+            'nik' => 'required',
+            'agama' => 'required',
+            'pekerjaan' => 'required',
+            'alamat' => 'required',
+            'namaAnak' => 'required',
+            'ttlAnak' => 'required',
+            'jkAnak' => 'required',
+            'sekolah' => 'required',
+        ]);
+
+        KTM::find($id)->update([
+            'nama_ortu' => $request->namaOrtu,
+            'ttl_ortu' => $request->ttlOrtu,
+            'jk_ortu' => $request->jkOrtu,
+            'nik' => $request->nik,
+            'agama' => $request->agama,
+            'pekerjaan' => $request->pekerjaan,
+            'alamat' => $request->alamat,
+            'nama_anak' => $request->namaAnak,
+            'ttl_anak' => $request->ttlAnak,
+            'jk_anak' => $request->jkAnak,
+            'sekolah' => $request->sekolah,
+        ]);
+
+        Alert::success('Berhasil!', 'Data berhasil diupdate!');
+        return redirect('/'.auth()->user()->role.'/ktm');
+    }
+
     public function showKTM($id){
+        $data = KTM::find($id);
+
+        return view('admin.contents.ktm.show', compact('data'));
+    }
+
+    public function printKTM($id){
         $data = DB::table('ktm')->where('id','=',$id)->get();
         foreach ($data as $item) {
             $tanggal_dibuat =  Carbon::parse($item->created_at)->isoFormat('dddd D MMMM Y');
         }
-        return view('admin.contents.ktm.show',compact('data','tanggal_dibuat'));
+        return view('admin.contents.ktm.print',compact('data','tanggal_dibuat'));
     }
 
     public function skuDalam(){
@@ -107,8 +154,8 @@ class SuratController extends Controller
         ->addColumn('action', function($skuDalam){
             return ' <div class="d-flex">   
                     <a href="/admin/sku-dalam/'.$skuDalam->id.'/edit" class="btn  btn-warning" style="width:80px;">Edit</a>
-                    <a href="/admin/sku-dalam/'.$skuDalam->id.'" class="btn mx-3 btn-primary">Preview</a>
-                    <a href="/admin/sku-dalam/'.$skuDalam->id.'" class="btn mx-3 btn-primary"><i class="fa fa-print"></i></a>
+                    <a href="/admin/sku-dalam/'.$skuDalam->id.'/show" class="btn mx-3 btn-primary">Preview</a>
+                    <a href="/admin/sku-dalam/'.$skuDalam->id.'/print" class="btn mx-3 btn-primary"><i class="fa fa-print"></i></a>
                     </div>';
         })
         ->addColumn('created_at', function($skuDalam){
@@ -174,14 +221,57 @@ class SuratController extends Controller
         return redirect('/layanan-desa');
     }
 
+
+    public function editSKU($id){
+        $data = SKU::find($id);
+
+        return view('admin.contents.sku-dalam.edit', compact('data'));
+    }
+
+    public function updateSKU(Request $request, $id){
+        $request->validate([
+            'nama' => 'required',
+            'nik' => 'required',
+            'ttl' => 'required',
+            'jk' => 'required',
+            'agama' => 'required',
+            'pekerjaan' => 'required',
+            'alamat' => 'required',
+            'jenis_usaha' => 'required',
+            'penghasilan' => 'required',
+            'tahun' => 'required',
+        ]);
+
+        SKU::find($id)->update([
+            'nama' => $request->nama,
+            'nik' => $request->nik,
+            'ttl' => $request->ttl,
+            'jk' => $request->jk,
+            'agama' => $request->agama,
+            'pekerjaan' => $request->pekerjaan,
+            'alamat' => $request->alamat,
+            'jenis_usaha' => $request->jenis_usaha,
+            'penghasilan' => $request->penghasilan,
+            'tahun' => $request->tahun,
+        ]);
+
+        Alert::success('Berhasil!','Data berhasil diupdate!');
+        return redirect('/'.auth()->user()->role.'/sku-dalam');
+    }
+
     public function showSKU($id){
+        $data = SKU::find($id);
+        return view('admin.contents.sku-dalam.show', compact('data'));
+    }
+
+    public function printSKU($id){
         $data = DB::table('sku')->where('id','=',$id)->get();
 
         foreach ($data as $item) {
             $tanggal_dibuat = Carbon::parse($item->created_at)->isoFormat('dddd D MMMM Y');
         }
         // dd($data);
-        return view('admin.contents.sku-dalam.show', compact('data','tanggal_dibuat'));
+        return view('admin.contents.sku-dalam.print', compact('data','tanggal_dibuat'));
     }
 
 

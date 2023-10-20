@@ -1,75 +1,78 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
-
-    <title>SKU</title>
-  </head>
-  <body>
+@extends('admin.master')
+@section('pageTitle')
+    detail-surat-sku-dalam
+@endsection
+@section('content')
     <div class="container-fluid">
-        <img class="d-block mx-auto" src="{{ asset('img/kop-surat.JPG') }}" alt="" style="width:90vw">
-        <hr style="border-width: 3px;border-color: black;width: 90vw;">
-    </div>
-    <div class="container-fluid mt-4">
-        <p class="text-center" style="font-size: 1.8em; letter-spacing: 7px;"><u>SURAT KETERANGAN</u></p>
-        <p class="text-center" style="font-size: 1.2em;">Nomor :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/ Ds.</p>
-    </div>
-    <div class="container mt-4">
-     @foreach ($data as $item)
-        <div style="margin-left: 100px;">
-            <p class="mb-5" style="font-size: 1.2em; text-align: justify;">Yang bertandatangan di bawah ini Pemerintah Desa Sukaharja Kecamatan Telukjambe Timur<br>Kabupaten Karawang menyatakan dengan sesungguhnya bahwa :</p>
+        <div class="card p-3">
+       
+        <h5 class="text-center">Detail Data Surat {{ $data->nama }}</h5>
+        <hr>
             <div class="row">
-                <div class="col-3">
-                    <p style="font-size: 1.2em;">Nama</p>
-                    <p style="font-size: 1.2em;">Tempat/Tgl Lahir</p>
-                    <p style="font-size: 1.2em;">NIK</p>
-                    <p style="font-size: 1.2em;">Jenis Kelamin</p>
-                    <p style="font-size: 1.2em;">Agama</p>
-                    <p style="font-size: 1.2em;">Pekerjaan</p>
-                    <p style="font-size: 1.2em;">Alamat asal</p>
+                <div class="col-md-6">
+
+                    <label for="jenis_usaha" class="mb-2">Jenis Usaha</label>
+                    <div class="mb-3 input-group input-group-outline">
+                        <input type="text" class="form-control" name="jenis_usaha" value="{{ $data->jenis_usaha }}" readonly>
+                    </div>
+
+                    <label for="pengahsilan">Penghasilan Perbulan <sup class="text-danger">*Rp</sup></label>
+                    <div class="mb-3 input-group input-group-outline">
+                        <input type="text" class="form-control" name="penghasilan" value="{{ $data->penghasilan }}" id="penghasilan" readonly>
+                    </div>
+
+                    <label for="tahun" class="mb-2">Tahun Berdiri</label>
+                    <div class="mb-3 input-group input-group-outline">
+                        <input type="number" class="form-control" name="tahun" value="{{ $data->tahun }}" readonly>
+                    </div>
+
+                    <label for="nama" class="mb-2">Nama</label>
+                    <div class="mb-3 input-group input-group-outline">
+                        <input type="text" class="form-control" name="nama" readonly value="{{ $data->nama }}">
+                    </div>
+
+                    <label for="ttl" class="mb-2">Tempat, Tanggal Lahir</label>
+                    <div class="mb-3 input-group input-group-outline">
+                        <input type="text" class="form-control" name="ttl" readonly value="{{ $data->ttl }}">
+                    </div>
+
+                    <label for="nik" class="mb-2">NIK</label>
+                    <div class="mb-3 input-group input-group-outline">
+                        <input type="text" name="nik" class="form-control" readonly value="{{ $data->nik }}">
+                    </div>
+
+                    <label for="jk" class="mb-2">Jenis Kelamin</label>
+                    <div class="mb-3 input-group input-group-outline">
+                        <select name="jk" class="form-control" id="" readonly>
+                            <option value="{{ $data->jk }}">{{ $data->jk }}</option>
+                        </select>
+                    </div>
                 </div>
-                <div class="col-9">
-                    <p style="font-size: 1.2em;">: {{ $item->nama }}</p>
-                    <p style="font-size: 1.2em;">: {{ $item->ttl }}</p>
-                    <p style="font-size: 1.2em;">: {{ $item->nik }}</p>
-                    <p style="font-size: 1.2em;">: {{ $item->jk }}</p>
-                    <p style="font-size: 1.2em;">: {{ $item->agama }}</p>
-                    <p style="font-size: 1.2em;">: {{ $item->pekerjaan }}</p>
-                    <p style="font-size: 1.2em;">: {{ $item->alamat }}</p>
+
+                <div class="col-md-6">
+
+                    <label for="pekerjaan" class="mb-2">Pekerjaan</label>
+                    <div class="mb-3 input-group input-group-outline">
+                        <input type="text" class="form-control" name="pekerjaan" readonly value="{{ $data->pekerjaan }}">
+                    </div>
+
+                    <label for="agama" class="mb-2">Agama</label>
+                    <div class="mb-3 input-group input-group-outline">
+                        <input type="text" class="form-control" name="agama" readonly value="{{ $data->agama }}">
+                    </div>
+
+                    <label for="alamat" class="mb-2">Alamat</label>
+                    <div class="mb-3 input-group input-group-outline">
+                        <textarea name="alamat" class="form-control" id="" cols="30" rows="10" readonly>{{ $data->alamat }}</textarea>
+                    </div>
                 </div>
             </div>
-
-            <div style="margin-top: 80px; width: 75vw;">
-                <p style="font-size: 1.2em; text-align: justify;text-justify: inter-word;">Nama tersebut di atas adalah benar warga desa kami, yang mempunyai
-                    USAHA/DAGANG dibidang “ {{ $item->jenis_usaha }} “ sejak tahun {{ $item->tahun }} dan mempunyai
-                    penghasilan sebesar Rp {{ $item->penghasilan }},- per bulannya.</p>
+            <div class="mt-4">
+                <a style="width: 70vw" href="/{{ auth()->user()->role }}/sku-dalam" class="btn btn-warning">Kembali</a><br>
+                <a style="width: 70vw" href="/{{ auth()->user()->role }}/sku-dalam/{{ $data->id }}/print" class="mt-4 btn btn-primary">Cetak Surat</a><br>
             </div>
-        @endforeach
-            <div style="margin-top: 50px; width: 78vw;">
-                <p style="font-size: 1.2em; text-align: justify; text-justify: inter-word;">Demikian surat keterangan ini dibuat atas dasar yang sebenarnya, agar dapat
-                    digunakan seperlunya.</p>
-            </div>
-        </div>
-
-        <div class="container-fluid mt-5">
-            <p class="mr-5" style="font-size: 1.2em; text-align: end;">Sukaharja, {{ $tanggal_dibuat }}</p>
-            <p class="mr-5" style="font-size: 1.2em; text-align: end;">An. Kepala Desa Sukaharja</p>
-            <p style="font-size: 1.2em; text-align: end; margin-right: 130px;">Sekdes</p>
-            <p style="font-size: 1.2em; text-align: end; margin-right: 80px; margin-top: 110px;">ADE SUHARDI HS</p>
-            
-
-        </div>
+             
     </div>
-
-  </body>
-  <script>
-    window.onload = function(){
-        window.print();
-    };
-</script>
-</html>
+    </div>
+@endsection

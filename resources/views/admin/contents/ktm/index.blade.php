@@ -8,6 +8,7 @@
     <table id="ktm-table" class="table table-hover table-striped">
       <thead>
           <tr>
+              <th scope="col"></th>
               <th scope="col">No</th>
               <th scope="col">Nama Pengaju</th>
               <th scope="col">Nama Anak</th>
@@ -37,6 +38,7 @@
             }],
             ajax:"{{ route('ktm.json') }}",
             columns: [
+                {data: 'DT_RowIndex'},
                 {data: 'DT_RowIndex'},
                 {data: 'nama_ortu', name: 'nama_ortu'},
                 {data: 'nama_anak', name: 'nama_anak'},

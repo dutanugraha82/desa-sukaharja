@@ -36,9 +36,16 @@ Route::middleware(['auth','superadmin','preventBack'])->name('superadmin.')->pre
 });
 // Route Superadmin End
 
+// Route Kades Start
+Route::middleware(['auth','kades','preventBack'])->prefix('kades')->group(function(){
+    Route::get('/', [DashboardController::class,'index'])->name('kades.dashboard');
+});
+
+// Route Kades End
+
 // Route Sekdes Start
 Route::middleware(['auth','sekdes','preventBack'])->prefix('sekdes')->group(function(){
-    Route::get('/',[ DashboardController::class,'index']);
+    Route::get('/', [DashboardController::class,'index'])->name('sekdes.dashboard');
     Route::get('/berita',[BeritaController::class,'index']);
     Route::get('/berita/json',[BeritaController::class,'json'])->name('sekdes.berita.json');
     Route::get('/berita/{id}',[BeritaController::class,'show']);
@@ -66,11 +73,18 @@ Route::middleware(['auth','admin','preventBack'])->prefix('admin')->group(functi
     
     Route::get('/ktm',[SuratController::class,'ktm']);
     Route::get('/ktm/json',[SuratController::class,'jsonKTM'])->name('ktm.json');
+    Route::get('/ktm/{id}/edit',[SuratController::class,'editKTM']);
+    Route::put('/ktm/{id}',[SuratController::class,'updateKTM']);
     Route::get('/ktm/{id}',[SuratController::class,'showKTM']);
+    Route::get('/ktm/{id}/print',[SuratController::class,'printKTM']);
 
     Route::get('/sku-dalam',[SuratController::class,'skuDalam']);
     Route::get('/sku-dalam/json',[SuratController::class,'skuDalamJson'])->name('sku-dalam.json');
-    Route::get('/sku-dalam/{id}',[SuratController::class,'showSKU']);
+    Route::get('/sku-dalam/{id}/edit',[SuratController::class,'editSKU']);
+    Route::put('/sku-dalam/{id}',[SuratController::class,'updateSKU']);
+    Route::get('/sku-dalam/{id}/show',[SuratController::class,'showSKU']);
+    Route::get('/sku-dalam/{id}/print',[SuratController::class,'printSKU']);
+
     Route::get('/sku-luar',[SuratController::class,'skuLuar'])->name('admin.sku-luar');
     Route::get('/sku-luar/{id}',[SuratController::class,'showSkuLuar']);
     Route::get('/sku-luar/{id}/edit',[SuratController::class,'editSkuLuar']);
