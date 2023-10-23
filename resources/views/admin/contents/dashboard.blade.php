@@ -97,7 +97,8 @@
             @endif
         </div>
         <table id="prestasi" class="table table-hover">
-            <thead>
+            @if (auth()->user()->role == 'admin')
+                <thead>
               <tr>
                 <th scope="col"></th>
                 <th scope="col">No</th>
@@ -106,6 +107,16 @@
                 <th scope="col">Aksi</th>
               </tr>
             </thead>
+            @else
+                <thead>
+              <tr>
+                <th scope="col"></th>
+                <th scope="col">No</th>
+                <th scope="col">Judul</th>
+                <th scope="col">Dibuat</th>
+              </tr>
+            </thead>
+            @endif
           </table>
                
     </div>
@@ -162,7 +173,6 @@
               {data: 'DT_RowIndex'},
               {data: 'judul', name: 'judul'},
               {data: 'created_at', name: 'created_at'},
-              {data: 'action', name: 'action'},
           ]
       });
    });

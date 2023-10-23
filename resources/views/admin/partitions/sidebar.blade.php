@@ -128,7 +128,7 @@
     
     <!-- Nav Item - Dashboard -->
     <li class="nav-item">
-        <a class="nav-link" href="/admin/umkm">
+        <a class="nav-link" href="/{{ auth()->user()->role }}/umkm">
             <i class="fas fa-shopping-bag"></i>
             <span>UMKM</span></a>
     </li>
@@ -146,11 +146,11 @@
         </a>
         <div id="perencanaan" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="/admin/rpjm">RPJM</a>
-                <a class="collapse-item" href="/admin/rkp">RKP</a>
-                <a class="collapse-item" href="/admin/perdes">PERDES</a>
-                <a class="collapse-item" href="/admin/perkades">PERKADES</a>
-                <a class="collapse-item" href="/admin/transparansi">TRANSPARANSI</a>
+                <a class="collapse-item" href="/{{ auth()->user()->role }}/rpjm">RPJM</a>
+                <a class="collapse-item" href="/{{ auth()->user()->role }}/rkp">RKP</a>
+                <a class="collapse-item" href="/{{ auth()->user()->role }}/perdes">PERDES</a>
+                <a class="collapse-item" href="/{{ auth()->user()->role }}/perkades">PERKADES</a>
+                <a class="collapse-item" href="/{{ auth()->user()->role }}/transparansi">TRANSPARANSI</a>
             </div>
         </div>
     </li>

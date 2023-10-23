@@ -39,6 +39,18 @@ Route::middleware(['auth','superadmin','preventBack'])->name('superadmin.')->pre
 // Route Kades Start
 Route::middleware(['auth','kades','preventBack'])->prefix('kades')->group(function(){
     Route::get('/', [DashboardController::class,'index'])->name('kades.dashboard');
+    Route::get('/berita',[BeritaController::class,'index']);
+    Route::get('/berita/json',[BeritaController::class,'json'])->name('kades.berita.json');
+    Route::get('/umkm', [UMKMController::class,'index']);
+    Route::get('/umkm/json',[UMKMController::class,'json'])->name('kades.umkm.json');
+    Route::get('/umkm/json-validasi-umkm',[UMKMController::class,'jsonValidasiUMKM'])->name('kades.validasiUMKM.json');
+    Route::get('/rpjm',[PerencanaanController::class,'rpjm'])->name('kades.rpjm');
+    Route::get('/rkp',[PerencanaanController::class,'rkp'])->name('kades.rkp');
+    Route::get('/perdes',[PerencanaanController::class,'perdes'])->name('kades.perdes');
+    Route::get('/perkades',[PerencanaanController::class,'perkades'])->name('kades.perkades');
+    Route::get('/transparansi',[PerencanaanController::class,'transparansi'])->name('kades.transparansi');
+    Route::get('/akun',[AkunController::class,'edit']);
+    Route::put('/akun/{id}',[AkunController::class,'update']);
 });
 
 // Route Kades End

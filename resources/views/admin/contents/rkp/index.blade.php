@@ -5,6 +5,7 @@
 @section('content')
     <div class="container-fluid">
         <div class="card p-3">
+            @if (auth()->user()->role == 'admin')
             <h5>Input Data RKP</h5>
             <hr>
             <form action="/admin/rkp" method="POST" enctype="multipart/form-data">
@@ -15,21 +16,34 @@
                 <button type="submit" class="btn btn-primary mt-4">Tambah RKP</button>
             </form>
             <hr>
+            @endif
             <h5 class="my-4 text-center">Data RKP</h5>
             <table id="rkp" class="table table-hover table-striped">
-                <thead>
-                    <tr>
-                        <th scope="col"></th>
-                        <th scope="col">No</th>
-                        <th scope="col">Nama File</th>
-                        <th scope="col">File</th>
-                        <th scope="col">Action</th>
-                    </tr>
-                </thead>
+               @if (auth()->user()->role == 'admin')
+               <thead>
+                <tr>
+                    <th scope="col"></th>
+                    <th scope="col">No</th>
+                    <th scope="col">Nama File</th>
+                    <th scope="col">File</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+               @else
+               <thead>
+                <tr>
+                    <th scope="col"></th>
+                    <th scope="col">No</th>
+                    <th scope="col">Nama File</th>
+                    <th scope="col">File</th>
+                </tr>
+            </thead>
+               @endif
             </table>
         </div>
     </div>
 @endsection
+@if (auth()->user()->role == 'admin')
 @push('js')
 <script>
     $(function (){
@@ -58,3 +72,32 @@
 });
 </script>
 @endpush
+@elseif(auth()->user()->role == 'kades')
+@push('js')
+<script>
+    $(function (){
+    let table = $('#rkp').DataTable({
+        processing:true,
+        serverSide:true,
+        responsive:{
+            details:{
+                type:'column'
+            }
+        },
+        columnDefs:[{
+            className:'dtr-control',
+            orderable:false,
+            targets:0
+        }],
+        ajax:"{{ route('kades.rkp') }}",
+        columns: [
+            {data: 'DT_RowIndex', name:'DT_RowIndex'},
+            {data: 'DT_RowIndex', name:'DT_RowIndex'},
+            {data: 'nama', name: 'nama'},
+            {data: 'file', name: 'file'},
+        ]
+    });
+});
+</script>
+@endpush
+@endif

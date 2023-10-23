@@ -74,7 +74,25 @@ class BeritaController extends Controller
             })
             ->rawColumns(['action','created_at','status_validasi'])
             ->make(true);
-        } 
+        }else{
+            $berita = Berita::select('*')->orderBy('created_at','desc')->get();
+            return datatables()->of($berita)
+            ->addIndexColumn()
+            ->addColumn('created_at', function($berita){
+                return Carbon::parse($berita['created_at'])->isoFormat('dddd, D MMMM Y');
+            })
+            ->addColumn('status_validasi', function($berita){
+                if ($berita->status_validasi == 0) {
+                    return 'Belum Divalidasi';
+                }elseif ($berita->status_validasi == 1) {
+                    return 'Sudah Divalidasi';
+                }else{
+                    return 'Validasi Error';
+                }
+            })
+            ->rawColumns(['created_at','status_validasi'])
+            ->make(true);
+        }
     }
 
     /**
