@@ -17,7 +17,7 @@
             <h5>Sunting Data Penduduk</h5>
             <hr>
             @foreach ($data as $item)
-            <form action="/admin/profiles/{{ $item->id }}" method="POST">
+            <form action="/{{ auth()->user()->role }}/profiles/{{ $item->id }}" method="POST">
                 @method('put')
                 @csrf
                 <div class="row">

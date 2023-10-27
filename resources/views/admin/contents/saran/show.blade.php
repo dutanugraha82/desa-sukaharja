@@ -19,6 +19,9 @@
         <p style="text-align: justify">{{ $data->saran }}</p>
     </div>
    </div>
+   <div class="my-5">
+    <a style="width: 75vw;" href="/{{ auth()->user()->role }}/saran" class="btn btn-warning d-block mx-auto">Kembali</a>
+   </div>
 </div>
 @endsection
  

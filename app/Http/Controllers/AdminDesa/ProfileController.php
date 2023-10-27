@@ -26,8 +26,8 @@ class ProfileController extends Controller
         ->addIndexColumn()
         ->addColumn('action', function($warga){
             return ' <div class="d-flex justify-content-around">   
-                    <a href="/admin/profiles/'.$warga->id.'/edit" class="btn  btn-warning" style="width:80px;">Edit</a>
-                    <form action="/admin/profiles/'.$warga->id.'" method="POST">
+                    <a href="/'.auth()->user()->role.'/profiles/'.$warga->id.'/edit" class="btn  btn-warning" style="width:80px;">Edit</a>
+                    <form action="/'.auth()->user()->role.'/profiles/'.$warga->id.'" method="POST">
                     '.csrf_field().'
                     '.method_field('DELETE').'
                     <button type="submit" class="btn btn-danger" style="width:80px;" onclick="javascript: return confirm(\'Yakin ingin menghapus data?\')">
@@ -92,7 +92,7 @@ class ProfileController extends Controller
 
         ]);
         Alert::success('Berhasil!','data berhasil ditambahkan.');
-        return redirect('/admin/warga');
+        return redirect('/'.auth()->user()->role.'/profiles');
     }
 
     public function edit($id){
@@ -147,7 +147,7 @@ class ProfileController extends Controller
         ]);
 
         Alert::success('Berhasil!', 'Data berhasil disunting');
-        return redirect('/admin/profiles');
+        return redirect('/'.auth()->user()->role.'/profiles');
 
     }
 
@@ -155,6 +155,6 @@ class ProfileController extends Controller
         DB::table('users')->where('profiles_id',$id)->delete();
         DB::table('profiles')->where('id',$id)->delete();
         Alert::success('Berhasil!','Data Berhasil dihapus!');
-        return redirect('/admin/profiles');
+        return redirect('/'.auth()->user()->role.'/profiles');
     }
 }

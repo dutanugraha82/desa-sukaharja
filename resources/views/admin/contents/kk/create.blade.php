@@ -16,7 +16,7 @@
         @endif
             <h5>Input Data Kartu Keluarga</h5>
             <hr>
-            <form action="/admin/kk" method="POST">
+            <form action="/{{ auth()->user()->role }}/kk" method="POST">
                 @csrf
                 <div class="row">
                     <div class="col-md-6">

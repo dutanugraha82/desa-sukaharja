@@ -34,8 +34,8 @@ class UMKMController extends Controller
                 ->addIndexColumn()
                 ->addColumn('action', function($umkm){
                     return ' <div class="d-flex justify-content-around">   
-                    <a href="/admin/umkm/'.$umkm->id.'/edit" class="btn  btn-warning" style="width:80px;">Edit</a>
-                    <form action="/admin/umkm/'.$umkm->id.'" method="POST">
+                    <a href="/'.auth()->user()->role.'/umkm/'.$umkm->id.'/edit" class="btn  btn-warning" style="width:80px;">Edit</a>
+                    <form action="/'.auth()->user()->role.'/umkm/'.$umkm->id.'" method="POST">
                         '.csrf_field().'
                         '.method_field("DELETE").'
                         <input type="hidden" name="logo" value="'.$umkm->logo.'">

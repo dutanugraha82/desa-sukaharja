@@ -102,7 +102,7 @@ class LayananDesaController extends Controller
             Alert::success('Berhasil!','Silahkan Menunggu Validasi Pelayanan Desa');
             return redirect('/');
 
-        } elseif(auth()->user()->role == 'admin') {
+        } elseif(auth()->user()->role == 'admin' || auth()->user()->role == 'pelayanan') {
             $id = UMKM::create([
             'nik' => Crypt::encrypt( $request->nik),
             'nama_pemilik' => $request->nama_pemilik,
@@ -126,7 +126,7 @@ class LayananDesaController extends Controller
         DB::table('temporary_image')->where('users_id',auth()->user()->id)->delete();
 
         Alert::success('Berhasil ditambahkan!');
-        return redirect('/admin/umkm');
+        return redirect('/'.auth()->user()->role.'/umkm');
         
         }else{
             Alert::error('Gagal!');

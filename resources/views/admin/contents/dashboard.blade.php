@@ -207,4 +207,32 @@
    });
    </script>
 @endpush
+@elseif(auth()->user()->role == 'pelayanan')
+@push('js')
+<script>
+    $(function (){
+      let table = $('#prestasi').DataTable({
+          processing:true,
+          serverSide:true,
+          responsive:{
+              details:{
+                  type:'column'
+              }
+          },
+          columnDefs:[{
+              className:'dtr-control',
+              orderable:false,
+              targets:0
+          }],
+          ajax:"{{ route('pelayanan.dashboard') }}",
+          columns: [
+              {data: 'DT_RowIndex'},
+              {data: 'DT_RowIndex'},
+              {data: 'judul', name: 'judul'},
+              {data: 'created_at', name: 'created_at'},
+          ]
+      });
+   });
+   </script>
+@endpush
 @endif

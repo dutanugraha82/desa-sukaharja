@@ -16,7 +16,7 @@
         @endif
             <h5>Sunting Data Kartu Keluarga</h5>
             <hr>
-            <form action="/admin/kk/{{ $data->id }}" method="POST">
+            <form action="/{{ auth()->user()->role }}/kk/{{ $data->id }}" method="POST">
                 @method('put')
                 @csrf
                 <div class="row">

@@ -5,8 +5,8 @@
 @section('content')
 <div class="card p-3">
     <h5 class="text-center">Data Pengajuan UMKM</h5>
-    @if (auth()->user()->role == 'admin')
-    <a href="/admin/umkm/create" class="btn btn-primary mb-3" style="width: 130px">Tambah Data<sup>+</sup></a>
+    @if (auth()->user()->role == 'admin' || auth()->user()->role == 'pelayanan')
+    <a href="/{{ auth()->user()->role }}/umkm/create" class="btn btn-primary mb-3" style="width: 130px">Tambah Data<sup>+</sup></a>
     @endif
     <table id="umkm-table" class="table table-hover table-striped">
      @if (auth()->user()->role != 'kades')
@@ -166,6 +166,61 @@
             {data: 'nama_pemilik', name: 'nama_pemilik'},
             {data: 'nama_umkm', name: 'nama_umkm'},
             {data: 'nohp', name: 'nohp'},
+        ]
+    });
+});
+ </script>
+@endpush
+ @elseif(auth()->user()->role == 'pelayanan')
+ @push('js')
+ <script>
+  $(function (){
+    let table = $('#umkm-table').DataTable({
+        processing:true,
+        serverSide:true,
+        responsive:{
+            details:{
+                type:'column'
+            }
+        },
+        columnDefs:[{
+            className:'dtr-control',
+            orderable:false,
+            targets:0
+        }],
+        ajax:"{{ route('pelayanan.umkm.json') }}",
+        columns: [
+            {data: 'DT_RowIndex'},
+            {data: 'nik', name: 'nik'},
+            {data: 'nama_pemilik', name: 'nama_pemilik'},
+            {data: 'nama_umkm', name: 'nama_umkm'},
+            {data: 'nohp', name: 'nohp'},
+            {data: 'action', name: 'action'},
+        ]
+    });
+});
+  $(function (){
+    let table = $('#umkm-validasi-table').DataTable({
+        processing:true,
+        serverSide:true,
+        responsive:{
+            details:{
+                type:'column'
+            }
+        },
+        columnDefs:[{
+            className:'dtr-control',
+            orderable:false,
+            targets:0
+        }],
+        ajax:"{{ route('pelayanan.validasiUMKM.json') }}",
+        columns: [
+            {data: 'DT_RowIndex'},
+            {data: 'nik', name: 'nik'},
+            {data: 'nama_pemilik', name: 'nama_pemilik'},
+            {data: 'nama_umkm', name: 'nama_umkm'},
+            {data: 'nohp', name: 'nohp'},
+            {data: 'action', name: 'action'},
         ]
     });
 });

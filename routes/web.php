@@ -51,6 +51,8 @@ Route::middleware(['auth','kades','preventBack'])->prefix('kades')->group(functi
     Route::get('/transparansi',[PerencanaanController::class,'transparansi'])->name('kades.transparansi');
     Route::get('/akun',[AkunController::class,'edit']);
     Route::put('/akun/{id}',[AkunController::class,'update']);
+    Route::get('/saran',[LayananDesaController::class,'adminSaran'])->name('kades.saran');
+    Route::get('/saran/{id}',[LayananDesaController::class,'adminSaranShow']);
 });
 
 // Route Kades End
@@ -112,6 +114,7 @@ Route::middleware(['auth','admin','preventBack'])->prefix('admin')->group(functi
 
     Route::get('/berita/json',[BeritaController::class,'json'])->name('berita.json');
     Route::resource('berita',BeritaController::class);
+
     Route::get('/umkm', [UMKMController::class,'index']);
     Route::get('/umkm/create',[UMKMController::class,'create']);
     Route::get('/umkm/json-validasi-umkm',[UMKMController::class,'jsonValidasiUMKM'])->name('validasiUMKM.json');
@@ -157,6 +160,37 @@ Route::middleware(['auth','admin','preventBack'])->prefix('admin')->group(functi
 });
 // Route Admin End
 
+// route Pelayanan Start
+
+Route::middleware(['auth','pelayanan','preventBack'])->prefix('pelayanan')->group(function(){
+    Route::get('/', [DashboardController::class,'index'])->name('pelayanan.dashboard');
+
+    Route::get('/kk/json',[KartuKeluargaController::class,'json'])->name('pelayanan.kk.json');
+    Route::get('/kk', [KartuKeluargaController::class,'index']);
+    Route::get('/kk/create', [KartuKeluargaController::class,'create']);
+    Route::post('/kk',[KartuKeluargaController::class,'store']);
+    Route::get('/kk/{id}/edit', [KartuKeluargaController::class,'edit']);
+    Route::put('/kk/{id}', [KartuKeluargaController::class,'update']);
+
+    Route::get('/profiles/json',[ProfileController::class,'json'])->name('pelayanan.warga.json');
+    Route::get('/profiles',[ProfileController::class,'index']);
+    Route::get('/profiles/create', [ProfileController::class,'create']);
+    Route::post('/profiles', [ProfileController::class,'store']);
+    Route::get('/profiles/{id}/edit', [ProfileController::class,'edit']);
+    Route::put('/profiles/{id}',[ProfileController::class,'update']);
+    Route::delete('/profiles/{id}',[ProfileController::class,'destroy']);
+
+    Route::get('/umkm/json-validasi-umkm',[UMKMController::class,'jsonValidasiUMKM'])->name('pelayanan.validasiUMKM.json');
+    Route::get('/umkm/json',[UMKMController::class,'json'])->name('pelayanan.umkm.json');
+    Route::get('/umkm', [UMKMController::class,'index']);
+    Route::get('/umkm/create',[UMKMController::class,'create']);
+    Route::get('/umkm/{id}/edit',[UMKMController::class,'edit']);
+    Route::get('/umkm/{id}',[UMKMController::class,'show']);
+    Route::put('/umkm/{id}/validasi',[UMKMController::class,'validasiUMKM']);
+    Route::delete('/umkm/{id}',[UMKMController::class,'destroy']);
+});
+
+// Route Pelayanan End
 
 // Route Sensus Start
     Route::middleware(['auth','petugas-sensus','preventBack'])->group(function(){

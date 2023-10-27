@@ -6,7 +6,7 @@
 <div class="container-fluid">
     <h5 class="text-center">Ubah Data UMKM</h5>
     <hr>
-    <form class="my-4" action="/pengajuan-umkm" method="POST" enctype="multipart/form-data">
+    <form class="my-4" action="/{{ auth()->user()->role }}/umkm/{{ $umkm->id }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="container">
             <p class="text-muted text-center my-3">Form Data UMKM</p>

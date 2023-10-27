@@ -23,7 +23,7 @@ class KartuKeluargaController extends Controller
         ->addIndexColumn()
         ->addColumn('action', function($kk){
             return ' <div class="d-flex">   
-                    <a href="/admin/kk/'.$kk->id.'/edit" class="btn  btn-warning" style="width:80px;">Edit</a>
+                    <a href="/'.auth()->user()->role.'/kk/'.$kk->id.'/edit" class="btn  btn-warning" style="width:80px;">Edit</a>
                     
                     </div>';
         })
@@ -47,40 +47,43 @@ class KartuKeluargaController extends Controller
         if (!$dataKK->isEmpty()) {
             Alert::error('Gagal!','No KK Sudah Ada');
             return redirect()->back();
+        }else{
+            DB::table('kk')->insert([
+                'kk' => $request->no_kk,
+            ]);
+    
+           $request->validate([
+                        'no_kk' => 'required|unique:kartu_keluarga|min:16',
+                        'kepalaKeluarga' => 'required',
+                        'alamat' => 'required',
+                        'rt' => 'required',
+                        'rw' => 'required',
+                        'desa' => 'required',
+                        'kecamatan' => 'required',
+                        'kabupaten' => 'required',
+                        'pos' => 'required',
+                        'provinsi' => 'required',
+                    ]);
+    
+                        KartuKeluarga::create([
+                            'no_kk' => Crypt::encrypt($request->no_kk),
+                            'nama_kepala_keluarga' => $request->kepalaKeluarga,
+                            'alamat' => Crypt::encrypt($request->alamat),
+                            'rt' => $request->rt,
+                            'rw' => $request->rw,
+                            'desa' => $request->desa,
+                            'kecamatan' => $request->kecamatan,
+                            'kabupaten' => $request->kabupaten,
+                            'pos' => $request->pos,
+                            'provinsi' => $request->provinsi,
+                        ]);
+    
+                        Alert::success('Berhasil!','data berhasil ditambahkan.');
+                        return redirect('/'.auth()->user()->role.'/kk');
         }
 
-        DB::table('kk')->insert([
-            'kk' => $request->no_kk,
-        ]);
-
-       $request->validate([
-                    'no_kk' => 'required|unique:kartu_keluarga|min:16',
-                    'kepalaKeluarga' => 'required',
-                    'alamat' => 'required',
-                    'rt' => 'required',
-                    'rw' => 'required',
-                    'desa' => 'required',
-                    'kecamatan' => 'required',
-                    'kabupaten' => 'required',
-                    'pos' => 'required',
-                    'provinsi' => 'required',
-                ]);
-
-                    KartuKeluarga::create([
-                        'no_kk' => Crypt::encrypt($request->no_kk),
-                        'nama_kepala_keluarga' => $request->kepalaKeluarga,
-                        'alamat' => Crypt::encrypt($request->alamat),
-                        'rt' => $request->rt,
-                        'rw' => $request->rw,
-                        'desa' => $request->desa,
-                        'kecamatan' => $request->kecamatan,
-                        'kabupaten' => $request->kabupaten,
-                        'pos' => $request->pos,
-                        'provinsi' => $request->provinsi,
-                    ]);
-                    Alert::success('Berhasil!','data berhasil ditambahkan.');
-                    return redirect('/admin/kk');
-                }
+        
+    }
 
         public function edit($id){
           $data =  KartuKeluarga::find($id);
@@ -121,6 +124,6 @@ class KartuKeluargaController extends Controller
             ]);
 
             Alert::success('Berhasil!','data berhasil dirubah!');
-            return redirect('/admin/kk');
+            return redirect('/'.auth()->user()->role.'/kk');
         }
     }

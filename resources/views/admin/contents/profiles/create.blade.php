@@ -16,7 +16,7 @@
         @endif
             <h5>Input Data Pribadi</h5>
             <hr>
-            <form action="/admin/profiles" method="POST">
+            <form action="/{{ auth()->user()->role }}/profiles" method="POST">
                 @csrf
                 <div class="row">
                     <div class="col-md-6">
