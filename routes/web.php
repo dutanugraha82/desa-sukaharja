@@ -123,6 +123,11 @@ Route::middleware(['auth','admin','preventBack'])->prefix('admin')->group(functi
     Route::get('/umkm/{id}',[UMKMController::class,'show']);
     Route::put('/umkm/{id}/validasi',[UMKMController::class,'validasiUMKM']);
     Route::delete('/umkm/{id}',[UMKMController::class,'destroy']);
+
+    Route::get('/umkm/gambar-produk/{id}', [UMKMController::class,'editGambarProduk']);
+    Route::put('/umkm/gambar-produk/{id}', [UMKMController::class,'updateGambarProduk']);
+    Route::get('/umkm/gambar-produk/{id}/hapus',[UMKMController::class,'hapusGambarProduk']);
+    
     Route::get('/akun',[AkunController::class,'edit']);
     Route::put('/akun/{id}',[AkunController::class,'update']);
     Route::get('/rpjm',[PerencanaanController::class,'rpjm'])->name('admin.rpjm');
@@ -186,8 +191,13 @@ Route::middleware(['auth','pelayanan','preventBack'])->prefix('pelayanan')->grou
     Route::get('/umkm/create',[UMKMController::class,'create']);
     Route::get('/umkm/{id}/edit',[UMKMController::class,'edit']);
     Route::get('/umkm/{id}',[UMKMController::class,'show']);
+    Route::put('/umkm/{id}',[UMKMController::class,'update']);
     Route::put('/umkm/{id}/validasi',[UMKMController::class,'validasiUMKM']);
     Route::delete('/umkm/{id}',[UMKMController::class,'destroy']);
+
+    Route::get('/umkm/gambar-produk/{id}', [UMKMController::class,'editGambarProduk']);
+    Route::put('/umkm/gambar-produk/{id}', [UMKMController::class,'updateGambarProduk']);
+    Route::get('/umkm/gambar-produk/{id}/hapus',[UMKMController::class,'hapusGambarProduk']);
 });
 
 // Route Pelayanan End

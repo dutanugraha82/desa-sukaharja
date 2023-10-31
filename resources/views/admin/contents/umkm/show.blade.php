@@ -49,12 +49,14 @@
             </div>
         </div>
         <div class="my-5">
-            <a href="/admin/umkm" style="width: 70vw" class="btn btn-warning d-block mx-auto">Kembali</a><br>
-            <form action="/admin/umkm/{{ $umkm->id }}/validasi" method="POST">
-                @csrf
-                @method('put')
-                <button type="submit" class="btn btn-success d-block mx-auto" onclick="return confirm('Validasi {{ $umkm->nama_umkm }}')" style="width: 70vw">Validasi</button>
-            </form>
+            <a href="/{{ auth()->user()->role }}/umkm" style="width: 70vw" class="btn btn-warning d-block mx-auto">Kembali</a><br>
+           @if ($umkm->status_validasi == 0)
+           <form action="/{{ auth()->user()->role }}/umkm/{{ $umkm->id }}/validasi" method="POST">
+            @csrf
+            @method('put')
+            <button type="submit" class="btn btn-success d-block mx-auto" onclick="return confirm('Validasi {{ $umkm->nama_umkm }}')" style="width: 70vw">Validasi</button>
+        </form>
+           @endif
         </div>
     
 </div>
