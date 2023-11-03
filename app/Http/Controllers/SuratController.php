@@ -26,9 +26,9 @@ class SuratController extends Controller
         ->addIndexColumn()
         ->addColumn('action', function($ktm){
             return ' <div class="d-flex">   
-                    <a href="/admin/ktm/'.$ktm->id.'/edit" class="btn  btn-warning" style="width:80px;">Edit</a>
-                    <a href="/admin/ktm/'.$ktm->id.'" class="btn mx-3 btn-primary">Preview</a>
-                    <a href="/admin/ktm/'.$ktm->id.'" class="btn mx-3 btn-primary"><i class="fa fa-print"></i></a>
+                    <a href="/'.auth()->user()->role.'/ktm/'.$ktm->id.'/edit" class="btn  btn-warning" style="width:80px;">Edit</a>
+                    <a href="/'.auth()->user()->role.'/ktm/'.$ktm->id.'" class="btn mx-3 btn-primary">Preview</a>
+                    <a href="/'.auth()->user()->role.'/ktm/'. $ktm->id.'/print" class="btn mx-3 btn-primary"><i class="fa fa-print"></i></a>
                     </div>';
         })
         ->addColumn('created_at', function($ktm){
@@ -153,9 +153,9 @@ class SuratController extends Controller
         ->addIndexColumn()
         ->addColumn('action', function($skuDalam){
             return ' <div class="d-flex">   
-                    <a href="/admin/sku-dalam/'.$skuDalam->id.'/edit" class="btn  btn-warning" style="width:80px;">Edit</a>
-                    <a href="/admin/sku-dalam/'.$skuDalam->id.'/show" class="btn mx-3 btn-primary">Preview</a>
-                    <a href="/admin/sku-dalam/'.$skuDalam->id.'/print" class="btn mx-3 btn-primary"><i class="fa fa-print"></i></a>
+                    <a href="/'.auth()->user()->role.'/sku-dalam/'.$skuDalam->id.'/edit" class="btn  btn-warning" style="width:80px;">Edit</a>
+                    <a href="/'.auth()->user()->role.'/sku-dalam/'.$skuDalam->id.'/show" class="btn mx-3 btn-primary">Preview</a>
+                    <a href="/'.auth()->user()->role.'/sku-dalam/'.$skuDalam->id.'/print" class="btn mx-3 btn-primary"><i class="fa fa-print"></i></a>
                     </div>';
         })
         ->addColumn('created_at', function($skuDalam){
@@ -285,9 +285,9 @@ class SuratController extends Controller
             })
             ->addColumn('action', function($skuLuar){
                 return ' <div class="d-flex">   
-                        <a href="/admin/sku-luar/'.$skuLuar->id.'/edit" class="btn  btn-warning" style="width:80px;">Edit</a>
-                        <a href="/admin/sku-luar/'.$skuLuar->id.'" class="btn mx-3 btn-primary">Preview</a>
-                        <a href="/admin/sku-luar/'.$skuLuar->id.'/print" class="btn mx-3 btn-primary"><i class="fa fa-print"></i></a>
+                        <a href="/'.auth()->user()->role.'/sku-luar/'.$skuLuar->id.'/edit" class="btn  btn-warning" style="width:80px;">Edit</a>
+                        <a href="/'.auth()->user()->role.'/sku-luar/'.$skuLuar->id.'" class="btn mx-3 btn-primary">Preview</a>
+                        <a href="/'.auth()->user()->role.'/sku-luar/'.$skuLuar->id.'/print" class="btn mx-3 btn-primary"><i class="fa fa-print"></i></a>
                         </div>';
             })
             ->addColumn('created_at', function($skuLuar){
@@ -422,9 +422,9 @@ class SuratController extends Controller
             ->addIndexColumn()
             ->addColumn('action', function($suratPenghasilanOrtu){
                 return ' <div class="d-flex">   
-                        <a href="/admin/surat-penghasilan-orang-tua/'.$suratPenghasilanOrtu->id.'/edit" class="btn  btn-warning" style="width:80px;">Edit</a>
-                        <a href="/admin/surat-penghasilan-orang-tua/'.$suratPenghasilanOrtu->id.'" class="btn mx-3 btn-primary">Preview</a>
-                        <a href="/admin/surat-penghasilan-orang-tua/'.$suratPenghasilanOrtu->id.'/print" class="btn mx-3 btn-primary"><i class="fa fa-print"></i></a>
+                        <a href="/'.auth()->user()->role.'/surat-penghasilan-orang-tua/'.$suratPenghasilanOrtu->id.'/edit" class="btn  btn-warning" style="width:80px;">Edit</a>
+                        <a href="/'.auth()->user()->role.'/surat-penghasilan-orang-tua/'.$suratPenghasilanOrtu->id.'" class="btn mx-3 btn-primary">Preview</a>
+                        <a href="/'.auth()->user()->role.'/surat-penghasilan-orang-tua/'.$suratPenghasilanOrtu->id.'/print" class="btn mx-3 btn-primary"><i class="fa fa-print"></i></a>
                         </div>';
             })
             ->addColumn('created_at', function($suratPenghasilanOrtu){

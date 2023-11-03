@@ -20,33 +20,66 @@
   </table>
 </div>
 @endsection
+@if (auth()->user()->role == 'admin')
 @push('js')
-    <script>
-        $(function (){
-        let table = $('#suratPenghasilanOrtu').DataTable({
-            processing:true,
-            serverSide:true,
-            responsive:{
-                details:{
-                    type:'column'
-                }
-            },
-            columnDefs:[{
-                className:'dtr-control',
-                orderable:false,
-                targets:0
-            }],
-            ajax:"{{ route('admin.suratPenghasilanOrtu') }}",
-            columns: [
-                {data: 'DT_RowIndex'},
-                {data: 'DT_RowIndex'},
-                {data: 'nama', name: 'nama'},
-                {data: 'jk', name: 'jk'},
-                {data: 'pekerjaan', name: 'pekerjaan'},
-                {data: 'created_at', name: 'created_at'},
-                {data: 'action', name: 'action'},
-            ]
-        });
+<script>
+    $(function (){
+    let table = $('#suratPenghasilanOrtu').DataTable({
+        processing:true,
+        serverSide:true,
+        responsive:{
+            details:{
+                type:'column'
+            }
+        },
+        columnDefs:[{
+            className:'dtr-control',
+            orderable:false,
+            targets:0
+        }],
+        ajax:"{{ route('admin.suratPenghasilanOrtu') }}",
+        columns: [
+            {data: 'DT_RowIndex'},
+            {data: 'DT_RowIndex'},
+            {data: 'nama', name: 'nama'},
+            {data: 'jk', name: 'jk'},
+            {data: 'pekerjaan', name: 'pekerjaan'},
+            {data: 'created_at', name: 'created_at'},
+            {data: 'action', name: 'action'},
+        ]
     });
-    </script>
+});
+</script>
 @endpush
+@elseif(auth()->user()->role == 'pelayanan')
+@push('js')
+<script>
+    $(function (){
+    let table = $('#suratPenghasilanOrtu').DataTable({
+        processing:true,
+        serverSide:true,
+        responsive:{
+            details:{
+                type:'column'
+            }
+        },
+        columnDefs:[{
+            className:'dtr-control',
+            orderable:false,
+            targets:0
+        }],
+        ajax:"{{ route('pelayanan.suratPenghasilanOrtu') }}",
+        columns: [
+            {data: 'DT_RowIndex'},
+            {data: 'DT_RowIndex'},
+            {data: 'nama', name: 'nama'},
+            {data: 'jk', name: 'jk'},
+            {data: 'pekerjaan', name: 'pekerjaan'},
+            {data: 'created_at', name: 'created_at'},
+            {data: 'action', name: 'action'},
+        ]
+    });
+});
+</script>
+@endpush
+@endif

@@ -109,6 +109,36 @@
         });
     });
      </script>
+ @endpush
+@elseif(auth()->user()->role == 'pelayanan')
+@push('js')
+     <script>
+      $(function (){
+        let table = $('#saran-table').DataTable({
+            processing:true,
+            serverSide:true,
+            responsive:{
+                details:{
+                    type:'column'
+                }
+            },
+            columnDefs:[{
+                className:'dtr-control',
+                orderable:false,
+                targets:0
+            }],
+            ajax:"{{ route('pelayanan.saran') }}",
+            columns: [
+                {data: 'DT_RowIndex'},
+                {data: 'DT_RowIndex'},
+                {data: 'nik', name: 'nik'},
+                {data: 'nama', name: 'nama'},
+                {data: 'nohp', name: 'nohp'},
+                {data: 'action', name: 'action'},
+            ]
+        });
+    });
+     </script>
  @endpush 
 @endif
  

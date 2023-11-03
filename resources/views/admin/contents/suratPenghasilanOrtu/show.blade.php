@@ -123,7 +123,7 @@
                     </div>
                 </div>
                 <a  style="width: 70vw" href="/{{ auth()->user()->role }}/surat-penghasilan-orang-tua" class="btn btn-warning d-block mx-auto my-4">Kembali</a><br>
-
+                <a style="width: 70vw" href="/{{ auth()->user()->role }}/surat-penghasilan-orang-tua/{{ $data->id }}/print" class="d-block mx-auto btn btn-primary">Cetak Surat</a><br>
             </div>
              
     </div>

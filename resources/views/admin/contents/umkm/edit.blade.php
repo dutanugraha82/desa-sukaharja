@@ -58,6 +58,10 @@
         </div>
         <hr>
         <div class="container">
+            @if(empty($gambarProduk))
+             <p class="text-center">Gambar Produk Tidak Ada</p>
+            <a href="#"><p class="text-center mt-5">+ Tambah Gambar Produk</p></a>
+            @else
             <div class="row">
                 @foreach ($gambarProduk as $item)
                 <div class="col-md-4 mb-4">
@@ -70,7 +74,12 @@
                       </div>
                 </div>
                 @endforeach
-            </div>
+                 @if (count($gambarProduk) < 10)
+                    <a href="/{{ auth()->user()->role }}/umkm/gambar-produk/{{ $umkm->id }}/create"><p class="text-center mt-5">+ Tambah Gambar Produk</p></a>
+                @endif
+            </div>    
+            @endif
+
         </div>
         <div class="text-center" style="margin-top: 100px">
             <button type="submit" style="width: 90%" onclick="return confirm('Yakin Ingin Merubah Data?')" class="btn btn-primary my-4">Update Data</button><br>

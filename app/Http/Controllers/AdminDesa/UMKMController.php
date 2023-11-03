@@ -130,6 +130,26 @@ class UMKMController extends Controller
            
     }
 
+    public function tambahGambarProduk($id){
+        $gambar = GambarProduk::where('umkm_id',$id)->get();
+        $umkm_id = $id;
+        return view('admin.contents.umkm.gambar.create', compact('gambar','umkm_id'));
+    }
+
+    public function storeGambarProduk(Request $request, $id){
+        $request->validate([
+            'gambar_produk' => 'image',
+        ]);
+
+        GambarProduk::create([
+            'gambar_produk' => $request->file('gambar_produk')->store('produk-umkm'),
+            'umkm_id' => $id,
+        ]);
+
+        Alert::success('Berhasil!','gambar berhasil ditambahkan!');
+        return redirect('/'.auth()->user()->role.'/umkm/gambar-produk/'.$id.'/create');
+    }
+
     public function editGambarProduk($id){
         $gambar = GambarProduk::find($id);
         return view('admin.contents.umkm.gambar.edit', compact('gambar'));

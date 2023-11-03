@@ -155,8 +155,10 @@ Route::middleware(['auth','admin','preventBack'])->prefix('admin')->group(functi
     Route::get('/transparansi/{id}/edit',[PerencanaanController::class,'transparansiEdit']);
     Route::put('/transparansi/{id}',[PerencanaanController::class,'transparansiUpdate']);
     Route::delete('/transparansi/{id}',[PerencanaanController::class,'transparansiDestroy']);
+
     Route::get('/saran',[LayananDesaController::class,'adminSaran'])->name('admin.saran');
     Route::get('/saran/{id}',[LayananDesaController::class,'adminSaranShow']);
+
     Route::get('/prestasi/create',[LayananDesaController::class,'prestasiCreate']);
     Route::post('/prestasi',[LayananDesaController::class,'prestasiStore']);
     Route::get('/prestasi/{id}',[LayananDesaController::class,'prestasiEdit']);
@@ -198,6 +200,38 @@ Route::middleware(['auth','pelayanan','preventBack'])->prefix('pelayanan')->grou
     Route::get('/umkm/gambar-produk/{id}', [UMKMController::class,'editGambarProduk']);
     Route::put('/umkm/gambar-produk/{id}', [UMKMController::class,'updateGambarProduk']);
     Route::get('/umkm/gambar-produk/{id}/hapus',[UMKMController::class,'hapusGambarProduk']);
+    Route::get('/umkm/gambar-produk/{id}/create',[UMKMController::class,'tambahGambarProduk']);
+    Route::post('/umkm/gambar-produk/{id}',[UMKMController::class,'storeGambarProduk']);
+
+    Route::get('/surat-penghasilan-orang-tua',[SuratController::class,'suratPenghasilanOrtu'])->name('pelayanan.suratPenghasilanOrtu');
+    Route::get('/surat-penghasilan-orang-tua/{id}/edit',[SuratController::class,'editSuratPenghasilanOrtu']);
+    Route::put('/surat-penghasilan-orang-tua/{id}',[SuratController::class,'updateSuratPenghasilanOrtu']);
+    Route::get('/surat-penghasilan-orang-tua/{id}',[SuratController::class,'showSuratPenghasilanOrtu']);
+    Route::get('/surat-penghasilan-orang-tua/{id}/print',[SuratController::class,'printSuratPenghasilanOrtu']);
+
+    Route::get('/ktm',[SuratController::class,'ktm']);
+    Route::get('/ktm/json',[SuratController::class,'jsonKTM'])->name('pelayanan.ktm.json');
+    Route::get('/ktm/{id}/edit',[SuratController::class,'editKTM']);
+    Route::put('/ktm/{id}',[SuratController::class,'updateKTM']);
+    Route::get('/ktm/{id}',[SuratController::class,'showKTM']);
+    Route::get('/ktm/{id}/print',[SuratController::class,'printKTM']);
+
+    Route::get('/sku-dalam',[SuratController::class,'skuDalam']);
+    Route::get('/sku-dalam/json',[SuratController::class,'skuDalamJson'])->name('pelayanan.sku-dalam.json');
+    Route::get('/sku-dalam/{id}/edit',[SuratController::class,'editSKU']);
+    Route::put('/sku-dalam/{id}',[SuratController::class,'updateSKU']);
+    Route::get('/sku-dalam/{id}/show',[SuratController::class,'showSKU']);
+    Route::get('/sku-dalam/{id}/print',[SuratController::class,'printSKU']);
+
+    Route::get('/sku-luar',[SuratController::class,'skuLuar'])->name('pelayanan.sku-luar');
+    Route::get('/sku-luar/{id}',[SuratController::class,'showSkuLuar']);
+    Route::get('/sku-luar/{id}/edit',[SuratController::class,'editSkuLuar']);
+    Route::put('/sku-luar/{id}',[SuratController::class,'updateSkuLuar']);
+    Route::get('/sku-luar/{id}/print',[SuratController::class,'printSkuLuar']);
+    Route::delete('/sku-luar/{id}',[SuratController::class,'destroySkuLuar']);
+
+    Route::get('/saran',[LayananDesaController::class,'adminSaran'])->name('pelayanan.saran');
+    Route::get('/saran/{id}',[LayananDesaController::class,'adminSaranShow']);
 });
 
 // Route Pelayanan End
