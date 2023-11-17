@@ -112,6 +112,18 @@ Route::middleware(['auth','admin','preventBack'])->prefix('admin')->group(functi
     Route::get('/surat-penghasilan-orang-tua/{id}',[SuratController::class,'showSuratPenghasilanOrtu']);
     Route::get('/surat-penghasilan-orang-tua/{id}/print',[SuratController::class,'printSuratPenghasilanOrtu']);
 
+    Route::get('/domisili-dalam',[SuratController::class,'suratDomisiliDalam'])->name('admin.suratDomisiliDalam');
+    Route::get('/domisili-dalam/{id}/edit',[SuratController::class,'editSuratDomisiliDalam']);
+    Route::put('/domisili-dalam/{id}',[SuratController::class,'updateSuratDomisiliDalam']);
+    Route::get('/domisili-dalam/{id}',[SuratController::class,'showSuratDomisiliDalam']);
+    Route::get('/domisili-dalam/{id}/print',[SuratController::class,'printSuratDomisiliDalam']);
+
+    Route::get('/belum-menikah', [SuratController::class,'suratBelumMenikah'])->name('admin.suratBelumMenikah');
+    Route::get('/belum-menikah/{id}/edit', [SuratController::class,'editSuratBelumMenikah']);
+    Route::put('/belum-menikah/{id}', [SuratController::class,'updateSuratBelumMenikah']);
+    Route::get('/belum-menikah/{id}', [SuratController::class,'showSuratBelumMenikah']);
+    Route::get('/belum-menikah/{id}/print', [SuratController::class,'printSuratBelumMenikah']);
+
     Route::get('/berita/json',[BeritaController::class,'json'])->name('berita.json');
     Route::resource('berita',BeritaController::class);
 
@@ -230,6 +242,18 @@ Route::middleware(['auth','pelayanan','preventBack'])->prefix('pelayanan')->grou
     Route::get('/sku-luar/{id}/print',[SuratController::class,'printSkuLuar']);
     Route::delete('/sku-luar/{id}',[SuratController::class,'destroySkuLuar']);
 
+    Route::get('/domisili-dalam',[SuratController::class,'suratDomisiliDalam'])->name('pelayanan.suratDomisiliDalam');
+    Route::get('/domisili-dalam/{id}/edit',[SuratController::class,'editSuratDomisiliDalam']);
+    Route::put('/domisili-dalam/{id}',[SuratController::class,'updateSuratDomisiliDalam']);
+    Route::get('/domisili-dalam/{id}',[SuratController::class,'showSuratDomisiliDalam']);
+    Route::get('/domisili-dalam/{id}/print',[SuratController::class,'printSuratDomisiliDalam']);
+
+    Route::get('/belum-menikah', [SuratController::class,'suratBelumMenikah'])->name('pelayanan.suratBelumMenikah');
+    Route::get('/belum-menikah/{id}/edit', [SuratController::class,'editSuratBelumMenikah']);
+    Route::put('/belum-menikah/{id}', [SuratController::class,'updateSuratBelumMenikah']);
+    Route::get('/belum-menikah/{id}', [SuratController::class,'showSuratBelumMenikah']);
+    Route::get('/belum-menikah/{id}/print', [SuratController::class,'printSuratBelumMenikah']);
+
     Route::get('/saran',[LayananDesaController::class,'adminSaran'])->name('pelayanan.saran');
     Route::get('/saran/{id}',[LayananDesaController::class,'adminSaranShow']);
 });
@@ -257,6 +281,10 @@ Route::middleware(['auth','warga','preventBack'])->group(function(){
     Route::post('/sku-dalam',[SuratController::class,'storeSKU']);
     Route::get('/surat-penghasilan-orang-tua', [SuratController::class,'createSuratPenghasilanOrtu']);
     Route::post('/surat-penghasilan-orang-tua', [SuratController::class,'storeSuratPenghasilanOrtu']);
+    Route::get('/domisili-dalam',[SuratController::class,'createSuratDomisiliDalam']);
+    Route::post('/domisili-dalam',[SuratController::class,'storeSuratDomisiliDalam']);
+    Route::get('/belum-menikah',[SuratController::class,'createSuratBelumMenikah']);
+    Route::post('/belum-menikah',[SuratController::class,'storeSuratBelumMenikah']);
 });
 // Route Warga End
 

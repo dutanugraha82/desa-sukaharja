@@ -64,8 +64,8 @@
                 <a class="mb-4 btn btn-info" style="width: 10rem" href="/sku-dalam">Surat Keterangan Usaha (dalam)</a><br>
                 <a class="mb-4 btn btn-info" style="width: 10rem" href="/sku-luar">Surat Keterangan Usaha (luar)</a><br>
                 <a class="mb-4 btn btn-info" style="width: 10rem" href="/surat-penghasilan-orang-tua">Surat Penghasilan Orang Tua</a><br>
-                <a class="mb-4 btn btn-info" style="width: 10rem" href="#">Surat Keterangan Sudah Menikah</a><br>
-                <a class="mb-4 btn btn-info" style="width: 10rem" href="#">Surat Keterangan Umum</a><br>
+                <a class="mb-4 btn btn-info" style="width: 10rem" href="/domisili-dalam">Surat Domisili Dalam</a><br>
+                <a class="mb-4 btn btn-info" style="width: 10rem" href="/belum-menikah">Surat Keterangan Belum Menikah</a><br>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>

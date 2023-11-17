@@ -67,6 +67,8 @@
                 <a class="collapse-item" href="/{{ auth()->user()->role }}/ktm">KTM</a>
                 <a class="collapse-item" href="/{{ auth()->user()->role }}/sku-dalam">SKU-Dalam</a>
                 <a class="collapse-item" href="/{{ auth()->user()->role }}/sku-luar">SKU-Luar</a>
+                <a class="collapse-item" href="/{{ auth()->user()->role }}/domisili-dalam">Domisili Dalam</a>
+                <a class="collapse-item" href="/{{ auth()->user()->role }}/belum-menikah">Belum Menikah</a>
             </div>
         </div>
     </li>
@@ -222,6 +224,8 @@
                 <a class="collapse-item" href="/{{ auth()->user()->role }}/ktm">KTM</a>
                 <a class="collapse-item" href="/{{ auth()->user()->role }}/sku-dalam">SKU-Dalam</a>
                 <a class="collapse-item" href="/{{ auth()->user()->role }}/sku-luar">SKU-Luar</a>
+                <a class="collapse-item" href="/{{ auth()->user()->role }}/domisili-dalam">Domisili Dalam</a>
+                <a class="collapse-item" href="/{{ auth()->user()->role }}/belum-menikah">Belum Menikah</a>
             </div>
         </div>
     </li>

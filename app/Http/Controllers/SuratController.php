@@ -2,15 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\KartuKeluarga;
 use Carbon\Carbon;
 use App\Models\KTM;
-use App\Models\Profiles;
 use App\Models\SKU;
 use App\Models\SKULuar;
-use App\Models\SuratPenghasilanOrtu;
+use App\Models\Profiles;
+use App\Models\BelumMenikah;
 use Illuminate\Http\Request;
+use App\Models\DomisiliDalam;
+use App\Models\KartuKeluarga;
 use Illuminate\Support\Facades\DB;
+use App\Models\SuratPenghasilanOrtu;
 use Illuminate\Support\Facades\Crypt;
 use RealRashid\SweetAlert\Facades\Alert;
 
@@ -549,6 +551,216 @@ class SuratController extends Controller
         $data = SuratPenghasilanOrtu::find($id);
         $tanggal_dibuat = Carbon::parse($data['created_at'])->isoFormat('dddd D MMMM Y');
         return view('admin.contents.suratPenghasilanOrtu.print', compact('data', 'tanggal_dibuat'));
+    }
+
+    public function suratDomisiliDalam(Request $request){
+        $domisiliDalam = DomisiliDalam::all();
+        if ($request->ajax()) {
+            return datatables()->of($domisiliDalam)
+            ->addIndexColumn()
+            ->addColumn('action', function($domisiliDalam){
+                return ' <div class="d-flex">   
+                        <a href="/'.auth()->user()->role.'/domisili-dalam/'.$domisiliDalam->id.'/edit" class="btn  btn-warning" style="width:80px;">Edit</a>
+                        <a href="/'.auth()->user()->role.'/domisili-dalam/'.$domisiliDalam->id.'" class="btn mx-3 btn-primary">Preview</a>
+                        <a href="/'.auth()->user()->role.'/domisili-dalam/'.$domisiliDalam->id.'/print" class="btn mx-3 btn-primary"><i class="fa fa-print"></i></a>
+                        </div>';
+            })
+            ->addColumn('created_at', function($domisiliDalam){
+                return Carbon::parse($domisiliDalam->created_at)->format('d M Y');
+            })
+            ->rawColumns(['action'])
+            ->make(true);
+        }
+
+        return view('admin.contents.domisili.index');
+    }
+
+    public function createSuratDomisiliDalam(){
+        $profiles = Profiles::where('id',auth()->user()->profiles_id)->first();
+        $ttl = $profiles->tempat_lahir . ", " . Carbon::parse($profiles->tanggal_lahir)->isoFormat('D-MM-Y');
+        $kk = KartuKeluarga::where('id', $profiles->kartu_keluarga_id)->first();
+        $alamat = Crypt::decrypt($kk->alamat) . ' Rt.' . $kk->rt . ' Rw.' . $kk->rw . ' Desa/Kel.' . $kk->desa . ' Kec.' . $kk->kecamatan . ' Kab.' . $kk->kabupaten;
+        return view('UserPages.layout.domisili-dalam', compact('profiles','ttl','alamat'));
+    }
+
+    public function storeSuratDomisiliDalam(Request $request){
+        // dd($request);
+        $request->validate([
+            'nama' => 'required',
+            'ttl' => 'required',
+            'jk' => 'required',
+            'agama' => 'required',
+            'nik' => 'required',
+            'pekerjaan' => 'required',
+            'alamat' => 'required',
+            'kewarganegaraan' => 'required',
+
+        ]);
+
+        DomisiliDalam::create([
+            'nama' => $request->nama,
+            'ttl' => $request->ttl,
+            'jk' => $request->jk,
+            'agama' => $request->agama,
+            'nik' => $request->nik,
+            'pekerjaan' => $request->pekerjaan,
+            'alamat' => $request->alamat,
+            'kewarganegaraan' => $request->kewarganegaraan,
+        ]);
+
+        Alert::success('Berhasil!','Silahkan mengunjungi kantor desa untuk cetak surat!');
+        return redirect('/layanan-desa');
+    }
+
+    public function editSuratDomisiliDalam($id){
+        $data = DomisiliDalam::find($id);
+        return view('admin.contents.domisili.edit', compact('data'));
+    }
+
+    public function updateSuratDomisiliDalam(Request $request, $id){
+        // dd($request);
+        $request->validate([
+            'nama' => 'required',
+            'ttl' => 'required',
+            'jk' => 'required',
+            'agama' => 'required',
+            'nik' => 'required',
+            'pekerjaan' => 'required',
+            'alamat' => 'required',
+            'kewarganegaraan' => 'required',
+
+        ]);
+
+        DomisiliDalam::find($id)->update([
+            'nama' => $request->nama,
+            'ttl' => $request->ttl,
+            'jk' => $request->jk,
+            'agama' => $request->agama,
+            'nik' => $request->nik,
+            'pekerjaan' => $request->pekerjaan,
+            'alamat' => $request->alamat,
+            'kewarganegaraan' => $request->kewarganegaraan,
+        ]);
+
+        Alert::success('Berhasil','Data berhasil diupdate!');
+        return redirect('/'.auth()->user()->role.'/domisili-dalam/'.$id.'/edit');
+    }
+
+    public function showSuratDomisiliDalam($id){
+        $data = DomisiliDalam::find($id);
+        return view('admin.contents.domisili.show', compact('data'));
+    }
+
+    public function printSuratDomisiliDalam($id){
+        $data = DomisiliDalam::find($id);
+        $data->update([
+            'masa_berlaku' => Carbon::now()->addMonths(3)
+        ]);
+        
+        $masa_berlaku = Carbon::parse($data->masa_berlaku)->isoFormat('dddd, D MMMM Y');
+        $tanggal_dibuat = Carbon::parse($data['created_at'])->isoFormat('dddd, D MMMM Y');
+        return view('admin.contents.domisili.print', compact('data', 'masa_berlaku','tanggal_dibuat'));
+    }
+
+    public function suratBelumMenikah(Request $request){
+        $belumMenikah = BelumMenikah::all();
+        if ($request->ajax()) {
+            return datatables()->of($belumMenikah)
+            ->addIndexColumn()
+            ->addColumn('action', function($belumMenikah){
+                return ' <div class="d-flex">   
+                        <a href="/'.auth()->user()->role.'/belum-menikah/'.$belumMenikah->id.'/edit" class="btn  btn-warning" style="width:80px;">Edit</a>
+                        <a href="/'.auth()->user()->role.'/belum-menikah/'.$belumMenikah->id.'" class="btn mx-3 btn-primary">Preview</a>
+                        <a href="/'.auth()->user()->role.'/belum-menikah/'.$belumMenikah->id.'/print" class="btn mx-3 btn-primary"><i class="fa fa-print"></i></a>
+                        </div>';
+            })
+            ->addColumn('created_at', function($belumMenikah){
+                return Carbon::parse($belumMenikah->created_at)->format('d M Y');
+            })
+            ->rawColumns(['action'])
+            ->make(true);
+        }
+
+        return view('admin.contents.belum-nikah.index');
+    }
+
+    public function createSuratBelumMenikah(){
+        $profiles = Profiles::where('id',auth()->user()->profiles_id)->first();
+        $ttl = $profiles->tempat_lahir . ", " . Carbon::parse($profiles->tanggal_lahir)->isoFormat('D-MM-Y');
+        $kk = KartuKeluarga::where('id', $profiles->kartu_keluarga_id)->first();
+        $alamat = Crypt::decrypt($kk->alamat) . ' Rt.' . $kk->rt . ' Rw.' . $kk->rw . ' Desa/Kel.' . $kk->desa . ' Kec.' . $kk->kecamatan . ' Kab.' . $kk->kabupaten;
+        return view('UserPages.layout.belum-menikah', compact('profiles','ttl','alamat'));
+    }
+
+    public function storeSuratBelumMenikah(Request $request){
+        $request->validate([
+            'nama' => 'required',
+            'ttl' => 'required',
+            'jk' => 'required',
+            'agama' => 'required',
+            'nik' => 'required',
+            'pekerjaan' => 'required',
+            'alamat' => 'required',
+
+        ]);
+
+        BelumMenikah::create([
+            'nama' => $request->nama,
+            'ttl' => $request->ttl,
+            'jk' => $request->jk,
+            'agama' => $request->agama,
+            'nik' => $request->nik,
+            'pekerjaan' => $request->pekerjaan,
+            'alamat' => $request->alamat,
+        ]);
+
+        Alert::success('Berhasil!','Silahkan mengunjungi kantor desa untuk cetak surat!');
+        return redirect('/layanan-desa');
+
+    }
+
+    public function editSuratBelumMenikah($id){
+        $data = BelumMenikah::find($id);
+        return view('admin.contents.belum-nikah.edit', compact('data'));
+    }
+
+    public function updateSuratBelumMenikah(Request $request, $id){
+        $request->validate([
+            'nama' => 'required',
+            'ttl' => 'required',
+            'jk' => 'required',
+            'agama' => 'required',
+            'nik' => 'required',
+            'pekerjaan' => 'required',
+            'alamat' => 'required',
+
+        ]);
+
+        BelumMenikah::find($id)->update([
+            'nama' => $request->nama,
+            'ttl' => $request->ttl,
+            'jk' => $request->jk,
+            'agama' => $request->agama,
+            'nik' => $request->nik,
+            'pekerjaan' => $request->pekerjaan,
+            'alamat' => $request->alamat,
+        ]);
+
+        Alert::success('Berhasil', 'Data berhasil diupdate!');
+        return redirect('/'.auth()->user()->role.'/belum-menikah/'.$id.'/edit');
+
+    }
+
+    public function showSuratBelumMenikah($id){
+        $data = BelumMenikah::find($id);
+        return view('admin.contents.belum-nikah.show', compact('data'));
+    }
+
+    public function printSuratBelumMenikah($id){
+
+        $data = BelumMenikah::find($id);
+        $tanggal_dibuat = Carbon::parse($data['created_at'])->isoFormat('dddd, D MMMM Y');
+        return view('admin.contents.belum-nikah.print', compact('data','tanggal_dibuat'));
     }
       
 
